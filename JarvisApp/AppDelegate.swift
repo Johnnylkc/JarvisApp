@@ -23,10 +23,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let onePage = MainTVC()
         let onePageNav = UINavigationController(rootViewController: onePage)
-        onePage.tabBarItem = UITabBarItem(title: "one", image: UIImage(named: "001"), selectedImage: UIImage(named: "001"))
+        onePage.tabBarItem = UITabBarItem(title: "第一頁", image: UIImage(named: "001"), selectedImage: UIImage(named: "001"))
+        
+        let twoPage = SecondTVC()
+        let twoPageNav = UINavigationController(rootViewController: twoPage)
+        twoPage.tabBarItem = UITabBarItem(title: "第二頁", image:UIImage(named: "002") , selectedImage: UIImage(named: "002"))
         
         
-        let controllers = [onePageNav]
+        
+        let controllers = [onePageNav,twoPageNav]
         tabBarController.viewControllers = controllers
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)

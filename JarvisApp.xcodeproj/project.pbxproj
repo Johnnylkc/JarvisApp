@@ -12,6 +12,8 @@
 		B2DA064E1C7D950700507C3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2DA064C1C7D950700507C3C /* LaunchScreen.storyboard */; };
 		B2DA06561C7D95FC00507C3C /* MainTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA06551C7D95FC00507C3C /* MainTVC.swift */; };
 		B2DA065A1C7D963100507C3C /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA06591C7D963100507C3C /* MainCell.swift */; };
+		B2DA065C1C7E241C00507C3C /* SecondTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA065B1C7E241C00507C3C /* SecondTVC.swift */; };
+		B2DA065E1C7E242E00507C3C /* SecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA065D1C7E242E00507C3C /* SecondCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		B2DA064F1C7D950700507C3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2DA06551C7D95FC00507C3C /* MainTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTVC.swift; sourceTree = "<group>"; };
 		B2DA06591C7D963100507C3C /* MainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		B2DA065B1C7E241C00507C3C /* SecondTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTVC.swift; sourceTree = "<group>"; };
+		B2DA065D1C7E242E00507C3C /* SecondCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				B2DA06551C7D95FC00507C3C /* MainTVC.swift */,
+				B2DA065B1C7E241C00507C3C /* SecondTVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -76,6 +81,7 @@
 			isa = PBXGroup;
 			children = (
 				B2DA06591C7D963100507C3C /* MainCell.swift */,
+				B2DA065D1C7E242E00507C3C /* SecondCell.swift */,
 			);
 			name = VIew;
 			sourceTree = "<group>";
@@ -153,6 +159,8 @@
 				B2DA06561C7D95FC00507C3C /* MainTVC.swift in Sources */,
 				B2DA06441C7D950700507C3C /* AppDelegate.swift in Sources */,
 				B2DA065A1C7D963100507C3C /* MainCell.swift in Sources */,
+				B2DA065E1C7E242E00507C3C /* SecondCell.swift in Sources */,
+				B2DA065C1C7E241C00507C3C /* SecondTVC.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

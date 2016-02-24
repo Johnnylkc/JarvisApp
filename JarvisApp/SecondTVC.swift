@@ -1,37 +1,26 @@
 //
-//  MainTVC.swift
+//  SecondTVC.swift
 //  JarvisApp
 //
-//  Created by 劉坤昶 on 2016/2/24.
+//  Created by 劉坤昶 on 2016/2/25.
 //  Copyright © 2016年 JohnnyKetchup. All rights reserved.
 //
 
 import UIKit
 
-class MainTVC: UITableViewController {
+class SecondTVC: UITableViewController {
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
-        self.tableView.registerClass(MainCell.self, forCellReuseIdentifier: "cell")
-        self.tableView.separatorStyle = .None
+        self.tableView.registerClass(SecondCell.self, forCellReuseIdentifier: "cell")
         self.tableView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
-        
     
-        allUI()
+    
     }
 
-    func allUI()
-    {
-        
-    }
-    
-    
-    
-    
-    override func didReceiveMemoryWarning()
-    {
+    override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -50,20 +39,19 @@ class MainTVC: UITableViewController {
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 400
+        return 250
     }
+    
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MainCell
-        
-        cell.backgroundColor = UIColor.clearColor()
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! SecondCell
         cell.selectionStyle = .None
+        cell.backgroundColor = UIColor.clearColor()
+
+
+        cell.bigImage.image = UIImage(named: "bird")
         
-        
-        cell.cornerImage.image = UIImage(named: "johnny")
-        cell.titleLabel.text = "hello bitches"
-        cell.bigImage.image = UIImage(named: "003")
         
         return cell
     }

@@ -56,28 +56,28 @@ class MainCell: UITableViewCell {
         bigImage.backgroundColor = UIColor.redColor()
         basicView.addSubview(bigImage)
         
-        loveButton.backgroundColor = UIColor.lightGrayColor()
-        loveButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        //loveButton.backgroundColor = UIColor.lightGrayColor()
+        loveButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
         loveButton.setTitle("喜歡", forState: .Normal)
         loveButton.addTarget(self, action: "likeIt:", forControlEvents: .TouchUpInside)
         basicView.addSubview(loveButton)
         
-        messageButton.backgroundColor = UIColor.lightGrayColor()
+       // messageButton.backgroundColor = UIColor.lightGrayColor()
         messageButton.setTitle("留言", forState: .Normal)
-        messageButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        messageButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
         messageButton.addTarget(self, action: "saySome:", forControlEvents: .TouchUpInside)
         basicView.addSubview(messageButton)
         
-        shareButton.backgroundColor = UIColor.lightGrayColor()
+        //shareButton.backgroundColor = UIColor.lightGrayColor()
         shareButton.setTitle("分享", forState: .Normal)
-        shareButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        shareButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
         shareButton.addTarget(self, action: "share:", forControlEvents: .TouchUpInside)
         basicView.addSubview(shareButton)
         
-        separateView01.backgroundColor = UIColor.grayColor()
+        separateView01.backgroundColor = UIColor.lightGrayColor()
         basicView.addSubview(separateView01)
         
-        separateView02.backgroundColor = UIColor.grayColor()
+        separateView02.backgroundColor = UIColor.lightGrayColor()
         basicView.addSubview(separateView02)
         
         
