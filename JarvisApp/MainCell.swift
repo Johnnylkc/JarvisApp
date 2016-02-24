@@ -11,9 +11,13 @@ import UIKit
 class MainCell: UITableViewCell {
     
     let basicView = UIView()
-    let cornerImage = UIImageView()
+    let cornerImage = UIImageView() ////凸出去的圖
     let titleLabel = UILabel()
     let cancelButton = UIButton() //// 右上角的按鈕
+    let bigImage = UIImageView()
+    let loveButton = UIButton()
+    let messageButton = UIButton()
+    let shareButton = UIButton()
     
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?)
@@ -26,8 +30,8 @@ class MainCell: UITableViewCell {
         cornerImage.backgroundColor = UIColor.grayColor()
         contentView.addSubview(cornerImage)
         
-        titleLabel.backgroundColor = UIColor.greenColor()
-        titleLabel.text = "hello bitch"
+       // titleLabel.backgroundColor = UIColor.greenColor()
+        titleLabel.text = "hello bitches"
         titleLabel.font = UIFont.systemFontOfSize(20)
         basicView.addSubview(titleLabel)
         
@@ -37,8 +41,26 @@ class MainCell: UITableViewCell {
         cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         basicView.addSubview(cancelButton)
         
+        bigImage.backgroundColor = UIColor.redColor()
+        basicView.addSubview(bigImage)
         
+        loveButton.backgroundColor = UIColor.lightGrayColor()
+        loveButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        loveButton.setTitle("喜歡", forState: .Normal)
+        loveButton.addTarget(self, action: "likeIt:", forControlEvents: .TouchUpInside)
+        basicView.addSubview(loveButton)
         
+        messageButton.backgroundColor = UIColor.lightGrayColor()
+        messageButton.setTitle("留言", forState: .Normal)
+        messageButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        messageButton.addTarget(self, action: "saySome:", forControlEvents: .TouchUpInside)
+        basicView.addSubview(messageButton)
+        
+        shareButton.backgroundColor = UIColor.lightGrayColor()
+        shareButton.setTitle("分享", forState: .Normal)
+        shareButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        shareButton.addTarget(self, action: "share:", forControlEvents: .TouchUpInside)
+        basicView.addSubview(shareButton)
         
         
         autoLayout()
@@ -50,13 +72,20 @@ class MainCell: UITableViewCell {
         print("按了")
     }
     
-    
-
-    required init?(coder aDecoder: NSCoder)
+    func likeIt(sender:UIButton)
     {
-        fatalError("init(coder:) has not been implemented")
+        print("你按了喜歡")
+    }
+ 
+    func saySome(sender:UIButton)
+    {
+        print("你按了留言")
     }
     
+    func share(sender:UIButton)
+    {
+        print("你按了分享")
+    }
     
     func autoLayout()
     {
@@ -64,8 +93,12 @@ class MainCell: UITableViewCell {
         cornerImage.translatesAutoresizingMaskIntoConstraints = (false)
         titleLabel.translatesAutoresizingMaskIntoConstraints = (false)
         cancelButton.translatesAutoresizingMaskIntoConstraints = (false)
+        bigImage.translatesAutoresizingMaskIntoConstraints = (false)
+        loveButton.translatesAutoresizingMaskIntoConstraints = (false)
+        messageButton.translatesAutoresizingMaskIntoConstraints = (false)
+        shareButton.translatesAutoresizingMaskIntoConstraints = (false)
         
-        let dic = ["basicView":basicView , "cornerImage":cornerImage , "titleLabel":titleLabel , "cancelButton":cancelButton]
+        let dic = ["basicView":basicView , "cornerImage":cornerImage , "titleLabel":titleLabel , "cancelButton":cancelButton , "bigImage":bigImage , "loveButton":loveButton , "messageButton":messageButton , "shareButton":shareButton]
         
         ////basicView
         let basicViewH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[basicView]-15-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
@@ -97,6 +130,48 @@ class MainCell: UITableViewCell {
         let cancelButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-5-[cancelButton(30)]", options: NSLayoutFormatOptions(rawValue: 0), metrics:nil , views: dic)
         basicView.addConstraints(cancelButtonV)
         
+        ////bigImage
+        let bigImageH = NSLayoutConstraint.constraintsWithVisualFormat("H:|[bigImage]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        basicView.addConstraints(bigImageH)
+        
+        let bigImageV = NSLayoutConstraint.constraintsWithVisualFormat("V:[titleLabel][bigImage(200)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        basicView.addConstraints(bigImageV)
+     
+      
+        
+        
+        ////3個按鈕的左右距離和寬度一起設定
+        let threeButtonsH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[loveButton(==messageButton)]-10-[messageButton(==loveButton)]-10-[shareButton(==messageButton)]-10-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        basicView.addConstraints(threeButtonsH)
+        
+        ////loveButton的上下距離和高度
+        let loveButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:[bigImage]-5-[loveButton]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        basicView.addConstraints(loveButtonV)
+        
+       ////messageButton的上下距離和高度
+        let messageButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:[bigImage]-5-[messageButton]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        basicView.addConstraints(messageButtonV)
+        
+        ////shareButton的上下距離和高度
+        let shareButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:[bigImage]-5-[shareButton]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        basicView.addConstraints(shareButtonV)
+        
+        
+        
+        
+//        ////messageButton
+//        let messageButtonH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-100-[messageButton]-100-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+//        basicView.addConstraints(messageButtonH)
+//        
+//        let messageButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:[bigImage]-5-[messageButton]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+//        basicView.addConstraints(messageButtonV)
+//        
+//        ////shareButton
+//        let shareButtonH = NSLayoutConstraint.constraintsWithVisualFormat("H:[shareButton(50)]-10-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+//        basicView.addConstraints(shareButtonH)
+//        
+//        let shareButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:[bigImage]-5-[shareButton]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+//        basicView.addConstraints(shareButtonV)
         
         
         
@@ -106,8 +181,12 @@ class MainCell: UITableViewCell {
     
     
     
+    required init?(coder aDecoder: NSCoder)
+    {
+        fatalError("init(coder:) has not been implemented")
+    }
     
-
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

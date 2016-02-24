@@ -61,6 +61,7 @@ class MainTVC: UITableViewController {
         
         
         cell.cornerImage.image = UIImage(named: "johnny")
+        cell.bigImage.image = UIImage(named: "002")
         
         return cell
     }
