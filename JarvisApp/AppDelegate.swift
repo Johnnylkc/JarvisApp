@@ -12,6 +12,10 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    var tabIcon = UIImageView()
+    var selectedIcon = UIImageView()
+    var tabBarController = UITabBarController()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
@@ -19,10 +23,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let onePage = MainTVC()
         let onePageNav = UINavigationController(rootViewController: onePage)
+        onePage.tabBarItem = UITabBarItem(title: "one", image: UIImage(named: "001"), selectedImage: UIImage(named: "001"))
+        
+        
+        let controllers = [onePageNav]
+        tabBarController.viewControllers = controllers
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = onePageNav
+        self.window?.rootViewController = tabBarController
         self.window?.makeKeyAndVisible()
+        
+        
+        
         
         
         return true

@@ -15,9 +15,20 @@ class MainTVC: UITableViewController {
         super.viewDidLoad()
 
         self.tableView.registerClass(MainCell.self, forCellReuseIdentifier: "cell")
+        
+        self.tableView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
     
+        allUI()
     }
 
+    func allUI()
+    {
+        
+    }
+    
+    
+    
+    
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
@@ -36,13 +47,16 @@ class MainTVC: UITableViewController {
         return 20
     }
 
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
+    {
+        return 300
+    }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MainCell
-
-        cell.textLabel?.text = "eeeeee"
-
+        cell.backgroundColor = UIColor.clearColor()
+        
         
         
         return cell
