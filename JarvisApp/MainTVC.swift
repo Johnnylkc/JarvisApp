@@ -55,9 +55,12 @@ class MainTVC: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! MainCell
+        
         cell.backgroundColor = UIColor.clearColor()
+        cell.selectionStyle = .None
         
         
+        cell.cornerImage.image = UIImage(named: "johnny")
         
         return cell
     }
