@@ -49,7 +49,7 @@ class MainTVC: UITableViewController {
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 300
+        return 400
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -61,6 +61,7 @@ class MainTVC: UITableViewController {
         
         
         cell.cornerImage.image = UIImage(named: "johnny")
+        cell.titleLabel.text = "hello bitches"
         cell.bigImage.image = UIImage(named: "002")
         
         return cell

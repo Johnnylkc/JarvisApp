@@ -15,6 +15,7 @@ class MainCell: UITableViewCell {
     let titleLabel = UILabel()
     let cancelButton = UIButton() //// 右上角的按鈕
     let bigImage = UIImageView()
+    let textView = UITextView()
     let loveButton = UIButton()
     let messageButton = UIButton()
     let shareButton = UIButton()
@@ -30,8 +31,7 @@ class MainCell: UITableViewCell {
         cornerImage.backgroundColor = UIColor.grayColor()
         contentView.addSubview(cornerImage)
         
-       // titleLabel.backgroundColor = UIColor.greenColor()
-        titleLabel.text = "hello bitches"
+        titleLabel.backgroundColor = UIColor.greenColor()
         titleLabel.font = UIFont.systemFontOfSize(20)
         basicView.addSubview(titleLabel)
         
@@ -40,6 +40,10 @@ class MainCell: UITableViewCell {
         cancelButton.backgroundColor = UIColor.blueColor()
         cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         basicView.addSubview(cancelButton)
+        
+        textView.backgroundColor = UIColor.brownColor()
+        basicView.addSubview(textView)
+        
         
         bigImage.backgroundColor = UIColor.redColor()
         basicView.addSubview(bigImage)
@@ -94,11 +98,12 @@ class MainCell: UITableViewCell {
         titleLabel.translatesAutoresizingMaskIntoConstraints = (false)
         cancelButton.translatesAutoresizingMaskIntoConstraints = (false)
         bigImage.translatesAutoresizingMaskIntoConstraints = (false)
+        textView.translatesAutoresizingMaskIntoConstraints = (false)
         loveButton.translatesAutoresizingMaskIntoConstraints = (false)
         messageButton.translatesAutoresizingMaskIntoConstraints = (false)
         shareButton.translatesAutoresizingMaskIntoConstraints = (false)
         
-        let dic = ["basicView":basicView , "cornerImage":cornerImage , "titleLabel":titleLabel , "cancelButton":cancelButton , "bigImage":bigImage , "loveButton":loveButton , "messageButton":messageButton , "shareButton":shareButton]
+        let dic = ["basicView":basicView , "cornerImage":cornerImage , "titleLabel":titleLabel , "cancelButton":cancelButton , "bigImage":bigImage , "textView":textView ,"loveButton":loveButton , "messageButton":messageButton , "shareButton":shareButton]
         
         ////basicView
         let basicViewH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[basicView]-15-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
@@ -134,9 +139,15 @@ class MainCell: UITableViewCell {
         let bigImageH = NSLayoutConstraint.constraintsWithVisualFormat("H:|[bigImage]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(bigImageH)
         
-        let bigImageV = NSLayoutConstraint.constraintsWithVisualFormat("V:[titleLabel][bigImage(200)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let bigImageV = NSLayoutConstraint.constraintsWithVisualFormat("V:[titleLabel]-5-[bigImage(200)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(bigImageV)
      
+        ////textView
+        let textViewH = NSLayoutConstraint.constraintsWithVisualFormat("H:|[textView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        basicView.addConstraints(textViewH)
+        
+        let textViewV = NSLayoutConstraint.constraintsWithVisualFormat("V:[bigImage][textView(100)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        basicView.addConstraints(textViewV)
       
         
         
@@ -145,35 +156,20 @@ class MainCell: UITableViewCell {
         basicView.addConstraints(threeButtonsH)
         
         ////loveButton的上下距離和高度
-        let loveButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:[bigImage]-5-[loveButton]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let loveButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:[textView]-5-[loveButton]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(loveButtonV)
         
        ////messageButton的上下距離和高度
-        let messageButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:[bigImage]-5-[messageButton]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let messageButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:[textView]-5-[messageButton]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(messageButtonV)
         
         ////shareButton的上下距離和高度
-        let shareButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:[bigImage]-5-[shareButton]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let shareButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:[textView]-5-[shareButton]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(shareButtonV)
         
         
         
-        
-//        ////messageButton
-//        let messageButtonH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-100-[messageButton]-100-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
-//        basicView.addConstraints(messageButtonH)
-//        
-//        let messageButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:[bigImage]-5-[messageButton]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
-//        basicView.addConstraints(messageButtonV)
-//        
-//        ////shareButton
-//        let shareButtonH = NSLayoutConstraint.constraintsWithVisualFormat("H:[shareButton(50)]-10-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
-//        basicView.addConstraints(shareButtonH)
-//        
-//        let shareButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:[bigImage]-5-[shareButton]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
-//        basicView.addConstraints(shareButtonV)
-        
-        
+
         
     }
     
