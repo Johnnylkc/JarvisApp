@@ -20,6 +20,8 @@ class MainCell: UITableViewCell {
     let messageButton = UIButton()
     let shareButton = UIButton()
     
+    let separateView01 = UIView()
+    let separateView02 = UIView()
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?)
     {
@@ -29,9 +31,11 @@ class MainCell: UITableViewCell {
         contentView.addSubview(basicView)
         
         cornerImage.backgroundColor = UIColor.grayColor()
+        cornerImage.layer.cornerRadius = 30
+        cornerImage.clipsToBounds = true
         contentView.addSubview(cornerImage)
         
-        titleLabel.backgroundColor = UIColor.greenColor()
+        //titleLabel.backgroundColor = UIColor.greenColor()
         titleLabel.font = UIFont.systemFontOfSize(20)
         basicView.addSubview(titleLabel)
         
@@ -70,6 +74,12 @@ class MainCell: UITableViewCell {
         shareButton.addTarget(self, action: "share:", forControlEvents: .TouchUpInside)
         basicView.addSubview(shareButton)
         
+        separateView01.backgroundColor = UIColor.grayColor()
+        basicView.addSubview(separateView01)
+        
+        separateView02.backgroundColor = UIColor.grayColor()
+        basicView.addSubview(separateView02)
+        
         
         autoLayout()
     }
@@ -106,8 +116,21 @@ class MainCell: UITableViewCell {
         loveButton.translatesAutoresizingMaskIntoConstraints = (false)
         messageButton.translatesAutoresizingMaskIntoConstraints = (false)
         shareButton.translatesAutoresizingMaskIntoConstraints = (false)
+        separateView01.translatesAutoresizingMaskIntoConstraints = (false)
+        separateView02.translatesAutoresizingMaskIntoConstraints = (false)
         
-        let dic = ["basicView":basicView , "cornerImage":cornerImage , "titleLabel":titleLabel , "cancelButton":cancelButton , "bigImage":bigImage , "textView":textView ,"loveButton":loveButton , "messageButton":messageButton , "shareButton":shareButton]
+        
+        let dic = ["basicView":basicView,
+                 "cornerImage":cornerImage ,
+                  "titleLabel":titleLabel ,
+                "cancelButton":cancelButton ,
+                    "bigImage":bigImage ,
+                    "textView":textView ,
+                  "loveButton":loveButton ,
+               "messageButton":messageButton ,
+                 "shareButton":shareButton ,
+              "separateView01":separateView01 ,
+              "separateView02":separateView02]
         
         ////basicView
         let basicViewH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-15-[basicView]-15-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
@@ -118,15 +141,15 @@ class MainCell: UITableViewCell {
         
    
         ////cornerImage
-        let cornerImageH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-5-[cornerImage(70)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let cornerImageH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-5-[cornerImage(60)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         contentView.addConstraints(cornerImageH)
         
-        let cornerImageV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-5-[cornerImage(70)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let cornerImageV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-5-[cornerImage(60)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         contentView.addConstraints(cornerImageV)
         
         
         ////titleLabel
-        let titleLabelH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-70-[titleLabel]-5-[cancelButton]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let titleLabelH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-55-[titleLabel]-5-[cancelButton]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(titleLabelH)
         
         let titleLabelV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-5-[titleLabel(30)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
@@ -155,8 +178,8 @@ class MainCell: UITableViewCell {
       
         
         
-        ////3個按鈕的左右距離和寬度一起設定
-        let threeButtonsH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[loveButton(==messageButton)]-10-[messageButton(==loveButton)]-10-[shareButton(==messageButton)]-10-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        ////loveButton - separateView01 - messageButton - separateView02 - shareButton
+        let threeButtonsH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[loveButton(==messageButton)]-[separateView01(2)]-[messageButton(==loveButton)]-[separateView02(2)]-[shareButton(==messageButton)]-10-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(threeButtonsH)
         
         ////loveButton的上下距離和高度
@@ -174,6 +197,14 @@ class MainCell: UITableViewCell {
         
         
 
+        
+        let separateView01V = NSLayoutConstraint.constraintsWithVisualFormat("V:[textView]-8-[separateView01]-8-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        basicView.addConstraints(separateView01V)
+
+       
+        let separateView02V = NSLayoutConstraint.constraintsWithVisualFormat("V:[textView]-8-[separateView02]-8-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        basicView.addConstraints(separateView02V)
+        
         
     }
     

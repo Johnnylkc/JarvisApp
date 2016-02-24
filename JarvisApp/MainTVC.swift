@@ -15,8 +15,9 @@ class MainTVC: UITableViewController {
         super.viewDidLoad()
 
         self.tableView.registerClass(MainCell.self, forCellReuseIdentifier: "cell")
-        
+        self.tableView.separatorStyle = .None
         self.tableView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        
     
         allUI()
     }
