@@ -10,7 +10,7 @@ import UIKit
 
 class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
     
-    let shootImage = UIImage()
+    var shootImage = UIImage()
     let searchBar = UISearchBar()
 
     override func viewDidLoad()
