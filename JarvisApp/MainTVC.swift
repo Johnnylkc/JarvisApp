@@ -8,7 +8,9 @@
 
 import UIKit
 
-class MainTVC: UITableViewController {
+class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
+    
+    var shootImage = UIImage()
 
     override func viewDidLoad()
     {
@@ -16,7 +18,7 @@ class MainTVC: UITableViewController {
 
         self.tableView.registerClass(MainCell.self, forCellReuseIdentifier: "cell")
         self.tableView.separatorStyle = .None
-        self.tableView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        self.tableView.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         
     
         allUI()
@@ -27,14 +29,44 @@ class MainTVC: UITableViewController {
         ////navi 左邊的hamburger button
         let hamburgerButton = UIButton(frame: CGRectMake(0,0,25,25))
         hamburgerButton.setBackgroundImage(UIImage(named: "hamburger"), forState: .Normal)
-        hamburgerButton.addTarget(self, action: "showSideMenu", forControlEvents: .TouchUpInside)
+        hamburgerButton.addTarget(self, action: "showSideMenu:", forControlEvents: .TouchUpInside)
         
         let leftBarButton = UIBarButtonItem(customView: hamburgerButton)
         self.navigationItem.leftBarButtonItem = leftBarButton
-    
+        
+        //// navi右邊的相機按鈕
+        let cameraButton = UIButton(frame: CGRectMake(0,0,28,28))
+        cameraButton.setBackgroundImage(UIImage(named: "camera"), forState: .Normal)
+        cameraButton.addTarget(self, action: "showCamera:", forControlEvents: .TouchUpInside)
+       
+        let rightBarButton = UIBarButtonItem(customView: cameraButton)
+        self.navigationItem.rightBarButtonItem = rightBarButton
     
     
     }
+    
+    ////hamburger action
+    func showSideMenu(sender:UIBarButtonItem)
+    {
+        print("showSideMenu")
+    }
+    
+    ////cameraButton action  開啟相機
+    func showCamera(sender:UIBarButtonItem)
+    {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .Camera
+        self.presentViewController(picker, animated: true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        shootImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        self.dismissViewControllerAnimated(true, completion: nil)
+        tableView.reloadData()
+    }
+    
     
     
     
@@ -72,7 +104,7 @@ class MainTVC: UITableViewController {
         
         cell.cornerImage.image = UIImage(named: "johnny")
         cell.titleLabel.text = "hello bitches"
-        cell.bigImage.image = UIImage(named: "003")
+        cell.bigImage.image = shootImage
         cell.textView.text = "paid a visit by his David Cameron-like brother, Tomothy (Richard Goulding); Vod (Zawe Ashton, second from left) struggles with mountainous debt, and Kingsley (Joe Thomas, far left) finds a new love interest in student support officer Rosa (Ayda Field), having ended his relationship with Josie (Kimberly Nixon, third from left) last series. Meanwhile, overachieving Oregon (Charlotte Ritchie, second from right) is planning her legacy as Student Union President, while Howard (Greg McHugh, third from right) has banished himself to the cellar as “the Fritzl of revision."
         
         

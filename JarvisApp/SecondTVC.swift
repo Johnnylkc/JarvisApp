@@ -15,7 +15,7 @@ class SecondTVC: UITableViewController , UITextViewDelegate{
         super.viewDidLoad()
 
         self.tableView.registerClass(SecondCell.self, forCellReuseIdentifier: "cell")
-        self.tableView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+        self.tableView.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
         self.tableView.separatorStyle = .None
     
     
