@@ -16,6 +16,7 @@ class SecondTVC: UITableViewController {
 
         self.tableView.registerClass(SecondCell.self, forCellReuseIdentifier: "cell")
         self.tableView.backgroundColor = UIColor(red: 240/255, green: 240/255, blue: 240/255, alpha: 1)
+       // self.tableView.separatorStyle = .None
     
     
     }
@@ -51,7 +52,7 @@ class SecondTVC: UITableViewController {
 
 
         cell.bigImage.image = UIImage(named: "bird")
-        
+        cell.textView.text = "他鼓勵露國學生善用台灣電腦，培養資訊應用能力，並吸取新知。安東尼特別感謝馬英九總統過去對露國提供的各項協助，使得兩國關係更加緊密。露國總督路易西(Dame Pearlette Louisy)、各部會首長及全國各中學校長與學生代表等共約300餘人出席，露國國家電視網與多家媒體也派員採訪"
         
         return cell
     }

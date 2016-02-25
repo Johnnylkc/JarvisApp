@@ -14,6 +14,7 @@ class SecondCell: UITableViewCell {
     let bigImage = UIImageView()
     let textView = UITextView()
     
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?)
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -26,8 +27,9 @@ class SecondCell: UITableViewCell {
         bigImage.backgroundColor = UIColor.grayColor()
         basicView.addSubview(bigImage)
         
-        textView.backgroundColor = UIColor.redColor()
-        
+        //textView.backgroundColor = UIColor.redColor()
+        textView.scrollEnabled = false
+        textView.font = UIFont.systemFontOfSize(15)
         basicView.addSubview(textView)
         
         autuLayout()
@@ -49,7 +51,7 @@ class SecondCell: UITableViewCell {
         let basicViewH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[basicView]-10-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         contentView.addConstraints(basicViewH)
         
-        let basicViewV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-10-[basicView]-10-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let basicViewV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-5-[basicView]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         contentView.addConstraints(basicViewV)
         
         ////bigIamge
