@@ -64,6 +64,7 @@ class MainTVC: UITableViewController {
         cell.cornerImage.image = UIImage(named: "johnny")
         cell.titleLabel.text = "hello bitches"
         cell.bigImage.image = UIImage(named: "003")
+        cell.textView.text = "paid a visit by his David Cameron-like brother, Tomothy (Richard Goulding); Vod (Zawe Ashton, second from left) struggles with mountainous debt, and Kingsley (Joe Thomas, far left) finds a new love interest in student support officer Rosa (Ayda Field), having ended his relationship with Josie (Kimberly Nixon, third from left) last series. Meanwhile, overachieving Oregon (Charlotte Ritchie, second from right) is planning her legacy as Student Union President, while Howard (Greg McHugh, third from right) has banished himself to the cellar as “the Fritzl of revision."
         
         return cell
     }

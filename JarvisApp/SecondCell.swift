@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondCell: UITableViewCell {
+class SecondCell: UITableViewCell , UITextViewDelegate  {
     
     let basicView = UIView()
     let bigImage = UIImageView()
@@ -29,11 +29,16 @@ class SecondCell: UITableViewCell {
         
         //textView.backgroundColor = UIColor.redColor()
         textView.scrollEnabled = false
-        textView.font = UIFont.systemFontOfSize(15)
+        textView.editable = false
+        textView.font = UIFont.systemFontOfSize(13)
+        
+        
         basicView.addSubview(textView)
         
         autuLayout()
     }
+    
+  
     
     
     
