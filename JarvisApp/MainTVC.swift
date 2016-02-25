@@ -10,7 +10,8 @@ import UIKit
 
 class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
     
-    var shootImage = UIImage()
+    let shootImage = UIImage()
+    let searchBar = UISearchBar()
 
     override func viewDidLoad()
     {
@@ -41,6 +42,9 @@ class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePick
        
         let rightBarButton = UIBarButtonItem(customView: cameraButton)
         self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        ////searceBar
+        searchBar
     
     
     }
@@ -60,6 +64,7 @@ class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePick
         self.presentViewController(picker, animated: true, completion: nil)
     }
     
+    ////拍照後 使用拍到的照片
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
     {
         shootImage = info[UIImagePickerControllerOriginalImage] as! UIImage
