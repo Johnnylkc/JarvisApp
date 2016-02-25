@@ -24,7 +24,16 @@ class MainTVC: UITableViewController {
 
     func allUI()
     {
+        ////navi 左邊的hamburger button
+        let hamburgerButton = UIButton(frame: CGRectMake(0,0,25,25))
+        hamburgerButton.setBackgroundImage(UIImage(named: "hamburger"), forState: .Normal)
+        hamburgerButton.addTarget(self, action: "showSideMenu", forControlEvents: .TouchUpInside)
         
+        let leftBarButton = UIBarButtonItem(customView: hamburgerButton)
+        self.navigationItem.leftBarButtonItem = leftBarButton
+    
+    
+    
     }
     
     
@@ -66,7 +75,6 @@ class MainTVC: UITableViewController {
         cell.bigImage.image = UIImage(named: "003")
         cell.textView.text = "paid a visit by his David Cameron-like brother, Tomothy (Richard Goulding); Vod (Zawe Ashton, second from left) struggles with mountainous debt, and Kingsley (Joe Thomas, far left) finds a new love interest in student support officer Rosa (Ayda Field), having ended his relationship with Josie (Kimberly Nixon, third from left) last series. Meanwhile, overachieving Oregon (Charlotte Ritchie, second from right) is planning her legacy as Student Union President, while Howard (Greg McHugh, third from right) has banished himself to the cellar as “the Fritzl of revision."
         
-        print("\(cell.textView.text.characters.count)")
         
         if cell.textView.text.characters.count <= 300
         {
