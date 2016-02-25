@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SecondCell: UITableViewCell , UITextViewDelegate  {
+class SecondCell: UITableViewCell  {
     
     let basicView = UIView()
     let bigImage = UIImageView()
@@ -31,7 +31,6 @@ class SecondCell: UITableViewCell , UITextViewDelegate  {
         textView.scrollEnabled = false
         textView.editable = false
         textView.font = UIFont.systemFontOfSize(13)
-        
         
         basicView.addSubview(textView)
         

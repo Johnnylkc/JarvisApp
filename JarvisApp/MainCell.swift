@@ -45,7 +45,7 @@ class MainCell: UITableViewCell {
         cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         basicView.addSubview(cancelButton)
         
-        textView.backgroundColor = UIColor.brownColor()
+        //textView.backgroundColor = UIColor.brownColor()
         textView.scrollEnabled = false
         textView.editable = false
         textView.font = UIFont.systemFontOfSize(14)
