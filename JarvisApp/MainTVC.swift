@@ -11,7 +11,7 @@ import UIKit
 class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
     
     var shootImage = UIImage()
-    let searchBar = UISearchBar()
+    var searchBar = UISearchBar()
 
     override func viewDidLoad()
     {
@@ -44,7 +44,9 @@ class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePick
         self.navigationItem.rightBarButtonItem = rightBarButton
         
         ////searceBar
-        searchBar
+        searchBar = UISearchBar()
+        searchBar.placeholder = "看你要搜尋什麼"
+        self.navigationItem.titleView = searchBar
     
     
     }
