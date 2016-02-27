@@ -9,6 +9,9 @@
 import UIKit
 
 class SecondTVC: UITableViewController , UITextViewDelegate{
+    
+    var searchBar = UISearchBar()
+
 
     override func viewDidLoad()
     {
@@ -19,8 +22,41 @@ class SecondTVC: UITableViewController , UITextViewDelegate{
         self.tableView.separatorStyle = .None
     
     
+        allUI()
     }
 
+    
+    func allUI()
+    {
+        ////navi 左邊的hamburger button
+        let hamburgerButton = UIButton(frame: CGRectMake(0,0,25,25))
+        hamburgerButton.setBackgroundImage(UIImage(named: "hamburger"), forState: .Normal)
+        hamburgerButton.addTarget(self, action: "showSideMenu:", forControlEvents: .TouchUpInside)
+        
+        let leftBarButton = UIBarButtonItem(customView: hamburgerButton)
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        
+        //// navi右邊的相機按鈕
+        let cameraButton = UIButton(frame: CGRectMake(0,0,28,28))
+        cameraButton.setBackgroundImage(UIImage(named: "camera"), forState: .Normal)
+        cameraButton.addTarget(self, action: "showCamera:", forControlEvents: .TouchUpInside)
+        
+        let rightBarButton = UIBarButtonItem(customView: cameraButton)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        ////searceBar
+        searchBar = UISearchBar()
+        searchBar.placeholder = "看你要搜尋什麼"
+        self.navigationItem.titleView = searchBar
+
+    }
+    
+    
+    
+    
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
