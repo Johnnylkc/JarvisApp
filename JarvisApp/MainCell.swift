@@ -33,16 +33,17 @@ class MainCell: UITableViewCell {
         cornerImage.backgroundColor = UIColor.grayColor()
         cornerImage.layer.cornerRadius = 30
         cornerImage.clipsToBounds = true
+        cornerImage.layer.borderWidth = 2
+        cornerImage.layer.borderColor = UIColor.whiteColor().CGColor
         contentView.addSubview(cornerImage)
         
         //titleLabel.backgroundColor = UIColor.greenColor()
         titleLabel.font = UIFont.systemFontOfSize(20)
         basicView.addSubview(titleLabel)
         
-        cancelButton.setTitle("取消", forState: .Normal)
-        cancelButton.addTarget(self, action:"cancel:", forControlEvents: .TouchUpInside)
-        cancelButton.backgroundColor = UIColor.lightGrayColor()
-        cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+
+        cancelButton.setBackgroundImage(UIImage(named: "other"), forState: .Normal)
+        cancelButton.addTarget(self, action: "other:", forControlEvents: .TouchUpInside)
         basicView.addSubview(cancelButton)
         
         //textView.backgroundColor = UIColor.brownColor()
@@ -104,6 +105,11 @@ class MainCell: UITableViewCell {
         print("你按了分享")
     }
     
+    func other(sender:UIButton)
+    {
+        print("你按了這個三角形 目前還給這按鈕功能")
+    }
+    
     func autoLayout()
     {
         basicView.translatesAutoresizingMaskIntoConstraints = (false)
@@ -155,10 +161,10 @@ class MainCell: UITableViewCell {
         basicView.addConstraints(titleLabelV)
         
         ////cancelButton
-        let cancelButtonH = NSLayoutConstraint.constraintsWithVisualFormat("H:[cancelButton(60)]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let cancelButtonH = NSLayoutConstraint.constraintsWithVisualFormat("H:[cancelButton(25)]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(cancelButtonH)
         
-        let cancelButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-5-[cancelButton(30)]", options: NSLayoutFormatOptions(rawValue: 0), metrics:nil , views: dic)
+        let cancelButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-10-[cancelButton(25)]", options: NSLayoutFormatOptions(rawValue: 0), metrics:nil , views: dic)
         basicView.addConstraints(cancelButtonV)
         
         ////bigImage
