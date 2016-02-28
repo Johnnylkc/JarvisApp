@@ -39,7 +39,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let slidePage = SlideMenuTVC()
         manageController = MMDrawerController(centerViewController: tabBarController, leftDrawerViewController: slidePage)
 
-        
+        //manageController.showsShadow = false
+        manageController.maximumLeftDrawerWidth = 280
         manageController.openDrawerGestureModeMask = MMOpenDrawerGestureMode.PanningCenterView
         manageController.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.TapCenterView
         
