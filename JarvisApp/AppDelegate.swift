@@ -13,7 +13,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
-    var manageController = MMDrawerController()
+    var manageController = MMDrawerController() ////側邊選單要用的content controller
     
     var tabIcon = UIImageView()
     var selectedIcon = UIImageView()
@@ -35,11 +35,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let controllers = [onePageNav,twoPageNav]
         tabBarController.viewControllers = controllers
         
-        
-
-        
+        ////側邊選單的設定
         let slidePage = SlideMenuTVC()
         manageController = MMDrawerController(centerViewController: tabBarController, leftDrawerViewController: slidePage)
+
         
         manageController.openDrawerGestureModeMask = MMOpenDrawerGestureMode.PanningCenterView
         manageController.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.TapCenterView
@@ -51,24 +50,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.makeKeyAndVisible()
         
         
-       
-        
-        
-        
         
         return true
     }
 
-    func slide()
-    {
-        
-        
-        
 
-        
-    }
-    
-    
     
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
