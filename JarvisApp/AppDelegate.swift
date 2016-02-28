@@ -13,6 +13,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
+    var manageController = MMDrawerController()
+    
     var tabIcon = UIImageView()
     var selectedIcon = UIImageView()
     var tabBarController = UITabBarController()
@@ -30,14 +32,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         twoPage.tabBarItem = UITabBarItem(title: "第二頁", image:UIImage(named: "002") , selectedImage: UIImage(named: "002"))
         
         
-        
         let controllers = [onePageNav,twoPageNav]
         tabBarController.viewControllers = controllers
         
+        
+
+        
+        let slidePage = SlideMenuTVC()
+        manageController = MMDrawerController(centerViewController: tabBarController, leftDrawerViewController: slidePage)
+        
+        manageController.openDrawerGestureModeMask = MMOpenDrawerGestureMode.PanningCenterView
+        manageController.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.TapCenterView
+        
+        
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = tabBarController
+        self.window?.rootViewController = manageController
         self.window?.makeKeyAndVisible()
         
+        
+       
         
         
         
@@ -45,6 +59,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+    func slide()
+    {
+        
+        
+        
+
+        
+    }
+    
+    
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
