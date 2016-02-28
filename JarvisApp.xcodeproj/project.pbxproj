@@ -12,6 +12,7 @@
 		B22F74891C8281B50090A704 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = B22F74841C8281B50090A704 /* MMDrawerVisualState.m */; };
 		B22F748A1C8281B50090A704 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22F74861C8281B50090A704 /* UIViewController+MMDrawerController.m */; };
 		B22F748C1C8281FE0090A704 /* SlideMenuTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22F748B1C8281FE0090A704 /* SlideMenuTVC.swift */; };
+		B22F74B31C836D800090A704 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22F74B21C836D800090A704 /* TestData.swift */; };
 		B2DA06441C7D950700507C3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA06431C7D950700507C3C /* AppDelegate.swift */; };
 		B2DA064B1C7D950700507C3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2DA064A1C7D950700507C3C /* Assets.xcassets */; };
 		B2DA064E1C7D950700507C3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2DA064C1C7D950700507C3C /* LaunchScreen.storyboard */; };
@@ -33,6 +34,7 @@
 		B22F74851C8281B50090A704 /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
 		B22F74861C8281B50090A704 /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
 		B22F748B1C8281FE0090A704 /* SlideMenuTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SlideMenuTVC.swift; sourceTree = "<group>"; };
+		B22F74B21C836D800090A704 /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		B2DA06401C7D950700507C3C /* JarvisApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JarvisApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2DA06431C7D950700507C3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B2DA064A1C7D950700507C3C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -72,6 +74,14 @@
 			name = MM;
 			sourceTree = "<group>";
 		};
+		B22F74B11C836D6D0090A704 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B22F74B21C836D800090A704 /* TestData.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		B2DA06371C7D950700507C3C = {
 			isa = PBXGroup;
 			children = (
@@ -92,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				B2DA06431C7D950700507C3C /* AppDelegate.swift */,
+				B22F74B11C836D6D0090A704 /* Model */,
 				B2DA06581C7D961C00507C3C /* VIew */,
 				B2DA06571C7D960F00507C3C /* Controller */,
 				B22F747C1C8281620090A704 /* MM */,
@@ -192,6 +203,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B2DA06561C7D95FC00507C3C /* MainTVC.swift in Sources */,
+				B22F74B31C836D800090A704 /* TestData.swift in Sources */,
 				B22F74871C8281B50090A704 /* MMDrawerBarButtonItem.m in Sources */,
 				B22F74881C8281B50090A704 /* MMDrawerController.m in Sources */,
 				B2DA06441C7D950700507C3C /* AppDelegate.swift in Sources */,
