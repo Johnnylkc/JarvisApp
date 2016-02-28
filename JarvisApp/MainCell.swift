@@ -41,7 +41,7 @@ class MainCell: UITableViewCell {
         
         cancelButton.setTitle("取消", forState: .Normal)
         cancelButton.addTarget(self, action:"cancel:", forControlEvents: .TouchUpInside)
-        cancelButton.backgroundColor = UIColor.blueColor()
+        cancelButton.backgroundColor = UIColor.lightGrayColor()
         cancelButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         basicView.addSubview(cancelButton)
         
@@ -229,3 +229,5 @@ class MainCell: UITableViewCell {
     }
 
 }
+
+//
