@@ -23,6 +23,8 @@ class ThirdTVC: UITableViewController,UINavigationControllerDelegate,UIImagePick
         
         allUI()
     
+
+        
     }
 
     
@@ -98,7 +100,18 @@ class ThirdTVC: UITableViewController,UINavigationControllerDelegate,UIImagePick
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
     {
-        return 200
+        var rowHeight : CGFloat
+        
+        if self.view.frame.size.width <= 320
+        {
+            rowHeight = 160
+        }
+        else
+        {
+            rowHeight = 200
+        }
+    
+        return rowHeight
     }
     
     

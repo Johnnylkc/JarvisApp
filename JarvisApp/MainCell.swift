@@ -23,6 +23,8 @@ class MainCell: UITableViewCell {
     let separateView01 = UIView()
     let separateView02 = UIView()
     
+    var clicked : Bool = false
+    
     override init(style: UITableViewCellStyle, reuseIdentifier: String?)
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -107,7 +109,26 @@ class MainCell: UITableViewCell {
     
     func other(sender:UIButton)
     {
-        print("你按了這個三角形 目前還給這按鈕功能")
+        print("你按了這個三角形")
+        
+        if clicked == false
+        {
+            clicked = true
+        UIView.animateWithDuration(0.3) { () -> Void in
+            
+           self.cancelButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+        }
+            
+        }
+        else if clicked == true
+        {
+            clicked = false
+            UIView.animateWithDuration(0.3) { () -> Void in
+                
+                self.cancelButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI * 2))
+            }
+            
+        }
     }
     
     func autoLayout()
