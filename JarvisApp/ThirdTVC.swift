@@ -51,7 +51,13 @@ class ThirdTVC: UITableViewController {
         cell.selectionStyle = .None
         cell.backgroundColor = UIColor.clearColor()
         
+        cell.bigImage.image = UIImage(named: "007")
+        cell.titleTextView.text = "主標題 看你想放多少"
         
+        
+        cell.subTextView.text = "副標題的位置，也是想打多少就打多少，自適應"
+        cell.contentTextView.text = "這裡放內文的地方，字體最小，一樣也是看你要打多少，他自己會調整高度"
+
         
         return cell
     }
