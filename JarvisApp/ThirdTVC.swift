@@ -52,11 +52,20 @@ class ThirdTVC: UITableViewController {
         cell.backgroundColor = UIColor.clearColor()
         
         cell.bigImage.image = UIImage(named: "007")
-        cell.titleTextView.text = "主標題 看你想放多少"
+        cell.titleTextView.text = "主標題 看你想放多少，不管打多少，他都會自動調整高度"
+        cell.subTextView.text = "副標題的位置，也是想打多少就打多少，自適應的喔"
+        cell.contentTextView.text = "這裡放內文的地方，字體最小，一樣也是看你要打多少，他自己會調整高度，想寫什麼就寫什麼，這邊的容納得下，你說這樣好不好此外史陶德邁爾也說，如果林書豪留在尼克，一切將會很酷，但並不是每個人都是林書豪躍居球星時的球迷，所以林書豪在尼克沒待多久。史陶德邁爾盛讚林書豪是很棒的隊友，打球認真，也為他的崛起感到驕傲。史陶德邁爾表示，林書豪那時正成為巨星，但他不認為當時每個人都為這感到高興。史陶德邁爾未點名尼克當時是誰對林書豪崛起吃味，但外界認為史陶德邁爾指的就是安東尼"
+
+        cell.littleImage.image = UIImage(named: "men")
         
-        
-        cell.subTextView.text = "副標題的位置，也是想打多少就打多少，自適應"
-        cell.contentTextView.text = "這裡放內文的地方，字體最小，一樣也是看你要打多少，他自己會調整高度"
+        if cell.contentTextView.text.characters.count <= 200
+        {
+            cell.contentTextView.text = cell.contentTextView.text
+        }
+        else
+        {
+            cell.contentTextView.text = cell.contentTextView.text.substringToIndex(cell.contentTextView.text.startIndex.advancedBy(90)) + "..."
+        }
 
         
         return cell

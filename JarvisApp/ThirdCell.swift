@@ -29,23 +29,32 @@ class ThirdCell: UITableViewCell {
         basicView.addSubview(bigImage)
         
         
-        titleTextView.backgroundColor = UIColor.redColor()
+        //titleTextView.backgroundColor = UIColor.redColor()
         titleTextView.scrollEnabled = false
         titleTextView.editable = false
-
         titleTextView.font = UIFont.boldSystemFontOfSize(15)
+        titleTextView.textContainerInset = UIEdgeInsets(top: 5, left: 0, bottom: 3, right: 1)
         basicView.addSubview(titleTextView)
         
-        subTextView.backgroundColor = UIColor.blueColor()
+        //subTextView.backgroundColor = UIColor.blueColor()
         subTextView.scrollEnabled = false
         subTextView.editable = false
         subTextView.font = UIFont.systemFontOfSize(13)
+        subTextView.textContainerInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
+        let underlineAttribute = [NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue]
+        let underlineAttributedString =
+        NSAttributedString(string: "StringWithUnderLine", attributes: underlineAttribute)
+        subTextView.attributedText = underlineAttributedString
+
+        
         basicView.addSubview(subTextView)
         
-        contentTextView.backgroundColor = UIColor.greenColor()
+        //contentTextView.backgroundColor = UIColor.greenColor()
         contentTextView.scrollEnabled = false
         contentTextView.editable = false
         contentTextView.font = UIFont.systemFontOfSize(10)
+        contentTextView.textContainerInset = UIEdgeInsets(top: 2, left: 0, bottom: 0, right: 0)
         basicView.addSubview(contentTextView)
         
         littleImage.backgroundColor = UIColor.yellowColor()
