@@ -38,7 +38,7 @@ class MainCell: UITableViewCell {
         contentView.addSubview(cornerImage)
         
         //titleLabel.backgroundColor = UIColor.greenColor()
-        titleLabel.font = UIFont.systemFontOfSize(20)
+        titleLabel.font = UIFont.systemFontOfSize(18)
         basicView.addSubview(titleLabel)
         
 
@@ -154,24 +154,24 @@ class MainCell: UITableViewCell {
         
         
         ////titleLabel
-        let titleLabelH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-55-[titleLabel]-5-[cancelButton]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let titleLabelH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-60-[titleLabel]-5-[cancelButton]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(titleLabelH)
         
-        let titleLabelV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-5-[titleLabel(30)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let titleLabelV = NSLayoutConstraint.constraintsWithVisualFormat("V:|[titleLabel(25)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(titleLabelV)
         
         ////cancelButton
         let cancelButtonH = NSLayoutConstraint.constraintsWithVisualFormat("H:[cancelButton(25)]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(cancelButtonH)
         
-        let cancelButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-10-[cancelButton(25)]", options: NSLayoutFormatOptions(rawValue: 0), metrics:nil , views: dic)
+        let cancelButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:|[cancelButton(25)]", options: NSLayoutFormatOptions(rawValue: 0), metrics:nil , views: dic)
         basicView.addConstraints(cancelButtonV)
         
         ////bigImage
         let bigImageH = NSLayoutConstraint.constraintsWithVisualFormat("H:|[bigImage]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(bigImageH)
         
-        let bigImageV = NSLayoutConstraint.constraintsWithVisualFormat("V:[titleLabel]-5-[bigImage(200)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let bigImageV = NSLayoutConstraint.constraintsWithVisualFormat("V:[titleLabel][bigImage(215)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(bigImageV)
      
         ////textView
@@ -199,9 +199,6 @@ class MainCell: UITableViewCell {
         let shareButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:[textView]-5-[shareButton]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(shareButtonV)
         
-        
-        
-
         
         let separateView01V = NSLayoutConstraint.constraintsWithVisualFormat("V:[textView]-8-[separateView01]-8-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(separateView01V)

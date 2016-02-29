@@ -58,6 +58,8 @@ class ThirdCell: UITableViewCell {
         basicView.addSubview(contentTextView)
         
         littleImage.backgroundColor = UIColor.yellowColor()
+        littleImage.layer.borderWidth = 2
+        littleImage.layer.borderColor = UIColor.whiteColor().CGColor
         basicView.addSubview(littleImage)
         
         autoLayout()
@@ -112,7 +114,7 @@ class ThirdCell: UITableViewCell {
         let contentTextViewH = NSLayoutConstraint.constraintsWithVisualFormat("H:|[bigImage][contentTextView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(contentTextViewH)
         
-        let contentTextViewV = NSLayoutConstraint.constraintsWithVisualFormat("V:[subTextView][contentTextView]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let contentTextViewV = NSLayoutConstraint.constraintsWithVisualFormat("V:[subTextView][contentTextView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(contentTextViewV)
         
         ////littleImage
