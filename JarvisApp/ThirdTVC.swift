@@ -8,7 +8,11 @@
 
 import UIKit
 
-class ThirdTVC: UITableViewController {
+class ThirdTVC: UITableViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
+    
+    let searchBar = UISearchBar()
+    var shootImage = UIImage()
+
 
     override func viewDidLoad()
     {
@@ -17,10 +21,64 @@ class ThirdTVC: UITableViewController {
         self.tableView.registerClass(ThirdCell.self, forCellReuseIdentifier: "cell")
         self.tableView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1)
         
-    
+        allUI()
     
     }
 
+    
+    func allUI()
+    {
+        ////navi 左邊的hamburger button
+        let hamburgerButton = UIButton(frame: CGRectMake(0,0,25,25))
+        hamburgerButton.setBackgroundImage(UIImage(named: "hamburger"), forState: .Normal)
+        hamburgerButton.addTarget(self, action: "showSideMenu:", forControlEvents: .TouchUpInside)
+        
+        let leftBarButton = UIBarButtonItem(customView: hamburgerButton)
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        
+        //// navi右邊的相機按鈕
+        let cameraButton = UIButton(frame: CGRectMake(0,0,28,28))
+        cameraButton.setBackgroundImage(UIImage(named: "camera"), forState: .Normal)
+        cameraButton.addTarget(self, action: "showCamera:", forControlEvents: .TouchUpInside)
+        
+        let rightBarButton = UIBarButtonItem(customView: cameraButton)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        ////searceBar
+        searchBar.placeholder = "看你要搜尋什麼"
+        self.navigationItem.titleView = searchBar
+
+    }
+    
+    
+    ////hamburger action
+    func showSideMenu(sender:UIBarButtonItem)
+    {
+        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.manageController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+        
+    }
+    
+    ////cameraButton action  開啟相機
+    func showCamera(sender:UIBarButtonItem)
+    {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .Camera
+        self.presentViewController(picker, animated: true, completion: nil)
+    }
+    
+    ////拍照後 使用拍到的照片
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        shootImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        self.dismissViewControllerAnimated(true, completion: nil)
+        tableView.reloadData()
+    }
+
+    
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

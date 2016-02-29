@@ -8,10 +8,10 @@
 
 import UIKit
 
-class SecondTVC: UITableViewController , UITextViewDelegate{
+class SecondTVC: UITableViewController , UITextViewDelegate,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
     
     var searchBar = UISearchBar()
-
+    var shootImage = UIImage()
 
     override func viewDidLoad()
     {
@@ -45,7 +45,6 @@ class SecondTVC: UITableViewController , UITextViewDelegate{
         self.navigationItem.rightBarButtonItem = rightBarButton
         
         ////searceBar
-        searchBar = UISearchBar()
         searchBar.placeholder = "看你要搜尋什麼"
         self.navigationItem.titleView = searchBar
 
@@ -59,12 +58,29 @@ class SecondTVC: UITableViewController , UITextViewDelegate{
     }
     
     
+    ////cameraButton action  開啟相機
+    func showCamera(sender:UIBarButtonItem)
+    {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .Camera
+        self.presentViewController(picker, animated: true, completion: nil)
+    }
+    
+    ////拍照後 使用拍到的照片
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        shootImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        self.dismissViewControllerAnimated(true, completion: nil)
+        tableView.reloadData()
+    }
+
     
     
     
-    override func didReceiveMemoryWarning() {
+    override func didReceiveMemoryWarning()
+    {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
     // MARK: - Table view data source
