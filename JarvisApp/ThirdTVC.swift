@@ -20,6 +20,7 @@ class ThirdTVC: UITableViewController,UINavigationControllerDelegate,UIImagePick
 
         self.tableView.registerClass(ThirdCell.self, forCellReuseIdentifier: "cell")
         self.tableView.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1)
+        self.tableView.separatorStyle = .None
         
         allUI()
     
@@ -108,7 +109,7 @@ class ThirdTVC: UITableViewController,UINavigationControllerDelegate,UIImagePick
         }
         else
         {
-            rowHeight = 200
+            rowHeight = 190
         }
     
         return rowHeight
