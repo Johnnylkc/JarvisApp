@@ -31,8 +31,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let twoPageNav = UINavigationController(rootViewController: twoPage)
         twoPage.tabBarItem = UITabBarItem(title: "第二頁", image:UIImage(named: "002") , selectedImage: UIImage(named: "002"))
         
+        let thirdPage = ThirdTVC()
+        let thirdPageNav = UINavigationController(rootViewController: thirdPage)
+        thirdPage.tabBarItem = UITabBarItem(title: "第三頁", image: UIImage(named: "009"), selectedImage: UIImage(named: "009"))
         
-        let controllers = [onePageNav,twoPageNav]
+        
+        let controllers = [onePageNav,twoPageNav,thirdPageNav]
         tabBarController.viewControllers = controllers
         
         ////側邊選單的設定
