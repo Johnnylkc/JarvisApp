@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6BBBB711B96D2C9C70AE1538 /* Pods_JarvisApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F99BE0834563A387EFCFF0 /* Pods_JarvisApp.framework */; };
 		B22F74871C8281B50090A704 /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B22F747F1C8281B50090A704 /* MMDrawerBarButtonItem.m */; };
 		B22F74881C8281B50090A704 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22F74811C8281B50090A704 /* MMDrawerController.m */; };
 		B22F74891C8281B50090A704 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = B22F74841C8281B50090A704 /* MMDrawerVisualState.m */; };
@@ -15,6 +16,7 @@
 		B22F74B31C836D800090A704 /* TestData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22F74B21C836D800090A704 /* TestData.swift */; };
 		B298FDCE1C85425D00D61D38 /* TestData02.swift in Sources */ = {isa = PBXBuildFile; fileRef = B298FDCD1C85425D00D61D38 /* TestData02.swift */; };
 		B298FDD01C8544B500D61D38 /* TestData03.swift in Sources */ = {isa = PBXBuildFile; fileRef = B298FDCF1C8544B500D61D38 /* TestData03.swift */; };
+		B2AEF4531C91614200F88E86 /* ThirdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AEF4521C91614200F88E86 /* ThirdVC.swift */; };
 		B2C9C6CA1C83F924005A4132 /* ThirdTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C9C6C91C83F924005A4132 /* ThirdTVC.swift */; };
 		B2C9C6CC1C83F936005A4132 /* ThirdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C9C6CB1C83F936005A4132 /* ThirdCell.swift */; };
 		B2DA06441C7D950700507C3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA06431C7D950700507C3C /* AppDelegate.swift */; };
@@ -27,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		39F99BE0834563A387EFCFF0 /* Pods_JarvisApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JarvisApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B22F747D1C8281B40090A704 /* JarvisApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JarvisApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		B22F747E1C8281B50090A704 /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
 		B22F747F1C8281B50090A704 /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
@@ -41,6 +44,7 @@
 		B22F74B21C836D800090A704 /* TestData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData.swift; sourceTree = "<group>"; };
 		B298FDCD1C85425D00D61D38 /* TestData02.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData02.swift; sourceTree = "<group>"; };
 		B298FDCF1C8544B500D61D38 /* TestData03.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData03.swift; sourceTree = "<group>"; };
+		B2AEF4521C91614200F88E86 /* ThirdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdVC.swift; sourceTree = "<group>"; };
 		B2C9C6C91C83F924005A4132 /* ThirdTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdTVC.swift; sourceTree = "<group>"; };
 		B2C9C6CB1C83F936005A4132 /* ThirdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdCell.swift; sourceTree = "<group>"; };
 		B2DA06401C7D950700507C3C /* JarvisApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JarvisApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +56,8 @@
 		B2DA06591C7D963100507C3C /* MainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		B2DA065B1C7E241C00507C3C /* SecondTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTVC.swift; sourceTree = "<group>"; };
 		B2DA065D1C7E242E00507C3C /* SecondCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondCell.swift; sourceTree = "<group>"; };
+		D004C050E33D023121A84659 /* Pods-JarvisApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JarvisApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-JarvisApp/Pods-JarvisApp.release.xcconfig"; sourceTree = "<group>"; };
+		D7E9A69C3705016F4A40639A /* Pods-JarvisApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JarvisApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JarvisApp/Pods-JarvisApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,12 +65,22 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6BBBB711B96D2C9C70AE1538 /* Pods_JarvisApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8BDCE99F0036A13DD8737589 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D7E9A69C3705016F4A40639A /* Pods-JarvisApp.debug.xcconfig */,
+				D004C050E33D023121A84659 /* Pods-JarvisApp.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		B22F747C1C8281620090A704 /* MM */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +113,8 @@
 			children = (
 				B2DA06421C7D950700507C3C /* JarvisApp */,
 				B2DA06411C7D950700507C3C /* Products */,
+				8BDCE99F0036A13DD8737589 /* Pods */,
+				B73DA7E7CCECC9BFA9C95AF9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,6 +147,7 @@
 				B2DA06551C7D95FC00507C3C /* MainTVC.swift */,
 				B2DA065B1C7E241C00507C3C /* SecondTVC.swift */,
 				B2C9C6C91C83F924005A4132 /* ThirdTVC.swift */,
+				B2AEF4521C91614200F88E86 /* ThirdVC.swift */,
 				B22F748B1C8281FE0090A704 /* SlideMenuTVC.swift */,
 			);
 			name = Controller;
@@ -144,6 +163,14 @@
 			name = VIew;
 			sourceTree = "<group>";
 		};
+		B73DA7E7CCECC9BFA9C95AF9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				39F99BE0834563A387EFCFF0 /* Pods_JarvisApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -151,9 +178,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B2DA06521C7D950700507C3C /* Build configuration list for PBXNativeTarget "JarvisApp" */;
 			buildPhases = (
+				F568FF1BA485CF3A74823A48 /* Check Pods Manifest.lock */,
 				B2DA063C1C7D950700507C3C /* Sources */,
 				B2DA063D1C7D950700507C3C /* Frameworks */,
 				B2DA063E1C7D950700507C3C /* Resources */,
+				8413CB0088B1075748597B5A /* Embed Pods Frameworks */,
+				EEC54CF73330347251F1BC14 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -209,6 +239,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		8413CB0088B1075748597B5A /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JarvisApp/Pods-JarvisApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		EEC54CF73330347251F1BC14 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-JarvisApp/Pods-JarvisApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F568FF1BA485CF3A74823A48 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B2DA063C1C7D950700507C3C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -226,6 +304,7 @@
 				B22F748A1C8281B50090A704 /* UIViewController+MMDrawerController.m in Sources */,
 				B2DA065E1C7E242E00507C3C /* SecondCell.swift in Sources */,
 				B2C9C6CC1C83F936005A4132 /* ThirdCell.swift in Sources */,
+				B2AEF4531C91614200F88E86 /* ThirdVC.swift in Sources */,
 				B2C9C6CA1C83F924005A4132 /* ThirdTVC.swift in Sources */,
 				B22F748C1C8281FE0090A704 /* SlideMenuTVC.swift in Sources */,
 				B2DA065C1C7E241C00507C3C /* SecondTVC.swift in Sources */,
@@ -329,6 +408,7 @@
 		};
 		B2DA06531C7D950700507C3C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D7E9A69C3705016F4A40639A /* Pods-JarvisApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -343,6 +423,7 @@
 		};
 		B2DA06541C7D950700507C3C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D004C050E33D023121A84659 /* Pods-JarvisApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;

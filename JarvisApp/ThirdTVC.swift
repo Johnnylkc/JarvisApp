@@ -124,28 +124,28 @@ class ThirdTVC: UITableViewController,UINavigationControllerDelegate,UIImagePick
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath) as! ThirdCell
         
-        cell.selectionStyle = .None
-        cell.backgroundColor = UIColor.clearColor()
-        
-        let arrayForCell = cityInfo[indexPath.row]
-        
-        cell.bigImage.image = UIImage(named: arrayForCell.cityImage!)
-        cell.littleImage.image = UIImage(named: arrayForCell.userImage!)
-        cell.titleTextView.text = arrayForCell.titleText
-        cell.subTextView.text = arrayForCell.subText
-        cell.contentTextView.text = arrayForCell.contentText
-
-        
-        
-       
-        if cell.contentTextView.text.characters.count <= 200
-        {
-            cell.contentTextView.text = cell.contentTextView.text
-        }
-        else
-        {
-            cell.contentTextView.text = cell.contentTextView.text.substringToIndex(cell.contentTextView.text.startIndex.advancedBy(90)) + "..."
-        }
+//        cell.selectionStyle = .None
+//        cell.backgroundColor = UIColor.clearColor()
+//        
+//        let arrayForCell = cityInfo[indexPath.row]
+//        
+//        cell.bigImage.image = UIImage(named: arrayForCell.cityImage!)
+//        cell.littleImage.image = UIImage(named: arrayForCell.userImage!)
+//        cell.titleTextView.text = arrayForCell.titleText
+//        cell.subTextView.text = arrayForCell.subText
+//        cell.contentTextView.text = arrayForCell.contentText
+//
+//        
+//        
+//       
+//        if cell.contentTextView.text.characters.count <= 200
+//        {
+//            cell.contentTextView.text = cell.contentTextView.text
+//        }
+//        else
+//        {
+//            cell.contentTextView.text = cell.contentTextView.text.substringToIndex(cell.contentTextView.text.startIndex.advancedBy(90)) + "..."
+//        }
 
         
         return cell
