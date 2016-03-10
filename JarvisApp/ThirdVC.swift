@@ -12,23 +12,28 @@ import AlamofireImage
 
 class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
+    ////tablebleView 和 tableView上面的按鈕scrollView
     let tableView = UITableView()
     let scrollBar = UIScrollView()
 
+    ////桌子上方的scrollView裡的按鈕
     let scrollButton1 = UIButton()
     let scrollButton2 = UIButton()
     let scrollButton3 = UIButton()
 
-    
-   
+    ////這兩個是桌子上方那個scrollView的constrait 寫成global 這樣我才能在scrollView的delagate中使用它
     var scrollBarH = [NSLayoutConstraint]()
     var scrollBarV = [NSLayoutConstraint]()
     
-    
+    ////裝整個JSON、JSON第二層、JSON第三層
     var allJsonArray = NSMutableArray()
     var secondLevelArray = NSMutableArray()
     var thirdLevelArray = NSMutableArray()
-
+    var scrollButtonTextArray = NSMutableArray()
+    
+    
+    
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -89,7 +94,9 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
 
     func alamofireGET()
-    { let url = "http://magipea.com/admin/product/list/json"
+    {
+        ////////抓的一個API
+        let url = "http://magipea.com/admin/product/list/json"
         Alamofire.request(.GET, url).responseJSON { response in
             
             if let JSON = response.result.value
@@ -121,6 +128,33 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
             
             self.tableView.reloadData()
         }
+    
+       
+        ///////抓第二個API
+        let url2 = "http://magipea.com/admin/product/type/data/json"
+        Alamofire.request(.GET, url2).responseJSON { response in
+            
+            if let JSON = response.result.value
+            {
+                self.scrollButtonTextArray = JSON as! NSMutableArray
+
+                let title1 = self.scrollButtonTextArray[0]["name"] as! String
+                self.scrollButton1.setTitle(title1, forState: .Normal)
+                
+                let title2 = self.scrollButtonTextArray[1]["name"] as! String
+                self.scrollButton2.setTitle(title2, forState: .Normal)
+                
+                let title3 = self.scrollButtonTextArray[2]["name"] as! String
+                self.scrollButton3.setTitle(title3, forState: .Normal)
+            
+            }
+           
+        }
+    
+
+    
+    
+    
     
     }
     

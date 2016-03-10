@@ -17,7 +17,6 @@
 		B298FDCE1C85425D00D61D38 /* TestData02.swift in Sources */ = {isa = PBXBuildFile; fileRef = B298FDCD1C85425D00D61D38 /* TestData02.swift */; };
 		B298FDD01C8544B500D61D38 /* TestData03.swift in Sources */ = {isa = PBXBuildFile; fileRef = B298FDCF1C8544B500D61D38 /* TestData03.swift */; };
 		B2AEF4531C91614200F88E86 /* ThirdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AEF4521C91614200F88E86 /* ThirdVC.swift */; };
-		B2C9C6CA1C83F924005A4132 /* ThirdTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C9C6C91C83F924005A4132 /* ThirdTVC.swift */; };
 		B2C9C6CC1C83F936005A4132 /* ThirdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C9C6CB1C83F936005A4132 /* ThirdCell.swift */; };
 		B2DA06441C7D950700507C3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA06431C7D950700507C3C /* AppDelegate.swift */; };
 		B2DA064B1C7D950700507C3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2DA064A1C7D950700507C3C /* Assets.xcassets */; };
@@ -45,7 +44,6 @@
 		B298FDCD1C85425D00D61D38 /* TestData02.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData02.swift; sourceTree = "<group>"; };
 		B298FDCF1C8544B500D61D38 /* TestData03.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData03.swift; sourceTree = "<group>"; };
 		B2AEF4521C91614200F88E86 /* ThirdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdVC.swift; sourceTree = "<group>"; };
-		B2C9C6C91C83F924005A4132 /* ThirdTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdTVC.swift; sourceTree = "<group>"; };
 		B2C9C6CB1C83F936005A4132 /* ThirdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdCell.swift; sourceTree = "<group>"; };
 		B2DA06401C7D950700507C3C /* JarvisApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JarvisApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B2DA06431C7D950700507C3C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -146,7 +144,6 @@
 			children = (
 				B2DA06551C7D95FC00507C3C /* MainTVC.swift */,
 				B2DA065B1C7E241C00507C3C /* SecondTVC.swift */,
-				B2C9C6C91C83F924005A4132 /* ThirdTVC.swift */,
 				B2AEF4521C91614200F88E86 /* ThirdVC.swift */,
 				B22F748B1C8281FE0090A704 /* SlideMenuTVC.swift */,
 			);
@@ -305,7 +302,6 @@
 				B2DA065E1C7E242E00507C3C /* SecondCell.swift in Sources */,
 				B2C9C6CC1C83F936005A4132 /* ThirdCell.swift in Sources */,
 				B2AEF4531C91614200F88E86 /* ThirdVC.swift in Sources */,
-				B2C9C6CA1C83F924005A4132 /* ThirdTVC.swift in Sources */,
 				B22F748C1C8281FE0090A704 /* SlideMenuTVC.swift in Sources */,
 				B2DA065C1C7E241C00507C3C /* SecondTVC.swift in Sources */,
 			);
