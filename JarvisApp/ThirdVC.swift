@@ -32,6 +32,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     var scrollButtonTextArray = NSMutableArray()
     
     
+    let hahaArray = NSMutableArray()
     
     
     override func viewDidLoad()
@@ -62,21 +63,18 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
 
         scrollButton1.frame = CGRectMake(10, 5, self.view.frame.size.width/2, 35)
         scrollButton1.backgroundColor = UIColor.whiteColor()
-        scrollButton1.setTitle("按鈕1", forState: .Normal)
         scrollButton1.setTitleColor(UIColor.blackColor(), forState: .Normal)
         scrollButton1.addTarget(self, action: "scrollButton1_click:", forControlEvents: .TouchUpInside)
         scrollBar.addSubview(scrollButton1)
         
         scrollButton2.frame = CGRectMake(scrollButton1.frame.size.width+20, 5, self.view.frame.size.width/2, 35)
         scrollButton2.backgroundColor = UIColor.whiteColor()
-        scrollButton2.setTitle("按鈕2", forState: .Normal)
         scrollButton2.setTitleColor(UIColor.blackColor(), forState: .Normal)
         scrollButton2.addTarget(self, action: "scrollButton2_click:", forControlEvents: .TouchUpInside)
         scrollBar.addSubview(scrollButton2)
         
         scrollButton3.frame = CGRectMake(scrollButton1.frame.size.width*2 + 30, 5, self.view.frame.size.width/2, 35)
         scrollButton3.backgroundColor = UIColor.whiteColor()
-        scrollButton3.setTitle("按鈕3", forState: .Normal)
         scrollButton3.setTitleColor(UIColor.blackColor(), forState: .Normal)
         scrollButton3.addTarget(self, action: "scrollButton3_click:", forControlEvents: .TouchUpInside)
         scrollBar.addSubview(scrollButton3)
@@ -95,7 +93,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
 
     func alamofireGET()
     {
-        ////////抓的一個API
+        ////////抓第一個API
         let url = "http://magipea.com/admin/product/list/json"
         Alamofire.request(.GET, url).responseJSON { response in
             
@@ -128,9 +126,8 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
             
             self.tableView.reloadData()
         }
-    
        
-        ///////抓第二個API
+        /////////抓第二個API
         let url2 = "http://magipea.com/admin/product/type/data/json"
         Alamofire.request(.GET, url2).responseJSON { response in
             
@@ -150,13 +147,13 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
             }
            
         }
-    
 
-    
-    
-    
-    
-    }
+        
+        
+        
+        
+        
+    }////最後的大括號
     
     
     
@@ -165,6 +162,21 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     ////三個scrollButton action
     func scrollButton1_click(sender:UIButton)
     {
+        for item in self.allJsonArray
+        {
+          let typeName = item["type_name"] as! String
+            
+            if typeName == "換購商品"
+            {
+                
+                
+            }
+            
+            
+        
+        }
+        
+        self.tableView.reloadData()
         print("按鈕1")
     }
     
@@ -254,6 +266,9 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         let dic3 = self.thirdLevelArray[indexPath.row]
         
         
+        let typeName = dic1["type_name"] as! String
+        
+        
         if dic3["image"] != nil
         {
             let imageURL = "http://magipea.com/admin/uploads/" + "\(dic3["image"] as! String)"
@@ -279,13 +294,13 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
        
         if dic1["product_discount"] != nil
         {
-            cell.discountLabel.text = "Discount 折扣 : " + "\(dic1["product_discount"] as! String) %"
+            cell.discountLabel.text = " Discount 折扣 : " + "\(dic1["product_discount"] as! String) %"
         }
         
         
         if dic1["sale_price_ntd"] != nil
         {
-            cell.salePriceLabel.text = "NT$ " + "\(dic1["sale_price_ntd"] as! String ) "
+            cell.salePriceLabel.text = " NT$ " + "\(dic1["sale_price_ntd"] as! String)"
         }
         
         
@@ -299,6 +314,9 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         
         return cell
     }
+    
+    
+    
     
     
     func autoLayout()
