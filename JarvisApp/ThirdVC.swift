@@ -101,32 +101,44 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
             {
                 self.allJsonArray = JSON as! NSMutableArray
                 //print("這是整個JSON\(self.jsonArray)")
-                
+         
                 for item in self.allJsonArray
                 {
+                    let typeName = item["type_name"] as! String
+                    
+                    if typeName == "其他商品"
+                    {
+                
                     let oneArray:NSMutableArray = item["color"] as! NSMutableArray
                     
                     for item2 in oneArray
                     {
+                      
                         self.secondLevelArray.addObject(item2)
+                    
                         //print(self.secondLevelArray)
+                        
                         let twoArray:NSMutableArray = item2["picture"] as! NSMutableArray
                         
                         for item3 in twoArray
                         {
                             self.thirdLevelArray.addObject(item3)
                             //print(self.thirdLevelArray)
+                            
                         }
                         
                     }
+                  
+                    }
                 }
+            
                 
+                self.tableView.reloadData()
                 
             }
-            
-            self.tableView.reloadData()
-        }
        
+            
+        }
         /////////抓第二個API
         let url2 = "http://magipea.com/admin/product/type/data/json"
         Alamofire.request(.GET, url2).responseJSON { response in
@@ -246,7 +258,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.allJsonArray.count
+        return self.secondLevelArray.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
@@ -266,7 +278,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         let dic3 = self.thirdLevelArray[indexPath.row]
         
         
-        let typeName = dic1["type_name"] as! String
+       // let typeName = dic1["type_name"] as! String
         
         
         if dic3["image"] != nil
