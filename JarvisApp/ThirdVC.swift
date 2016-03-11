@@ -108,38 +108,32 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
                     
                     if typeName == "其他商品"
                     {
-                
-                    let oneArray:NSMutableArray = item["color"] as! NSMutableArray
+                        let oneArray:NSMutableArray = item["color"] as! NSMutableArray
                     
-                    for item2 in oneArray
-                    {
-                      
-                        self.secondLevelArray.addObject(item2)
-                    
-                        //print(self.secondLevelArray)
-                        
-                        let twoArray:NSMutableArray = item2["picture"] as! NSMutableArray
-                        
-                        for item3 in twoArray
+                        for item2 in oneArray
                         {
-                            self.thirdLevelArray.addObject(item3)
-                            //print(self.thirdLevelArray)
-                            
-                        }
+                            self.secondLevelArray.addObject(item2)
+                    
+                            //print(self.secondLevelArray)
                         
-                    }
+                            let twoArray:NSMutableArray = item2["picture"] as! NSMutableArray
+                        
+                            for item3 in twoArray
+                            {
+                                self.thirdLevelArray.addObject(item3)
+                                //print(self.thirdLevelArray)
+                            }
+                        
+                        }
                   
                     }
+                
                 }
-            
-                
                 self.tableView.reloadData()
-                
             }
        
-            
         }
-        /////////抓第二個API
+        ///////////抓第二個API
         let url2 = "http://magipea.com/admin/product/type/data/json"
         Alamofire.request(.GET, url2).responseJSON { response in
             
