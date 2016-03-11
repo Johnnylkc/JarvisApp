@@ -32,7 +32,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     var scrollButtonTextArray = NSMutableArray()
     
     
-    let hahaArray = NSMutableArray()
+    var typeName = String()
     
     
     override func viewDidLoad()
@@ -104,12 +104,13 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
          
                 for item in self.allJsonArray
                 {
-                    let typeName = item["type_name"] as! String
+                    self.typeName = item["type_name"] as! String
                     
-                    if typeName == "其他商品"
+                    print(self.typeName)
+                    if self.typeName == "主要商品"
                     {
                         let oneArray:NSMutableArray = item["color"] as! NSMutableArray
-                    
+                        
                         for item2 in oneArray
                         {
                             self.secondLevelArray.addObject(item2)
@@ -155,10 +156,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         }
 
         
-        
-        
-        
-        
     }////最後的大括號
     
     
@@ -168,34 +165,23 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     ////三個scrollButton action
     func scrollButton1_click(sender:UIButton)
     {
-        for item in self.allJsonArray
-        {
-          let typeName = item["type_name"] as! String
-            
-            if typeName == "換購商品"
-            {
-                
-                
-            }
-            
-            
         
-        }
-        
-        self.tableView.reloadData()
-        print("按鈕1")
+        print("按了主要商品")
     }
     
     
     func scrollButton2_click(sender:UIButton)
     {
-        print("按鈕2")
+        print("按了其他商品")
     }
     
     
     func scrollButton3_click(sender:UIButton)
     {
-        print("按鈕3")
+       
+      
+
+        print("按了選購商品")
     }
 
   
@@ -252,7 +238,8 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.secondLevelArray.count
+     
+        return self.allJsonArray.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
@@ -337,7 +324,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         let tableViewH = NSLayoutConstraint.constraintsWithVisualFormat("H:|[tableView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         self.view.addConstraints(tableViewH)
         
-        let tableViewV = NSLayoutConstraint.constraintsWithVisualFormat("V:[scrollBar][tableView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let tableViewV = NSLayoutConstraint.constraintsWithVisualFormat("V:[scrollBar][tableView]-50-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         self.view.addConstraints(tableViewV)
         
         
@@ -375,7 +362,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        //// Pass the selected object to the new view controller.
     }
     */
 
