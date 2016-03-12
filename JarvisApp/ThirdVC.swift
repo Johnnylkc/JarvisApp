@@ -38,7 +38,8 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     
     var typeName = String()
-    var changeType:String = "其他商品"
+    var changeType:String = "主要商品"
+    
     
     
     
@@ -95,6 +96,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
 
         
         
+        
     }
     
 
@@ -104,6 +106,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         let url = "http://magipea.com/admin/product/list/json"
         
         Alamofire.request(.GET, url).responseJSON { response in
+            
             
             if let JSON = response.result.value
             {
@@ -143,6 +146,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
                 //print("uuuu\(self.thirdLevelArray)")
                 //print("ccccc\(self.firstLevelArray.count)")
                 //print("kkkkk\(self.secondLevelArray.count)")
+                
             }
         
             self.tableView.reloadData()
@@ -255,19 +259,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-//        var numOfRows = self.secondLevelArray.count
-//        
-//        if secondLevelArray.count == 0
-//        {
-//            print("還真的會變零")
-//            numOfRows = allJsonArray.count
-//        }
-//        else if secondLevelArray.count >= 0
-//        {
-//            numOfRows = secondLevelArray.count
-//        }
-        
-        
         return self.secondLevelArray.count
     }
     
@@ -284,13 +275,10 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
 
 //        let dic0 = self.allJsonArray[indexPath.row]
         let dic1 = self.firstLevelArray[indexPath.row]
-        //let dic2 = self.secondLevelArray[indexPath.row]
-        //        let dic3 = self.thirdLevelArray[indexPath.row]
+//        let dic2 = self.secondLevelArray[indexPath.row]
+//        let dic3 = self.thirdLevelArray[indexPath.row]
         let dic4 = self.fourthLevelArray[indexPath.row]
 
-        
-        //print("到底拉幹\(self.secondLevelArray[indexPath.row])")
-      
     
         if dic4["image"] != nil
         {
@@ -431,6 +419,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         // Get the new view controller using segue.destinationViewController.
         //// Pass the selected object to the new view controller.
     }
-    */
+    *///
 
 }
