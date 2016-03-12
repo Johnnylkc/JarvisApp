@@ -101,7 +101,7 @@ class ThirdCell: UITableViewCell {
         
         
         ////salePriceLabel
-        let salePriceLabelH = NSLayoutConstraint.constraintsWithVisualFormat("[bigImage][salePriceLabel(100)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let salePriceLabelH = NSLayoutConstraint.constraintsWithVisualFormat("[bigImage][salePriceLabel(==oldPriceLabel)][oldPriceLabel(==salePriceLabel)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(salePriceLabelH)
         
         let salePriceLabelV = NSLayoutConstraint.constraintsWithVisualFormat("V:[salePriceLabel(20)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
@@ -109,8 +109,8 @@ class ThirdCell: UITableViewCell {
         
         
         ////oldPriceLabel
-        let oldPriceLabelH = NSLayoutConstraint.constraintsWithVisualFormat("H:[salePriceLabel][oldPriceLabel]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
-        basicView.addConstraints(oldPriceLabelH)
+//        let oldPriceLabelH = NSLayoutConstraint.constraintsWithVisualFormat("H:[salePriceLabel][oldPriceLabel]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+//        basicView.addConstraints(oldPriceLabelH)
         
         let oldPriceLabelV = NSLayoutConstraint.constraintsWithVisualFormat("V:[oldPriceLabel(20)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(oldPriceLabelV)

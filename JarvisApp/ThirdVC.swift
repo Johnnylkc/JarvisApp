@@ -112,6 +112,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
             {
                 self.allJsonArray = JSON as! NSMutableArray
 
+                
                 for item in self.allJsonArray
                 {
                     self.typeName = item["type_name"] as! String
@@ -122,12 +123,14 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
                     }
                 }
                 
+               
                 
                 for item2 in self.firstLevelArray
                 {
                     self.secondLevelArray.addObject(item2["color"]!![0] )
                 }
                 
+               
                 
                 for item3 in self.secondLevelArray
                 {
