@@ -38,7 +38,8 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     
     var typeName = String()
-    var changeType:String = "主要商品"
+    var changeType:String = "其他商品"
+    
     
     
     override func viewDidLoad()
@@ -114,17 +115,14 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
                     if self.typeName == self.changeType
                     {
                         self.firstLevelArray.addObject(item)
-                        print("ff\(self.changeType)")
+                        print("阿拉摸裡面\(self.changeType)")
                     }
                 }
                 
                 
                 for item2 in self.firstLevelArray
                 {
-                    
                     self.secondLevelArray.addObject(item2["color"]!![0] )
-                    //print("這樣呢\(item2["color"]!![0])")
-                    //print(self.secondLevelArray
                 }
                 
                 
@@ -185,24 +183,37 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         
         changeType = "主要商品"
        
-        self.tableView.reloadData()
+        self.firstLevelArray.removeAllObjects()
+        self.secondLevelArray.removeAllObjects()
+        self.thirdLevelArray.removeAllObjects()
+        self.fourthLevelArray.removeAllObjects()
+        alamofireGET()
         print(changeType)
-
-    
     }
     
     
     func scrollButton2_click(sender:UIButton)
     {
-        print("按了其他商品")
+       
+        changeType = "其他商品"
+        self.firstLevelArray.removeAllObjects()
+        self.secondLevelArray.removeAllObjects()
+        self.thirdLevelArray.removeAllObjects()
+        self.fourthLevelArray.removeAllObjects()
+        alamofireGET()
+        print(changeType)
     }
     
     
     func scrollButton3_click(sender:UIButton)
     {
-       
-
-        print("按了選購商品")
+        changeType = "換購商品"
+        self.firstLevelArray.removeAllObjects()
+        self.secondLevelArray.removeAllObjects()
+        self.thirdLevelArray.removeAllObjects()
+        self.fourthLevelArray.removeAllObjects()
+        alamofireGET()
+        print(changeType)
     }
 
   
@@ -244,6 +255,19 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
+//        var numOfRows = self.secondLevelArray.count
+//        
+//        if secondLevelArray.count == 0
+//        {
+//            print("還真的會變零")
+//            numOfRows = allJsonArray.count
+//        }
+//        else if secondLevelArray.count >= 0
+//        {
+//            numOfRows = secondLevelArray.count
+//        }
+        
+        
         return self.secondLevelArray.count
     }
     
@@ -284,11 +308,19 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
             }
         
         }
+        else
+        {
+            cell.bigImage.image = UIImage(named: "203")
+        }
         
         
         if dic1["name"] != nil
         {
             cell.titleTextView.text = dic1["name"] as! String
+        }
+        else
+        {
+            cell.titleTextView.text = " "
         }
 
        
@@ -296,11 +328,19 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         {
             cell.discountLabel.text = " Discount 折扣 : " + "\(dic1["product_discount"] as! String) %"
         }
+        else
+        {
+            cell.discountLabel.text = " "
+        }
 
         
         if dic1["sale_price_ntd"] != nil
         {
             cell.salePriceLabel.text = " NT$ " + "\(dic1["sale_price_ntd"] as! String)"
+        }
+        else
+        {
+            cell.salePriceLabel.text = " "
         }
 
         
@@ -310,6 +350,10 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
             
             cell.oldPriceLabel.attributedText = attributedText
 
+        }
+        else
+        {
+            cell.oldPriceLabel.text = " "
         }
         
         return cell
