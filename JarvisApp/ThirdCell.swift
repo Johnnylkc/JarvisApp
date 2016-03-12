@@ -42,7 +42,7 @@ class ThirdCell: UITableViewCell {
         basicView.addSubview(discountLabel)
         
         salePriceLabel.backgroundColor = UIColor.greenColor()
-        salePriceLabel.font = UIFont.boldSystemFontOfSize(20)
+        salePriceLabel.font = UIFont.boldSystemFontOfSize(16)
         salePriceLabel.textColor = UIColor.blackColor()
         basicView.addSubview(salePriceLabel)
         

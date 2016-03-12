@@ -27,22 +27,28 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     ////裝整個JSON、JSON第二層、JSON第三層
     var allJsonArray = NSMutableArray()
+    
+    var firstLevelArray = NSMutableArray()
     var secondLevelArray = NSMutableArray()
     var thirdLevelArray = NSMutableArray()
+    var fourthLevelArray = NSMutableArray()
+    
+    
     var scrollButtonTextArray = NSMutableArray()
     
     
     var typeName = String()
+    var changeType:String = "主要商品"
     
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
+
         allUI()
         autoLayout()
         alamofireGET()
-
     }
 
     
@@ -95,45 +101,55 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     {
         ////////抓第一個API
         let url = "http://magipea.com/admin/product/list/json"
+        
         Alamofire.request(.GET, url).responseJSON { response in
             
             if let JSON = response.result.value
             {
                 self.allJsonArray = JSON as! NSMutableArray
-                //print("這是整個JSON\(self.jsonArray)")
-         
+
                 for item in self.allJsonArray
                 {
                     self.typeName = item["type_name"] as! String
-                    
-                    print(self.typeName)
-                    if self.typeName == "主要商品"
+                    if self.typeName == self.changeType
                     {
-                        let oneArray:NSMutableArray = item["color"] as! NSMutableArray
-                        
-                        for item2 in oneArray
-                        {
-                            self.secondLevelArray.addObject(item2)
-                    
-                            //print(self.secondLevelArray)
-                        
-                            let twoArray:NSMutableArray = item2["picture"] as! NSMutableArray
-                        
-                            for item3 in twoArray
-                            {
-                                self.thirdLevelArray.addObject(item3)
-                                //print(self.thirdLevelArray)
-                            }
-                        
-                        }
-                  
+                        self.firstLevelArray.addObject(item)
+                        print("ff\(self.changeType)")
                     }
-                
                 }
-                self.tableView.reloadData()
+                
+                
+                for item2 in self.firstLevelArray
+                {
+                    
+                    self.secondLevelArray.addObject(item2["color"]!![0] )
+                    //print("這樣呢\(item2["color"]!![0])")
+                    //print(self.secondLevelArray
+                }
+                
+                
+                for item3 in self.secondLevelArray
+                {
+                    self.thirdLevelArray.addObject(item3)
+                    
+                    let oneArray:NSMutableArray = item3["picture"] as! NSMutableArray
+                    
+                    for item4 in oneArray
+                    {
+                        self.fourthLevelArray.addObject(item4)
+                    }
+                    
+                }
+
+                //print("hhhhhh\(self.fourthLevelArray)")
+                //print("uuuu\(self.thirdLevelArray)")
+                //print("ccccc\(self.firstLevelArray.count)")
+                //print("kkkkk\(self.secondLevelArray.count)")
             }
-       
+        
+            self.tableView.reloadData()
         }
+
         ///////////抓第二個API
         let url2 = "http://magipea.com/admin/product/type/data/json"
         Alamofire.request(.GET, url2).responseJSON { response in
@@ -165,8 +181,14 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     ////三個scrollButton action
     func scrollButton1_click(sender:UIButton)
     {
+
         
-        print("按了主要商品")
+        changeType = "主要商品"
+       
+        self.tableView.reloadData()
+        print(changeType)
+
+    
     }
     
     
@@ -179,7 +201,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     func scrollButton3_click(sender:UIButton)
     {
        
-      
 
         print("按了選購商品")
     }
@@ -189,46 +210,31 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     func scrollViewDidScroll(scrollView: UIScrollView)
     {
-        
-        
         if scrollView.panGestureRecognizer.translationInView(scrollView).y < 0
         {
-            
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 
                 self.scrollBarV[0].constant = 18
                 self.scrollBar.alpha = 0
                 
                 self.view.layoutSubviews()
-                
             })
             
         }
         else
         {
-            
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 
                 self.scrollBarV[0].constant = 64
-                
                 self.view.layoutSubviews()
-                
-                
             })
-            
+
             scrollBar.alpha = 1
-            
-            
+
         }
-        
         
     }
 
-    
-    
-    
-    
-    
     
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
@@ -238,8 +244,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-     
-        return self.allJsonArray.count
+        return self.secondLevelArray.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
@@ -253,18 +258,19 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         cell.selectionStyle = .None
         cell.backgroundColor = UIColor.clearColor()
 
+//        let dic0 = self.allJsonArray[indexPath.row]
+        let dic1 = self.firstLevelArray[indexPath.row]
+        //let dic2 = self.secondLevelArray[indexPath.row]
+        //        let dic3 = self.thirdLevelArray[indexPath.row]
+        let dic4 = self.fourthLevelArray[indexPath.row]
+
         
-        let dic1 = self.allJsonArray[indexPath.row]
-//      let dic2 = self.secondLevelArray[indexPath.row]
-        let dic3 = self.thirdLevelArray[indexPath.row]
-        
-        
-       // let typeName = dic1["type_name"] as! String
-        
-        
-        if dic3["image"] != nil
+        //print("到底拉幹\(self.secondLevelArray[indexPath.row])")
+      
+    
+        if dic4["image"] != nil
         {
-            let imageURL = "http://magipea.com/admin/uploads/" + "\(dic3["image"] as! String)"
+            let imageURL = "http://magipea.com/admin/uploads/" + "\(dic4["image"] as! String)"
             
             Alamofire.request(.GET, imageURL).responseImage { response in
                 
@@ -276,6 +282,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
                         }
                     }
             }
+        
         }
         
         
@@ -283,19 +290,19 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         {
             cell.titleTextView.text = dic1["name"] as! String
         }
-        
+
        
         if dic1["product_discount"] != nil
         {
             cell.discountLabel.text = " Discount 折扣 : " + "\(dic1["product_discount"] as! String) %"
         }
-        
+
         
         if dic1["sale_price_ntd"] != nil
         {
             cell.salePriceLabel.text = " NT$ " + "\(dic1["sale_price_ntd"] as! String)"
         }
-        
+
         
         if dic1["price_ntd"] != nil
         {
