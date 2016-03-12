@@ -316,7 +316,11 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         
         if dic1["name"] != nil
         {
-            cell.titleTextView.text = dic1["name"] as! String
+            dispatch_async(dispatch_get_main_queue())
+            {
+                cell.titleTextView.text = dic1["name"] as! String
+            }
+            
         }
         else
         {
@@ -326,7 +330,11 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
        
         if dic1["product_discount"] != nil
         {
-            cell.discountLabel.text = " Discount 折扣 : " + "\(dic1["product_discount"] as! String) %"
+            dispatch_async(dispatch_get_main_queue())
+            {
+                cell.discountLabel.text = " Discount 折扣 : " + "\(dic1["product_discount"] as! String) %"
+            }
+            
         }
         else
         {
@@ -336,7 +344,11 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         
         if dic1["sale_price_ntd"] != nil
         {
-            cell.salePriceLabel.text = " NT$ " + "\(dic1["sale_price_ntd"] as! String)"
+            dispatch_async(dispatch_get_main_queue())
+            {
+                cell.salePriceLabel.text = " NT$ " + "\(dic1["sale_price_ntd"] as! String)"
+            }
+            
         }
         else
         {
@@ -346,9 +358,13 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         
         if dic1["price_ntd"] != nil
         {
-            let attributedText = NSAttributedString(string: "NT$" + "\(dic1["price_ntd"] as! String)", attributes: [NSStrikethroughStyleAttributeName: 1])
             
-            cell.oldPriceLabel.attributedText = attributedText
+            let attributedText = NSAttributedString(string: "NT$" + "\(dic1["price_ntd"] as! String)", attributes: [NSStrikethroughStyleAttributeName: 1])
+           
+            dispatch_async(dispatch_get_main_queue())
+            {
+                cell.oldPriceLabel.attributedText = attributedText
+            }
 
         }
         else
