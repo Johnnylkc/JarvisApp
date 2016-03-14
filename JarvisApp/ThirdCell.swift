@@ -100,10 +100,11 @@ class ThirdCell: UITableViewCell {
         basicView.addConstraints(discountLabelV)
         
         
-        ////salePriceLabel
+        ////salePriceLabel oldPriceLabel 這兩個水平位置 和寬度
         let salePriceLabelH = NSLayoutConstraint.constraintsWithVisualFormat("[bigImage][salePriceLabel(==oldPriceLabel)][oldPriceLabel(==salePriceLabel)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(salePriceLabelH)
         
+        ////salePriceLabel的垂直位置和高度
         let salePriceLabelV = NSLayoutConstraint.constraintsWithVisualFormat("V:[salePriceLabel(20)]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(salePriceLabelV)
         

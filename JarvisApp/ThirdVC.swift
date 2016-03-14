@@ -112,7 +112,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
             {
                 self.allJsonArray = JSON as! NSMutableArray
 
-                
                 for item in self.allJsonArray
                 {
                     self.typeName = item["type_name"] as! String
@@ -275,6 +274,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! ThirdCell
         cell.selectionStyle = .None
         cell.backgroundColor = UIColor.clearColor()
+        cell.alpha = 0
 
 //        let dic0 = self.allJsonArray[indexPath.row]
         let dic1 = self.firstLevelArray[indexPath.row]
@@ -283,6 +283,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         let dic4 = self.fourthLevelArray[indexPath.row]
 
     
+        ////商品圖片
         if dic4["image"] != nil
         {
             let imageURL = "http://magipea.com/admin/uploads/" + "\(dic4["image"] as! String)"
@@ -293,7 +294,11 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
                     {
                         dispatch_async(dispatch_get_main_queue())
                         {
+                           UIView.animateWithDuration(0.4, animations: { () -> Void in
+                            
                             cell.bigImage.image = jsonImage
+                           
+                           })
                         }
                     }
             }
@@ -305,13 +310,17 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         }
         
         
+        ////商品名稱
         if dic1["name"] != nil
         {
             dispatch_async(dispatch_get_main_queue())
             {
+               UIView.animateWithDuration(0.4, animations: { () -> Void in
+                
                 cell.titleTextView.text = dic1["name"] as! String
+                
+               })
             }
-            
         }
         else
         {
@@ -319,11 +328,16 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         }
 
        
+        ////折扣label
         if dic1["product_discount"] != nil
         {
             dispatch_async(dispatch_get_main_queue())
             {
+               UIView.animateWithDuration(0.4, animations: { () -> Void in
+                
                 cell.discountLabel.text = " Discount 折扣 : " + "\(dic1["product_discount"] as! String) %"
+                
+               })
             }
             
         }
@@ -332,12 +346,17 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
             cell.discountLabel.text = " "
         }
 
-        
+        ////真實售價label
         if dic1["sale_price_ntd"] != nil
         {
             dispatch_async(dispatch_get_main_queue())
             {
-                cell.salePriceLabel.text = " NT$ " + "\(dic1["sale_price_ntd"] as! String)"
+                UIView.animateWithDuration(0.4, animations: { () -> Void in
+                    
+                    cell.salePriceLabel.text = " NT$ " + "\(dic1["sale_price_ntd"] as! String)"
+                 
+                })
+                
             }
             
         }
@@ -347,14 +366,18 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         }
 
         
+        ////劃掉的價格label
         if dic1["price_ntd"] != nil
         {
-            
             let attributedText = NSAttributedString(string: "NT$" + "\(dic1["price_ntd"] as! String)", attributes: [NSStrikethroughStyleAttributeName: 1])
            
             dispatch_async(dispatch_get_main_queue())
             {
-                cell.oldPriceLabel.attributedText = attributedText
+                UIView.animateWithDuration(0.4, animations: { () -> Void in
+                    
+                    cell.oldPriceLabel.attributedText = attributedText
+                    
+                })
             }
 
         }
@@ -362,6 +385,14 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         {
             cell.oldPriceLabel.text = " "
         }
+        
+        
+        UIView.animateWithDuration(0.4) { () -> Void in
+            
+            cell.alpha = 1
+            
+        }
+        
         
         return cell
     }
