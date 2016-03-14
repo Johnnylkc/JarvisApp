@@ -274,7 +274,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! ThirdCell
         cell.selectionStyle = .None
         cell.backgroundColor = UIColor.clearColor()
-        cell.alpha = 0
 
 //        let dic0 = self.allJsonArray[indexPath.row]
         let dic1 = self.firstLevelArray[indexPath.row]
@@ -384,13 +383,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         else
         {
             cell.oldPriceLabel.text = " "
-        }
-        
-        
-        UIView.animateWithDuration(0.4) { () -> Void in
-            
-            cell.alpha = 1
-            
         }
         
         
