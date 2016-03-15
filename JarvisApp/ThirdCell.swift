@@ -26,27 +26,27 @@ class ThirdCell: UITableViewCell {
         basicView.backgroundColor = UIColor.whiteColor()
         contentView.addSubview(basicView)
         
-        bigImage.backgroundColor = UIColor.yellowColor()
+        bigImage.backgroundColor = UIColor.whiteColor()
         basicView.addSubview(bigImage)
         
-        titleTextView.backgroundColor = UIColor.redColor()
+        //titleTextView.backgroundColor = UIColor.redColor()
         titleTextView.scrollEnabled = false
         titleTextView.editable = false
         titleTextView.font = UIFont.boldSystemFontOfSize(15)
         titleTextView.textContainerInset = UIEdgeInsets(top: 5, left: 0, bottom: 3, right: 1)
         basicView.addSubview(titleTextView)
         
-        discountLabel.backgroundColor = UIColor.lightGrayColor()
+        //discountLabel.backgroundColor = UIColor.lightGrayColor()
         discountLabel.font = UIFont.systemFontOfSize(13)
         discountLabel.textColor = UIColor.blackColor()
         basicView.addSubview(discountLabel)
         
-        salePriceLabel.backgroundColor = UIColor.greenColor()
+        //salePriceLabel.backgroundColor = UIColor.greenColor()
         salePriceLabel.font = UIFont.boldSystemFontOfSize(16)
         salePriceLabel.textColor = UIColor.blackColor()
         basicView.addSubview(salePriceLabel)
         
-        oldPriceLabel.backgroundColor = UIColor.yellowColor()
+        //oldPriceLabel.backgroundColor = UIColor.yellowColor()
         oldPriceLabel.font = UIFont.systemFontOfSize(13)
         oldPriceLabel.textAlignment = .Center
         oldPriceLabel.textColor = UIColor.lightGrayColor()

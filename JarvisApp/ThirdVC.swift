@@ -285,6 +285,8 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         ////商品圖片
         if dic4["image"] != nil
         {
+            cell.bigImage.image = nil
+            
             let imageURL = "http://magipea.com/admin/uploads/" + "\(dic4["image"] as! String)"
             
             Alamofire.request(.GET, imageURL).responseImage { response in
@@ -293,20 +295,16 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
                     {
                         dispatch_async(dispatch_get_main_queue())
                         {
-                           UIView.animateWithDuration(0.4, animations: { () -> Void in
-                            
                             cell.bigImage.image = jsonImage
-                           
-                           })
                         }
                     }
             }
         
         }
-        else
-        {
-            cell.bigImage.image = UIImage(named: "203")
-        }
+//        else
+//        {
+//            cell.bigImage.image = UIImage(named: "203")
+//        }
         
         
         ////商品名稱
@@ -314,11 +312,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         {
             dispatch_async(dispatch_get_main_queue())
             {
-               UIView.animateWithDuration(0.4, animations: { () -> Void in
-                
                 cell.titleTextView.text = dic1["name"] as! String
-                
-               })
             }
         }
         else
@@ -332,11 +326,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         {
             dispatch_async(dispatch_get_main_queue())
             {
-               UIView.animateWithDuration(0.4, animations: { () -> Void in
-                
                 cell.discountLabel.text = " Discount 折扣 : " + "\(dic1["product_discount"] as! String) %"
-                
-               })
             }
             
         }
@@ -350,12 +340,8 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         {
             dispatch_async(dispatch_get_main_queue())
             {
-                UIView.animateWithDuration(0.4, animations: { () -> Void in
-                    
-                    cell.salePriceLabel.text = " NT$ " + "\(dic1["sale_price_ntd"] as! String)"
-                 
-                })
-                
+                cell.salePriceLabel.text = " NT$ " + "\(dic1["sale_price_ntd"] as! String)"
+
             }
             
         }
@@ -372,11 +358,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
            
             dispatch_async(dispatch_get_main_queue())
             {
-                UIView.animateWithDuration(0.4, animations: { () -> Void in
-                    
-                    cell.oldPriceLabel.attributedText = attributedText
-                    
-                })
+                cell.oldPriceLabel.attributedText = attributedText
             }
 
         }
