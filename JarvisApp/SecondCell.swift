@@ -19,7 +19,7 @@ class SecondCell: UITableViewCell  {
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        basicView.backgroundColor = UIColor.whiteColor()
+        basicView.backgroundColor = UIColor.blackColor()
         basicView.layer.cornerRadius = 5
         basicView.clipsToBounds = true
         contentView.addSubview(basicView)
@@ -31,6 +31,8 @@ class SecondCell: UITableViewCell  {
         textView.scrollEnabled = false
         textView.editable = false
         textView.font = UIFont.systemFontOfSize(13)
+        textView.textColor = UIColor.whiteColor()
+        textView.backgroundColor = UIColor.clearColor()
         
         basicView.addSubview(textView)
         

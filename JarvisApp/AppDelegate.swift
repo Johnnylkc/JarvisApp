@@ -23,23 +23,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         
-        let onePage = MainTVC()
+        let onePage = SecondTVC()
         let onePageNav = UINavigationController(rootViewController: onePage)
-        onePage.tabBarItem = UITabBarItem(title: "第一頁", image: UIImage(named: "001"), selectedImage: UIImage(named: "001"))
+        onePage.tabBarItem = UITabBarItem(title: "新派對", image: UIImage(named: "001"), selectedImage: UIImage(named: "001"))
         
-        let twoPage = SecondTVC()
+        let twoPage = SecondTwoTVC()
         let twoPageNav = UINavigationController(rootViewController: twoPage)
-        twoPage.tabBarItem = UITabBarItem(title: "第二頁", image:UIImage(named: "002") , selectedImage: UIImage(named: "002"))
+        twoPage.tabBarItem = UITabBarItem(title: "知識寶", image:UIImage(named: "002") , selectedImage: UIImage(named: "002"))
+    
+       
+        let threePage = SecondTVC()
+        let threePageNav = UINavigationController(rootViewController: threePage)
+        threePage.tabBarItem = UITabBarItem(title: "第三頁", image: UIImage(named: "009"), selectedImage: UIImage(named: "009"))
         
-
-        
-        let thirdPage = ThirdVC()
-        let thirdPageNav = UINavigationController(rootViewController: thirdPage)
-        thirdPage.tabBarItem = UITabBarItem(title: "第三頁", image: UIImage(named: "009"), selectedImage: UIImage(named: "009"))
+        let fourPage = MainTVC()
+        let fourPageNav = UINavigationController(rootViewController: fourPage)
+        fourPage.tabBarItem = UITabBarItem(title: "星寶寶", image: UIImage(named: "304"), selectedImage: UIImage(named: "304"))
         
         
-        let controllers = [onePageNav,twoPageNav,thirdPageNav]
+        
+        let fivePage = ThirdVC()
+        let fivePageNav = UINavigationController(rootViewController: fivePage)
+        fivePage.tabBarItem = UITabBarItem(title: "寶寶酷", image: UIImage(named: "305"), selectedImage: UIImage(named: "305"))
+        
+        
+        
+        let controllers = [onePageNav,twoPageNav,threePageNav,fourPageNav,fivePageNav]
         tabBarController.viewControllers = controllers
+        tabBarController.tabBar.barTintColor = UIColor.blackColor()
+        UITabBar.appearance().tintColor = UIColor.yellowColor()
+
         
         ////側邊選單的設定
         let slidePage = SlideMenuTVC()
