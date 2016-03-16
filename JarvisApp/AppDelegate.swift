@@ -51,6 +51,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
+        
+        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = manageController
         self.window?.makeKeyAndVisible()
