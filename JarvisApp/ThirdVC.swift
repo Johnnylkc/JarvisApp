@@ -283,10 +283,10 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
 
     
         ////商品圖片
+        cell.bigImage.image = nil
+        
         if dic4["image"] != nil
         {
-            cell.bigImage.image = nil
-            
             let imageURL = "http://magipea.com/admin/uploads/" + "\(dic4["image"] as! String)"
             
             Alamofire.request(.GET, imageURL).responseImage { response in
@@ -301,10 +301,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
             }
         
         }
-//        else
-//        {
-//            cell.bigImage.image = UIImage(named: "203")
-//        }
+
         
         
         ////商品名稱
