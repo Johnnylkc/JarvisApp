@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6BBBB711B96D2C9C70AE1538 /* Pods_JarvisApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39F99BE0834563A387EFCFF0 /* Pods_JarvisApp.framework */; };
+		B22C99BF1C999F9800D6A896 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B22C99BE1C999F9800D6A896 /* LoginVC.swift */; };
 		B22F74871C8281B50090A704 /* MMDrawerBarButtonItem.m in Sources */ = {isa = PBXBuildFile; fileRef = B22F747F1C8281B50090A704 /* MMDrawerBarButtonItem.m */; };
 		B22F74881C8281B50090A704 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = B22F74811C8281B50090A704 /* MMDrawerController.m */; };
 		B22F74891C8281B50090A704 /* MMDrawerVisualState.m in Sources */ = {isa = PBXBuildFile; fileRef = B22F74841C8281B50090A704 /* MMDrawerVisualState.m */; };
@@ -29,6 +30,7 @@
 
 /* Begin PBXFileReference section */
 		39F99BE0834563A387EFCFF0 /* Pods_JarvisApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_JarvisApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B22C99BE1C999F9800D6A896 /* LoginVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		B22F747D1C8281B40090A704 /* JarvisApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "JarvisApp-Bridging-Header.h"; sourceTree = "<group>"; };
 		B22F747E1C8281B50090A704 /* MMDrawerBarButtonItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerBarButtonItem.h; sourceTree = "<group>"; };
 		B22F747F1C8281B50090A704 /* MMDrawerBarButtonItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerBarButtonItem.m; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				B2DA065B1C7E241C00507C3C /* SecondTVC.swift */,
 				B2AEF4521C91614200F88E86 /* ThirdVC.swift */,
 				B22F748B1C8281FE0090A704 /* SlideMenuTVC.swift */,
+				B22C99BE1C999F9800D6A896 /* LoginVC.swift */,
 			);
 			name = Controller;
 			sourceTree = "<group>";
@@ -299,6 +302,7 @@
 				B2DA065A1C7D963100507C3C /* MainCell.swift in Sources */,
 				B298FDCE1C85425D00D61D38 /* TestData02.swift in Sources */,
 				B22F748A1C8281B50090A704 /* UIViewController+MMDrawerController.m in Sources */,
+				B22C99BF1C999F9800D6A896 /* LoginVC.swift in Sources */,
 				B2DA065E1C7E242E00507C3C /* SecondCell.swift in Sources */,
 				B2C9C6CC1C83F936005A4132 /* ThirdCell.swift in Sources */,
 				B2AEF4531C91614200F88E86 /* ThirdVC.swift in Sources */,

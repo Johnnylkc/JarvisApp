@@ -10,7 +10,7 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
-class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
+class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
     
     ////tablebleView 和 tableView上面的按鈕scrollView
     let tableView = UITableView()
@@ -20,6 +20,10 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     let scrollButton1 = UIButton()
     let scrollButton2 = UIButton()
     let scrollButton3 = UIButton()
+    
+    ////搜尋霸
+    var searchBar = UISearchBar()
+
 
     ////這兩個是桌子上方那個scrollView的constrait 寫成global 這樣我才能在scrollView的delagate中使用它
     var scrollBarH = [NSLayoutConstraint]()
@@ -33,7 +37,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
     var thirdLevelArray = NSMutableArray()
     var fourthLevelArray = NSMutableArray()
     
-    
+    ////這是裝另一個api  scroll bar 按鈕的title
     var scrollButtonTextArray = NSMutableArray()
     
     
@@ -95,9 +99,59 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         self.view.addSubview(scrollBar)
 
         
+        ////navi 左邊的hamburger button
+        let hamburgerButton = UIButton(frame: CGRectMake(0,0,25,25))
+        hamburgerButton.setBackgroundImage(UIImage(named: "hamburger"), forState: .Normal)
+        hamburgerButton.addTarget(self, action: "showSideMenu:", forControlEvents: .TouchUpInside)
+        
+        let leftBarButton = UIBarButtonItem(customView: hamburgerButton)
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        
+        //// navi右邊的相機按鈕
+        let cameraButton = UIButton(frame: CGRectMake(0,0,28,28))
+        cameraButton.setBackgroundImage(UIImage(named: "camera"), forState: .Normal)
+        cameraButton.addTarget(self, action: "showCamera:", forControlEvents: .TouchUpInside)
+        
+        let rightBarButton = UIBarButtonItem(customView: cameraButton)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        ////searceBar
+        searchBar = UISearchBar()
+        searchBar.placeholder = "看你要搜尋什麼"
+        self.navigationItem.titleView = searchBar
+
+        
         
         
     }
+    
+    
+    func showSideMenu(sender:UIBarButtonItem)
+    {
+        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.manageController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+        
+    }
+    
+    ////cameraButton action  開啟相機
+    func showCamera(sender:UIBarButtonItem)
+    {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .Camera
+        self.presentViewController(picker, animated: true, completion: nil)
+    }
+    
+    ////拍照後 使用拍到的照片
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+//        shootImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+//        self.dismissViewControllerAnimated(true, completion: nil)
+//        tableView.reloadData()
+    }
+
+    
+    
     
 
     func alamofireGET()
@@ -252,6 +306,12 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource{
         
     }
 
+    
+    
+    
+    
+    
+    
     
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
