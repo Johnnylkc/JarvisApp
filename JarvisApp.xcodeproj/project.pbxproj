@@ -419,6 +419,7 @@
 			baseConfigurationReference = D7E9A69C3705016F4A40639A /* Pods-JarvisApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = JarvisApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
@@ -436,6 +437,7 @@
 			baseConfigurationReference = D004C050E33D023121A84659 /* Pods-JarvisApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CLANG_ENABLE_MODULES = YES;
 				INFOPLIST_FILE = JarvisApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
