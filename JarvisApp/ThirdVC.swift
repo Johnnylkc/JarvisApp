@@ -76,15 +76,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .None
         self.tableView.rowHeight = 200
-        
-//        let tableBackView = UIView()
-//        tableBackView.frame = self.tableView.frame
-//        
-//        let backImage = UIImageView(image: UIImage(named: "tableViewBackImage"))
-//        backImage.frame = self.tableView.frame
-//        tableBackView.addSubview(backImage)
-//        
-//        self.tableView.backgroundView = tableBackView
         self.view.addSubview(self.tableView)
 
         ////scroll bar 三個按鈕UI setting
@@ -142,6 +133,11 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         ////searceBar
         searchBar = UISearchBar()
         searchBar.placeholder = "看你要搜尋什麼"
+        self.navigationItem.titleView = searchBar
+
+        ////改變搜尋霸裡的textField的背景色的做法
+        let textField = searchBar.valueForKey("searchField") as! UITextField
+        textField.backgroundColor = UIColor.yellowColor()
         self.navigationItem.titleView = searchBar
 
         

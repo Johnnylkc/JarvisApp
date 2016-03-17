@@ -51,11 +51,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         
-//        customButton.frame = CGRectMake(0, 0, 49, 49)
-//        customButton.backgroundColor = UIColor.redColor()
-//        customButton.center = CGPointMake(tabBarController.tabBar.frame.size.width/2, tabBarController.tabBar.frame.size.height/2)
-//        customButton.addTarget(self, action: "customButton:", forControlEvents: .TouchUpInside)
-//        tabBarController.tabBar.addSubview(customButton)
+        customButton.frame = CGRectMake(0, 0, 45, 45)
+        customButton.center =
+            CGPointMake(tabBarController.tabBar.frame.size.width/2, tabBarController.tabBar.frame.size.height/2)
+        customButton.setBackgroundImage(UIImage(named: "buttomImage"), forState: .Normal)
+        customButton.layer.cornerRadius = 5
+        customButton.clipsToBounds = true
+        tabBarController.tabBar.addSubview(customButton)
         
 
         
