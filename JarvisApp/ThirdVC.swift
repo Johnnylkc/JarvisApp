@@ -4,7 +4,7 @@
 //
 //  Created by 劉坤昶 on 2016/3/10.
 //  Copyright © 2016年 JohnnyKetchup. All rights reserved.
-////
+//////
 
 import UIKit
 import Alamofire
@@ -267,8 +267,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
     ////三個scrollButton action
     func scrollButton1_click(sender:UIButton)
     {
-
-        
         changeType = "主要商品"
        
         self.firstLevelArray.removeAllObjects()

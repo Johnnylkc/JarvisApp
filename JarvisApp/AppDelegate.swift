@@ -18,6 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var tabIcon = UIImageView()
     var selectedIcon = UIImageView()
     var tabBarController = UITabBarController()
+    
+    let customButton = UIButton()
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
@@ -52,6 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let controllers = [onePageNav,twoPageNav,threePageNav,fourPageNav,fivePageNav]
         tabBarController.viewControllers = controllers
         tabBarController.tabBar.barTintColor = UIColor.blackColor()
+        ////tabbar color
         UITabBar.appearance().tintColor = UIColor.yellowColor()
 
         
