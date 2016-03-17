@@ -8,9 +8,11 @@
 
 import UIKit
 
-class SecondThreeTVC: UITableViewController {
+class SecondThreeTVC: UITableViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
     
     var searchBar = UISearchBar()
+    var shootImage = UIImage()
+
     
     var newsInfo : [newsData] = [newsData(newsImage: "007", newsText: "根據謄本資料顯示，買下此戶的神祕大戶為蔡姓自然人，是與建商的一手交易，且並未有銀行貸款，5.1億元全部以現金購買。「松濤苑」最新交易單價繼續蟬聯北市豪宅最高單價第5名，僅次於「仁愛帝寶」、「宜華國際」、「皇翔御琚」及「元大?悅」，並坐穩中正區豪宅一哥地位。台灣房屋智庫召集人劉怡蓉分析，「松濤苑」已有4筆實價揭露資訊，最新成交的3樓，與去年8月6樓成交單價270.6萬元相當，因「松濤苑」12樓頂樓，潤泰集團總裁尹衍樑在102年以每坪單價260萬元購得，推估單價270萬元已成為「松濤苑」的定錨價。劉怡蓉表示，此筆交易為房地合一上路以來第1筆豪宅交易，因北市自103年7月1日起調高新建房屋構造標準單價，以致新成屋房屋稅平均漲幅1.6倍，而「松濤苑」建築完成日為102年10月，稅制優勢將成為豪宅成交的關鍵之一。"),
         
@@ -73,6 +75,30 @@ class SecondThreeTVC: UITableViewController {
     }
     
     
+    func showSideMenu(sender:UIBarButtonItem)
+    {
+        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.manageController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+    }
+    
+    
+    ////cameraButton action  開啟相機
+    func showCamera(sender:UIBarButtonItem)
+    {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .Camera
+        self.presentViewController(picker, animated: true, completion: nil)
+    }
+    
+    ////拍照後 使用拍到的照片
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        shootImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        self.dismissViewControllerAnimated(true, completion: nil)
+        tableView.reloadData()
+    }
+
 
 //    override func didReceiveMemoryWarning() {
 //        super.didReceiveMemoryWarning()

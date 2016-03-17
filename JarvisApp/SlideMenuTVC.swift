@@ -13,14 +13,20 @@ class SlideMenuTVC: UITableViewController {
     let oneButton = UIButton()
     let twoButton = UIButton()
     let threeButton = UIButton()
-    let lineView = UIView()
     let fourButton = UIButton()
+    
+    let lineView = UIView()
+    let lineView02 = UIView()
+    let lineView03 = UIView()
+    let lineView04 = UIView()
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
+        //self.tableView.registerClass(SlideMenuCell.self, forCellReuseIdentifier: "cell")
         self.tableView.separatorStyle = .None
+        self.tableView.backgroundColor = UIColor.blackColor()
 
         allUI()
         
@@ -30,38 +36,53 @@ class SlideMenuTVC: UITableViewController {
     {
         //// 這些按鈕和lineView都在cellForRow addSubView
         
-        oneButton.frame = CGRectMake(10, 20, 260, 60)
-        oneButton.backgroundColor = UIColor.lightGrayColor()
-        oneButton.setTitle("第一個按鈕", forState: .Normal)
+        oneButton.frame = CGRectMake(10, 20, 260, 40)
+        oneButton.backgroundColor = UIColor.blackColor()
+        oneButton.setTitle("會員設定 會員設定 1", forState: .Normal)
         oneButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         oneButton.titleLabel?.font = UIFont.systemFontOfSize(20)
         oneButton.addTarget(self, action: "oneButtonClick:", forControlEvents: .TouchDown)
         
-        twoButton.frame = CGRectMake(10, 10, 260, 60)
-        twoButton.backgroundColor = UIColor.lightGrayColor()
-        twoButton.setTitle("第二個按鈕", forState: .Normal)
+        twoButton.frame = CGRectMake(10, 10, 260, 40)
+        twoButton.backgroundColor = UIColor.blackColor()
+        twoButton.setTitle("會員設定 會員設定 2", forState: .Normal)
         twoButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         twoButton.titleLabel?.font = UIFont.systemFontOfSize(20)
         twoButton.addTarget(self, action: "twoButtonClick:", forControlEvents: .TouchDown)
         
-        threeButton.frame = CGRectMake(10, 10, 260, 60)
-        threeButton.backgroundColor = UIColor.lightGrayColor()
-        threeButton.setTitle("第三個按鈕", forState:.Normal)
+        threeButton.frame = CGRectMake(10, 10, 260, 40)
+        threeButton.backgroundColor = UIColor.blackColor()
+        threeButton.setTitle("會員設定 會員設定 3", forState:.Normal)
         threeButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         threeButton.titleLabel?.font = UIFont.systemFontOfSize(20)
         threeButton.addTarget(self, action: "threeButtonClick:", forControlEvents: .TouchDown)
+        
+        fourButton.frame = CGRectMake(10, 10, 260, 40)
+        fourButton.backgroundColor = UIColor.blackColor()
+        fourButton.setTitle("會員設定 會員設定 4", forState: .Normal)
+        fourButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        fourButton.titleLabel?.font = UIFont.systemFontOfSize(20)
+        fourButton.addTarget(self, action: "fourButtonClick:", forControlEvents: .TouchDown)
         
         lineView.frame = CGRectMake(10, 0 , 260, 2)
         lineView.backgroundColor = UIColor.lightGrayColor()
         lineView.layer.cornerRadius = 2
         lineView.clipsToBounds = true
+
+        lineView02.frame = CGRectMake(10, 0 , 260, 2)
+        lineView02.backgroundColor = UIColor.lightGrayColor()
+        lineView02.layer.cornerRadius = 2
+        lineView02.clipsToBounds = true
         
-        fourButton.frame = CGRectMake(10, 10, 260, 60)
-        fourButton.backgroundColor = UIColor.lightGrayColor()
-        fourButton.setTitle("第四個按鈕", forState: .Normal)
-        fourButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        fourButton.titleLabel?.font = UIFont.systemFontOfSize(20)
-        fourButton.addTarget(self, action: "fourButtonClick:", forControlEvents: .TouchDown)
+        lineView03.frame = CGRectMake(10, 0 , 260, 2)
+        lineView03.backgroundColor = UIColor.lightGrayColor()
+        lineView03.layer.cornerRadius = 2
+        lineView03.clipsToBounds = true
+        
+        lineView04.frame = CGRectMake(10, 0 , 260, 2)
+        lineView04.backgroundColor = UIColor.lightGrayColor()
+        lineView04.layer.cornerRadius = 2
+        lineView04.clipsToBounds = true
         
         
     }
@@ -103,7 +124,7 @@ class SlideMenuTVC: UITableViewController {
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 8
+        return 10
     }
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
@@ -112,11 +133,11 @@ class SlideMenuTVC: UITableViewController {
         
         if indexPath.row == 0
         {
-            rowHeight = 90
+            rowHeight = 70
         }
         else
         {
-            rowHeight = 80
+            rowHeight = 60
         }
         
         return rowHeight
@@ -125,23 +146,33 @@ class SlideMenuTVC: UITableViewController {
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = UITableViewCell(style: .Default, reuseIdentifier: "cell")
-        
+        //let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! SlideMenuCell
+        cell.backgroundColor = UIColor.clearColor()
         cell.selectionStyle = .None
+        
+        
+        
         
         switch indexPath.row
         {
         case 0 :
             cell.addSubview(oneButton)
-            
+
         case 1:
             cell.addSubview(twoButton)
-            
+            cell.addSubview(lineView)
+
         case 2:
             cell.addSubview(threeButton)
-            
+            cell.addSubview(lineView02)
+
+
         case 3:
-            cell.addSubview(lineView)
             cell.addSubview(fourButton)
+            cell.addSubview(lineView03)
+            
+        case 4:
+            cell.addSubview(lineView04)
             
         default:
             break

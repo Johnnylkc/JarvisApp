@@ -4,7 +4,7 @@
 //
 //  Created by 劉坤昶 on 2016/2/24.
 //  Copyright © 2016年 JohnnyKetchup. All rights reserved.
-//////
+////////
 
 import UIKit
 
@@ -50,7 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         fivePage.tabBarItem = UITabBarItem(title: "寶寶酷", image: UIImage(named: "305"), selectedImage: UIImage(named: "305"))
         
         
-        
+        ////放在tabbar中間的按鈕
         customButton.frame = CGRectMake(0, 0, 45, 45)
         customButton.center =
             CGPointMake(tabBarController.tabBar.frame.size.width/2, tabBarController.tabBar.frame.size.height/2)
@@ -78,9 +78,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         manageController.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.TapCenterView
         
         
-        
-        
-        
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
         self.window?.rootViewController = manageController
         self.window?.makeKeyAndVisible()
@@ -90,10 +87,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-//    func customButton(sender:UIButton)
-//    {
-//        print("ggg")
-//    }
 
     
     func applicationWillResignActive(application: UIApplication) {

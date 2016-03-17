@@ -11,7 +11,7 @@ import UIKit
 class SecondTwoTVC: UITableViewController,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
     
     var searchBar = UISearchBar()
-
+    var shootImage = UIImage()
 
     var newsInfo : [newsData] = [newsData(newsImage: "306", newsText: "國民黨行管會主委林祐賢今天(16號)在國民黨中常會裡，提出黨產報告，林祐賢表示，黨產淨值約166億元，但面監察院調查和行政院列管的859筆爭議黨產，已經全部透過回贈或撤回訴訟等方式處理完畢；但未來還得保留退休黨工退休金及18%優惠利息、預留現職黨工年資結算準備金，以及回購中央黨部和地方黨部房屋土地準備金，林祐賢說『將來這些黨產處理完之後，扣除上面這些款項，如果還有剩的話，將來監察院調查和行政院列管的859筆爭議黨產，已經全部透過回贈或撤回訴訟等方式處理完畢；但未來還得保留退休黨工退休金及18%優惠利息、預留現職黨工年資結算準備金，以及回購中央黨部和地方黨部房屋土地準備金，林祐賢說『將來這些黨產處理完之後，扣除上面這些款項，如果還有剩的話，將來我們是建議把所有捐給公益團體，或是我們是建議把所有捐給公益團體，或是黨就得面對現金流量不足的12億元『就公司的經營來看，你淨值是正的，並不代表公司營運沒有問題，只要你的資金流量，或是資金調度不靈、周轉不靈，這公司隨時都會倒閉！』"),
         
@@ -80,6 +80,34 @@ class SecondTwoTVC: UITableViewController,UINavigationControllerDelegate,UIImage
         
     }
 
+    
+    func showSideMenu(sender:UIBarButtonItem)
+    {
+        let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.manageController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+    }
+    
+    
+    ////cameraButton action  開啟相機
+    func showCamera(sender:UIBarButtonItem)
+    {
+        let picker = UIImagePickerController()
+        picker.delegate = self
+        picker.sourceType = .Camera
+        self.presentViewController(picker, animated: true, completion: nil)
+    }
+    
+    ////拍照後 使用拍到的照片
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        shootImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        self.dismissViewControllerAnimated(true, completion: nil)
+        tableView.reloadData()
+    }
+
+    
+    
+    
 //    override func didReceiveMemoryWarning() {
 //        super.didReceiveMemoryWarning()
 //        // Dispose of any resources that can be recreated.

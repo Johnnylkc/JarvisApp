@@ -46,7 +46,7 @@ class SecondTVC: UITableViewController , UITextViewDelegate,UINavigationControll
     {
        
         navigationController?.navigationBar.barTintColor = UIColor.blackColor()
-        
+
         //////navi 左邊的hamburger button
         let hamburgerButton = UIButton(frame: CGRectMake(0,0,25,25))
         hamburgerButton.setBackgroundImage(UIImage(named: "hamburger"), forState: .Normal)
