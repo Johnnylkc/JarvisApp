@@ -50,10 +50,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-
-        
-        
         
         
         allUI()

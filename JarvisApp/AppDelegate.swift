@@ -4,7 +4,7 @@
 //
 //  Created by 劉坤昶 on 2016/2/24.
 //  Copyright © 2016年 JohnnyKetchup. All rights reserved.
-//
+////
 
 import UIKit
 
@@ -37,7 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
         let threePage = SecondThreeTVC()
         let threePageNav = UINavigationController(rootViewController: threePage)
-        threePage.tabBarItem = UITabBarItem(title: "第三頁", image: UIImage(named: "009"), selectedImage: UIImage(named: "009"))
+        threePage.tabBarItem = UITabBarItem(title: nil, image: UIImage(), selectedImage: UIImage())
         
         let fourPage = MainTVC()
         let fourPageNav = UINavigationController(rootViewController: fourPage)
@@ -49,6 +49,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let fivePageNav = UINavigationController(rootViewController: fivePage)
         fivePage.tabBarItem = UITabBarItem(title: "寶寶酷", image: UIImage(named: "305"), selectedImage: UIImage(named: "305"))
         
+        
+        
+//        customButton.frame = CGRectMake(0, 0, 49, 49)
+//        customButton.backgroundColor = UIColor.redColor()
+//        customButton.center = CGPointMake(tabBarController.tabBar.frame.size.width/2, tabBarController.tabBar.frame.size.height/2)
+//        customButton.addTarget(self, action: "customButton:", forControlEvents: .TouchUpInside)
+//        tabBarController.tabBar.addSubview(customButton)
+        
+
         
         
         let controllers = [onePageNav,twoPageNav,threePageNav,fourPageNav,fivePageNav]
@@ -79,6 +88,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
+//    func customButton(sender:UIButton)
+//    {
+//        print("ggg")
+//    }
 
     
     func applicationWillResignActive(application: UIApplication) {
