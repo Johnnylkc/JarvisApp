@@ -28,6 +28,7 @@ class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePick
 
         ////tableView setting
         self.tableView.registerClass(MainCell.self, forCellReuseIdentifier: "cell")
+        self.tableView.separatorStyle = .None
         
         let tableBackView = UIView()
         tableBackView.frame = self.tableView.frame

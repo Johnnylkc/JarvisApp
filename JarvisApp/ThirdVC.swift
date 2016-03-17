@@ -10,6 +10,8 @@ import UIKit
 import Alamofire
 import AlamofireImage
 
+
+
 class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
     
     ////tablebleView 和 tableView上面的按鈕scrollView
@@ -41,9 +43,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
     
     var typeName = String()
     var changeType:String = "主要商品"
-    
-    
-    
+
     
     override func viewDidLoad()
     {
@@ -58,7 +58,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
     
     func allUI()
     {
-        self.view.backgroundColor = UIColor.yellowColor()
+        self.view.backgroundColor = UIColor.whiteColor()
         
         let backImage = UIImageView(image: UIImage(named: "tableViewBackImage"))
         backImage.frame = self.view.frame
@@ -131,8 +131,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         ////searceBar
         searchBar = UISearchBar()
         searchBar.placeholder = "看你要搜尋什麼"
-        self.navigationItem.titleView = searchBar
-
+        searchBar.barTintColor = UIColor.blackColor()
         ////改變搜尋霸裡的textField的背景色的做法
         let textField = searchBar.valueForKey("searchField") as! UITextField
         textField.backgroundColor = UIColor.yellowColor()
@@ -309,8 +308,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
             UIView.animateWithDuration(0.3, animations: { () -> Void in
                 
                 self.scrollBarV[0].constant = 18
-                self.scrollBar.alpha = 0
-                
                 self.view.layoutSubviews()
             })
             
@@ -323,7 +320,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
                 self.view.layoutSubviews()
             })
 
-            scrollBar.alpha = 1
 
         }
         
@@ -481,21 +477,28 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
     }
     
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    override func didReceiveMemoryWarning()
+    ////被選到的細胞
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        let controller = CatchVC()
+        self.navigationController?.pushViewController(controller, animated: true)
+    
+    
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+//    override func didReceiveMemoryWarning()
+//    {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
     
 
     /*
@@ -506,6 +509,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         // Get the new view controller using segue.destinationViewController.
         //// Pass the selected object to the new view controller.
     }
-    */////
+    *///////
 
 }
