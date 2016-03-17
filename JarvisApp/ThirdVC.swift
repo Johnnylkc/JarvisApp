@@ -52,6 +52,10 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         super.viewDidLoad()
 
 
+        
+        
+        
+        
         allUI()
         autoLayout()
         alamofireGET()
@@ -60,10 +64,15 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
     
     func allUI()
     {
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.yellowColor()
         
+        let backImage = UIImageView(image: UIImage(named: "tableViewBackImage"))
+        backImage.frame = self.view.frame
+        self.view.addSubview(backImage)
+        
+        ////tableView setting
         tableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height )
-        tableView.backgroundColor = UIColor(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1)
+        tableView.backgroundColor = UIColor.clearColor()
         tableView.registerClass(ThirdCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
@@ -71,33 +80,52 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         tableView.showsVerticalScrollIndicator = false
         tableView.separatorStyle = .None
         self.tableView.rowHeight = 200
+        
+//        let tableBackView = UIView()
+//        tableBackView.frame = self.tableView.frame
+//        
+//        let backImage = UIImageView(image: UIImage(named: "tableViewBackImage"))
+//        backImage.frame = self.tableView.frame
+//        tableBackView.addSubview(backImage)
+//        
+//        self.tableView.backgroundView = tableBackView
         self.view.addSubview(self.tableView)
 
+        ////scroll bar 三個按鈕UI setting
         scrollButton1.frame = CGRectMake(10, 5, self.view.frame.size.width/2, 35)
-        scrollButton1.backgroundColor = UIColor.whiteColor()
-        scrollButton1.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        scrollButton1.backgroundColor = UIColor.blackColor()
+        scrollButton1.layer.cornerRadius = 5
+        scrollButton1.clipsToBounds = true
+        scrollButton1.setTitleColor(UIColor.yellowColor(), forState: .Normal)
         scrollButton1.addTarget(self, action: "scrollButton1_click:", forControlEvents: .TouchUpInside)
         scrollBar.addSubview(scrollButton1)
         
         scrollButton2.frame = CGRectMake(scrollButton1.frame.size.width+20, 5, self.view.frame.size.width/2, 35)
-        scrollButton2.backgroundColor = UIColor.whiteColor()
-        scrollButton2.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        scrollButton2.backgroundColor = UIColor.blackColor()
+        scrollButton2.layer.cornerRadius = 5
+        scrollButton2.clipsToBounds = true
+        scrollButton2.setTitleColor(UIColor.yellowColor(), forState: .Normal)
         scrollButton2.addTarget(self, action: "scrollButton2_click:", forControlEvents: .TouchUpInside)
         scrollBar.addSubview(scrollButton2)
         
         scrollButton3.frame = CGRectMake(scrollButton1.frame.size.width*2 + 30, 5, self.view.frame.size.width/2, 35)
-        scrollButton3.backgroundColor = UIColor.whiteColor()
-        scrollButton3.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        scrollButton3.backgroundColor = UIColor.blackColor()
+        scrollButton3.layer.cornerRadius = 5
+        scrollButton3.clipsToBounds = true
+        scrollButton3.setTitleColor(UIColor.yellowColor(), forState: .Normal)
         scrollButton3.addTarget(self, action: "scrollButton3_click:", forControlEvents: .TouchUpInside)
         scrollBar.addSubview(scrollButton3)
         
         ////這個scrollView的設定 擺在裡面的按鈕設定之後 是因為這樣才取得到 所有按鈕的寬 才知道contentSize要給多少
         scrollBar.frame = CGRectMake(0, 64, self.view.frame.size.width, 46)
-        scrollBar.backgroundColor = UIColor.redColor()
+        scrollBar.backgroundColor = UIColor.clearColor()
         scrollBar.contentSize = CGSizeMake(scrollButton1.frame.size.width * 3 + 40, 0)
         scrollBar.showsHorizontalScrollIndicator = false
         self.view.addSubview(scrollBar)
 
+        
+        ////navi顏色
+        navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         
         ////navi 左邊的hamburger button
         let hamburgerButton = UIButton(frame: CGRectMake(0,0,25,25))

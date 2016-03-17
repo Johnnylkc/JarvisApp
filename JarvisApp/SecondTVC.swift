@@ -23,9 +23,19 @@ class SecondTVC: UITableViewController , UITextViewDelegate,UINavigationControll
     {
         super.viewDidLoad()
 
+        ////tableView setting
         self.tableView.registerClass(SecondCell.self, forCellReuseIdentifier: "cell")
-        self.tableView.backgroundColor = UIColor.blackColor()
+        self.tableView.backgroundColor = UIColor.yellowColor()
         self.tableView.separatorStyle = .None
+        
+        let tableBackView = UIView()
+        tableBackView.frame = self.tableView.frame
+        
+        let backImage = UIImageView(image: UIImage(named: "tableViewBackImage"))
+        backImage.frame = self.tableView.frame
+        tableBackView.addSubview(backImage)
+        
+        self.tableView.backgroundView = tableBackView
     
     
         allUI()
@@ -35,9 +45,7 @@ class SecondTVC: UITableViewController , UITextViewDelegate,UINavigationControll
     func allUI()
     {
        
-        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
-        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
-
+        navigationController?.navigationBar.barTintColor = UIColor.blackColor()
         
         ////navi 左邊的hamburger button
         let hamburgerButton = UIButton(frame: CGRectMake(0,0,25,25))
@@ -47,8 +55,6 @@ class SecondTVC: UITableViewController , UITextViewDelegate,UINavigationControll
         let leftBarButton = UIBarButtonItem(customView: hamburgerButton)
         self.navigationItem.leftBarButtonItem = leftBarButton
         self.navigationItem.leftBarButtonItem!.tintColor = UIColor.yellowColor()
-        
-
         
         //// navi右邊的相機按鈕
         let cameraButton = UIButton(frame: CGRectMake(0,0,28,28))
@@ -68,10 +74,6 @@ class SecondTVC: UITableViewController , UITextViewDelegate,UINavigationControll
 
     }
     
-    func test()
-    {
-        print("ffff")
-    }
     
     
     func showSideMenu(sender:UIBarButtonItem)

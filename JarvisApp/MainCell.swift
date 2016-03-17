@@ -29,7 +29,7 @@ class MainCell: UITableViewCell {
     {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        basicView.backgroundColor = UIColor.whiteColor()
+        basicView.backgroundColor = UIColor.blackColor()
         contentView.addSubview(basicView)
         
         cornerImage.backgroundColor = UIColor.grayColor()
@@ -41,6 +41,7 @@ class MainCell: UITableViewCell {
         
         //titleLabel.backgroundColor = UIColor.greenColor()
         titleLabel.font = UIFont.systemFontOfSize(18)
+        titleLabel.textColor = UIColor.whiteColor()
         basicView.addSubview(titleLabel)
         
 
@@ -52,6 +53,8 @@ class MainCell: UITableViewCell {
         textView.scrollEnabled = false
         textView.editable = false
         textView.font = UIFont.systemFontOfSize(14)
+        textView.backgroundColor = UIColor.blackColor()
+        textView.textColor  = UIColor.whiteColor()
         basicView.addSubview(textView)
         
         

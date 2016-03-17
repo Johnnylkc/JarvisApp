@@ -27,9 +27,56 @@ class SecondTwoTVC: UITableViewController,UINavigationControllerDelegate,UIImage
     {
         super.viewDidLoad()
 
+        ////tableView setting
         self.tableView.registerClass(SecondCell.self, forCellReuseIdentifier: "cell")
-        self.tableView.backgroundColor = UIColor(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1)
         self.tableView.separatorStyle = .None
+        
+        let tableBackView = UIView()
+        tableBackView.frame = self.tableView.frame
+        
+        let backImage = UIImageView(image: UIImage(named: "tableViewBackImage"))
+        backImage.frame = self.tableView.frame
+        tableBackView.addSubview(backImage)
+        
+        self.tableView.backgroundView = tableBackView
+        
+
+    
+        allUI()
+        
+        
+        
+    }
+    
+    func allUI()
+    {
+        ////navi顏色
+        navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+        
+        ////navi 左邊的hamburger button
+        let hamburgerButton = UIButton(frame: CGRectMake(0,0,25,25))
+        hamburgerButton.setBackgroundImage(UIImage(named: "hamburger"), forState: .Normal)
+        hamburgerButton.addTarget(self, action: "showSideMenu:", forControlEvents: .TouchUpInside)
+        
+        let leftBarButton = UIBarButtonItem(customView: hamburgerButton)
+        self.navigationItem.leftBarButtonItem = leftBarButton
+        self.navigationItem.leftBarButtonItem!.tintColor = UIColor.yellowColor()
+        
+        //// navi右邊的相機按鈕
+        let cameraButton = UIButton(frame: CGRectMake(0,0,28,28))
+        cameraButton.setBackgroundImage(UIImage(named: "camera"), forState: .Normal)
+        cameraButton.addTarget(self, action: "showCamera:", forControlEvents: .TouchUpInside)
+        
+        let rightBarButton = UIBarButtonItem(customView: cameraButton)
+        self.navigationItem.rightBarButtonItem = rightBarButton
+        
+        ////searceBar
+        searchBar.placeholder = "看你要搜尋什麼"
+        ////改變搜尋霸裡的textField的背景色的做法
+        let textField = searchBar.valueForKey("searchField") as! UITextField
+        textField.backgroundColor = UIColor.yellowColor()
+        self.navigationItem.titleView = searchBar
+
         
     }
 

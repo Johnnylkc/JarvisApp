@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let onePage = SecondTVC()
         let onePageNav = UINavigationController(rootViewController: onePage)
-        onePageNav.navigationBar.barTintColor = UIColor.blackColor()
+        //onePageNav.navigationBar.barTintColor = UIColor.blackColor()
         onePage.tabBarItem = UITabBarItem(title: "新派對", image: UIImage(named: "001"), selectedImage: UIImage(named: "001"))
         
         let twoPage = SecondTwoTVC()
@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         twoPage.tabBarItem = UITabBarItem(title: "知識寶", image:UIImage(named: "002") , selectedImage: UIImage(named: "002"))
     
        
-        let threePage = SecondTVC()
+        let threePage = SecondThreeTVC()
         let threePageNav = UINavigationController(rootViewController: threePage)
         threePage.tabBarItem = UITabBarItem(title: "第三頁", image: UIImage(named: "009"), selectedImage: UIImage(named: "009"))
         

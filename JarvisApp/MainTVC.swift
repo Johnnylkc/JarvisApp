@@ -26,9 +26,17 @@ class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePick
     {
         super.viewDidLoad()
 
+        ////tableView setting
         self.tableView.registerClass(MainCell.self, forCellReuseIdentifier: "cell")
-        self.tableView.separatorStyle = .None
-        self.tableView.backgroundColor = UIColor(red: 230/255, green: 230/255, blue: 230/255, alpha: 1)
+        
+        let tableBackView = UIView()
+        tableBackView.frame = self.tableView.frame
+        
+        let backImage = UIImageView(image: UIImage(named: "tableViewBackImage"))
+        backImage.frame = self.tableView.frame
+        tableBackView.addSubview(backImage)
+        
+        self.tableView.backgroundView = tableBackView
         
     
         allUI()
@@ -36,6 +44,10 @@ class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePick
 
     func allUI()
     {
+        
+        ////navi顏色
+        navigationController?.navigationBar.barTintColor = UIColor.blackColor()
+
         ////navi 左邊的hamburger button
         let hamburgerButton = UIButton(frame: CGRectMake(0,0,25,25))
         hamburgerButton.setBackgroundImage(UIImage(named: "hamburger"), forState: .Normal)
@@ -55,6 +67,8 @@ class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePick
         ////searceBar
         searchBar = UISearchBar()
         searchBar.placeholder = "看你要搜尋什麼"
+        let textField = searchBar.valueForKey("searchField") as! UITextField
+        textField.backgroundColor = UIColor.yellowColor()
         self.navigationItem.titleView = searchBar
     
     
