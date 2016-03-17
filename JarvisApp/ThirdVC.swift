@@ -23,6 +23,9 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
     let scrollButton2 = UIButton()
     let scrollButton3 = UIButton()
     
+    ////loading轉圈
+    let tableIndicator = UIActivityIndicatorView()
+    
     ////搜尋霸
     var searchBar = UISearchBar()
 
@@ -60,9 +63,11 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
     {
         self.view.backgroundColor = UIColor.whiteColor()
         
+        ////整個view的背景圖片 先生一個UIView 再加UIImageView上去
         let backImage = UIImageView(image: UIImage(named: "tableViewBackImage"))
         backImage.frame = self.view.frame
         self.view.addSubview(backImage)
+        
         
         ////tableView setting
         tableView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height )
@@ -75,7 +80,14 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         tableView.separatorStyle = .None
         self.tableView.rowHeight = 200
         self.view.addSubview(self.tableView)
-
+        
+        ////tableIndicator setting
+        tableIndicator.frame = CGRectMake(0, 0, 60, 60)
+        tableIndicator.center = CGPointMake(self.view.frame.size.width/2, self.view.frame.size.height/2)
+        tableIndicator.activityIndicatorViewStyle = .Gray
+        //tableIndicator.backgroundColor = UIColor.greenColor()
+        self.view.addSubview(tableIndicator)
+        
         ////scroll bar 三個按鈕UI setting
         scrollButton1.frame = CGRectMake(10, 5, self.view.frame.size.width/2, 35)
         scrollButton1.backgroundColor = UIColor.blackColor()
@@ -173,6 +185,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
 
     func alamofireGET()
     {
+        tableIndicator.startAnimating()
         ////////抓第一個API
         let url = "http://magipea.com/admin/product/list/json"
         
@@ -220,8 +233,8 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
                 //print("kkkkk\(self.secondLevelArray.count)")
                 
             }
-        
             self.tableView.reloadData()
+            self.tableIndicator.stopAnimating()
         }
 
         ///////////抓第二個API
@@ -245,7 +258,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
            
         }
 
-        
     }////最後的大括號
     
     
@@ -365,6 +377,8 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         
         if dic3["image"] != nil
         {
+            cell.indicator.startAnimating()
+            
             let imageURL = "http://magipea.com/admin/uploads/" + "\(dic3["image"] as! String)"
             
             Alamofire.request(.GET, imageURL).responseImage { response in
@@ -373,6 +387,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
                     {
                         dispatch_async(dispatch_get_main_queue())
                         {
+                            cell.indicator.stopAnimating()
                             cell.bigImage.image = jsonImage
                         }
                     }
@@ -447,7 +462,16 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
     }
     
     
+    ////被選到的細胞
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
+    {
+        let controller = CatchVC()
+        self.navigationController?.pushViewController(controller, animated: true)
+        
+        
+    }
     
+
     
     
     func autoLayout()
@@ -476,15 +500,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
 
     }
     
-    
-    ////被選到的細胞
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
-    {
-        let controller = CatchVC()
-        self.navigationController?.pushViewController(controller, animated: true)
-    
-    
-    }
     
     
     

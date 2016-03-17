@@ -17,6 +17,7 @@ class ThirdCell: UITableViewCell {
     let discountLabel = UILabel()
     let salePriceLabel = UILabel()
     let oldPriceLabel = UILabel()
+    let indicator = UIActivityIndicatorView()
     
     
     override init(style: UITableViewCellStyle, reuseIdentifier: String?)
@@ -28,6 +29,10 @@ class ThirdCell: UITableViewCell {
         
         bigImage.backgroundColor = UIColor.whiteColor()
         basicView.addSubview(bigImage)
+        
+        indicator.activityIndicatorViewStyle = .Gray
+        //indicator.backgroundColor = UIColor.redColor()
+        bigImage.addSubview(indicator)
         
         //titleTextView.backgroundColor = UIColor.redColor()
         titleTextView.scrollEnabled = false
@@ -64,8 +69,9 @@ class ThirdCell: UITableViewCell {
         discountLabel.translatesAutoresizingMaskIntoConstraints = (false)
         salePriceLabel.translatesAutoresizingMaskIntoConstraints = (false)
         oldPriceLabel.translatesAutoresizingMaskIntoConstraints = (false)
+        indicator.translatesAutoresizingMaskIntoConstraints = (false)
         
-        let dic = ["basicView":basicView,"bigImage":bigImage,"titleTextView":titleTextView,"discountLabel":discountLabel,"salePriceLabel":salePriceLabel,"oldPriceLabel":oldPriceLabel]
+        let dic = ["basicView":basicView,"bigImage":bigImage,"titleTextView":titleTextView,"discountLabel":discountLabel,"salePriceLabel":salePriceLabel,"oldPriceLabel":oldPriceLabel,"indicator":indicator]
         
         
         ////basicView
@@ -82,6 +88,15 @@ class ThirdCell: UITableViewCell {
         
         let bigImageV = NSLayoutConstraint.constraintsWithVisualFormat("V:|[bigImage]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(bigImageV)
+        
+        
+        ////indicator
+        let indicatorH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-60-[indicator(60)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        bigImage.addConstraints(indicatorH)
+        
+        let indicatorV = NSLayoutConstraint.constraintsWithVisualFormat("V:|-60-[indicator(60)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        bigImage.addConstraints(indicatorV)
+        
         
         
         ////titleTextView
