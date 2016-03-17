@@ -31,11 +31,9 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
     
     ////裝整個JSON、JSON第二層、JSON第三層
     var allJsonArray = NSMutableArray()
-    
     var firstLevelArray = NSMutableArray()
     var secondLevelArray = NSMutableArray()
     var thirdLevelArray = NSMutableArray()
-    var fourthLevelArray = NSMutableArray()
     
     ////這是裝另一個api  scroll bar 按鈕的title
     var scrollButtonTextArray = NSMutableArray()
@@ -83,7 +81,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         scrollButton1.backgroundColor = UIColor.blackColor()
         scrollButton1.layer.cornerRadius = 5
         scrollButton1.clipsToBounds = true
-        scrollButton1.setTitleColor(UIColor.yellowColor(), forState: .Normal)
+        scrollButton1.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         scrollButton1.addTarget(self, action: "scrollButton1_click:", forControlEvents: .TouchUpInside)
         scrollBar.addSubview(scrollButton1)
         
@@ -186,39 +184,38 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
             {
                 self.allJsonArray = JSON as! NSMutableArray
 
+                ////把抓了全部JSON的陣列 篩選出只有type_name是...的物件 裝進firstLevelArray
                 for item in self.allJsonArray
                 {
                     self.typeName = item["type_name"] as! String
                     if self.typeName == self.changeType
                     {
                         self.firstLevelArray.addObject(item)
-                        print("阿拉摸裡面\(self.changeType)")
+                        print("阿拉摸裡面的type_name\(self.changeType)")
                     }
                 }
                 
                
-                
+                ////從firstLevelArray中 篩選出所有"color"層裡的第一個"picture" 裝進secondLevelArray
                 for item2 in self.firstLevelArray
                 {
                     self.secondLevelArray.addObject(item2["color"]!![0] )
                 }
                 
                
-                
+                ////從secondLevelArray中 進入"picture"層 把"picture"裡的東西 裝進
                 for item3 in self.secondLevelArray
                 {
-                    self.thirdLevelArray.addObject(item3)
                     
                     let oneArray:NSMutableArray = item3["picture"] as! NSMutableArray
                     
                     for item4 in oneArray
                     {
-                        self.fourthLevelArray.addObject(item4)
+                        self.thirdLevelArray.addObject(item4)
                     }
                     
                 }
 
-                //print("hhhhhh\(self.fourthLevelArray)")
                 //print("uuuu\(self.thirdLevelArray)")
                 //print("ccccc\(self.firstLevelArray.count)")
                 //print("kkkkk\(self.secondLevelArray.count)")
@@ -259,39 +256,47 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
     ////三個scrollButton action
     func scrollButton1_click(sender:UIButton)
     {
+        //一開始在allUI就把scrollButton1的文字顏色設定成白色了
+        scrollButton1.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        scrollButton2.setTitleColor(UIColor.yellowColor(), forState: .Normal)
+        scrollButton3.setTitleColor(UIColor.yellowColor(), forState: .Normal)
+        
         changeType = "主要商品"
-       
         self.firstLevelArray.removeAllObjects()
         self.secondLevelArray.removeAllObjects()
         self.thirdLevelArray.removeAllObjects()
-        self.fourthLevelArray.removeAllObjects()
         alamofireGET()
-        print(changeType)
+        print("現在產品類型改變成\(changeType)")
     }
     
     
     func scrollButton2_click(sender:UIButton)
     {
-       
+        scrollButton1.setTitleColor(UIColor.yellowColor(), forState: .Normal)
+        scrollButton2.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        scrollButton3.setTitleColor(UIColor.yellowColor(), forState: .Normal)
+        
         changeType = "其他商品"
         self.firstLevelArray.removeAllObjects()
         self.secondLevelArray.removeAllObjects()
         self.thirdLevelArray.removeAllObjects()
-        self.fourthLevelArray.removeAllObjects()
         alamofireGET()
-        print(changeType)
+        print("現在產品類型改變成\(changeType)")
     }
     
     
     func scrollButton3_click(sender:UIButton)
     {
+        scrollButton1.setTitleColor(UIColor.yellowColor(), forState: .Normal)
+        scrollButton2.setTitleColor(UIColor.yellowColor(), forState: .Normal)
+        scrollButton3.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        
         changeType = "換購商品"
         self.firstLevelArray.removeAllObjects()
         self.secondLevelArray.removeAllObjects()
         self.thirdLevelArray.removeAllObjects()
-        self.fourthLevelArray.removeAllObjects()
         alamofireGET()
-        print(changeType)
+        print("現在產品類型改變成\(changeType)")
     }
 
   
@@ -356,16 +361,15 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
 //        let dic0 = self.allJsonArray[indexPath.row]
         let dic1 = self.firstLevelArray[indexPath.row]
 //        let dic2 = self.secondLevelArray[indexPath.row]
-//        let dic3 = self.thirdLevelArray[indexPath.row]
-        let dic4 = self.fourthLevelArray[indexPath.row]
+        let dic3 = self.thirdLevelArray[indexPath.row]
 
     
         ////商品圖片
         cell.bigImage.image = nil
         
-        if dic4["image"] != nil
+        if dic3["image"] != nil
         {
-            let imageURL = "http://magipea.com/admin/uploads/" + "\(dic4["image"] as! String)"
+            let imageURL = "http://magipea.com/admin/uploads/" + "\(dic3["image"] as! String)"
             
             Alamofire.request(.GET, imageURL).responseImage { response in
                 
@@ -502,6 +506,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         // Get the new view controller using segue.destinationViewController.
         //// Pass the selected object to the new view controller.
     }
-    *///
+    */////
 
 }
