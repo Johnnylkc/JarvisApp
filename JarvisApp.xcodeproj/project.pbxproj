@@ -18,7 +18,6 @@
 		B28266661C99C6D800E40622 /* SecondThreeTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28266651C99C6D800E40622 /* SecondThreeTVC.swift */; };
 		B282666A1C9AC20300E40622 /* CatchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B28266691C9AC20300E40622 /* CatchVC.swift */; };
 		B298FDCE1C85425D00D61D38 /* TestData02.swift in Sources */ = {isa = PBXBuildFile; fileRef = B298FDCD1C85425D00D61D38 /* TestData02.swift */; };
-		B298FDD01C8544B500D61D38 /* TestData03.swift in Sources */ = {isa = PBXBuildFile; fileRef = B298FDCF1C8544B500D61D38 /* TestData03.swift */; };
 		B2AEF4531C91614200F88E86 /* ThirdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2AEF4521C91614200F88E86 /* ThirdVC.swift */; };
 		B2C9C6CC1C83F936005A4132 /* ThirdCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2C9C6CB1C83F936005A4132 /* ThirdCell.swift */; };
 		B2DA06441C7D950700507C3C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA06431C7D950700507C3C /* AppDelegate.swift */; };
@@ -48,7 +47,6 @@
 		B28266651C99C6D800E40622 /* SecondThreeTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondThreeTVC.swift; sourceTree = "<group>"; };
 		B28266691C9AC20300E40622 /* CatchVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CatchVC.swift; sourceTree = "<group>"; };
 		B298FDCD1C85425D00D61D38 /* TestData02.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData02.swift; sourceTree = "<group>"; };
-		B298FDCF1C8544B500D61D38 /* TestData03.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestData03.swift; sourceTree = "<group>"; };
 		B2AEF4521C91614200F88E86 /* ThirdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdVC.swift; sourceTree = "<group>"; };
 		B2C9C6CB1C83F936005A4132 /* ThirdCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdCell.swift; sourceTree = "<group>"; };
 		B2DA06401C7D950700507C3C /* JarvisApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = JarvisApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,7 +105,6 @@
 			children = (
 				B22F74B21C836D800090A704 /* TestData.swift */,
 				B298FDCD1C85425D00D61D38 /* TestData02.swift */,
-				B298FDCF1C8544B500D61D38 /* TestData03.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -301,7 +298,6 @@
 				B282666A1C9AC20300E40622 /* CatchVC.swift in Sources */,
 				B28266641C99C6B900E40622 /* SecondTwoTVC.swift in Sources */,
 				B2DA06561C7D95FC00507C3C /* MainTVC.swift in Sources */,
-				B298FDD01C8544B500D61D38 /* TestData03.swift in Sources */,
 				B28266661C99C6D800E40622 /* SecondThreeTVC.swift in Sources */,
 				B22F74B31C836D800090A704 /* TestData.swift in Sources */,
 				B22F74871C8281B50090A704 /* MMDrawerBarButtonItem.m in Sources */,
