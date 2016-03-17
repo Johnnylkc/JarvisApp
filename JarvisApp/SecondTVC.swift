@@ -4,7 +4,7 @@
 //
 //  Created by 劉坤昶 on 2016/2/25.
 //  Copyright © 2016年 JohnnyKetchup. All rights reserved.
-//
+////
 
 import UIKit
 
@@ -34,13 +34,25 @@ class SecondTVC: UITableViewController , UITextViewDelegate,UINavigationControll
     
     func allUI()
     {
+       
+        navigationController?.navigationBar.tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+
+        
         ////navi 左邊的hamburger button
         let hamburgerButton = UIButton(frame: CGRectMake(0,0,25,25))
         hamburgerButton.setBackgroundImage(UIImage(named: "hamburger"), forState: .Normal)
         hamburgerButton.addTarget(self, action: "showSideMenu:", forControlEvents: .TouchUpInside)
         
+        
+        
+        
+        
+        
+        
         let leftBarButton = UIBarButtonItem(customView: hamburgerButton)
         self.navigationItem.leftBarButtonItem = leftBarButton
+        self.navigationItem.leftBarButtonItem!.tintColor = UIColor.yellowColor()
         
         //// navi右邊的相機按鈕
         let cameraButton = UIButton(frame: CGRectMake(0,0,28,28))

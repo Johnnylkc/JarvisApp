@@ -25,6 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let onePage = SecondTVC()
         let onePageNav = UINavigationController(rootViewController: onePage)
+        onePageNav.navigationBar.barTintColor = UIColor.blackColor()
         onePage.tabBarItem = UITabBarItem(title: "新派對", image: UIImage(named: "001"), selectedImage: UIImage(named: "001"))
         
         let twoPage = SecondTwoTVC()
