@@ -44,15 +44,11 @@ class SecondTVC: UITableViewController , UITextViewDelegate,UINavigationControll
         hamburgerButton.setBackgroundImage(UIImage(named: "hamburger"), forState: .Normal)
         hamburgerButton.addTarget(self, action: "showSideMenu:", forControlEvents: .TouchUpInside)
         
-        
-        
-        
-        
-        
-        
         let leftBarButton = UIBarButtonItem(customView: hamburgerButton)
         self.navigationItem.leftBarButtonItem = leftBarButton
         self.navigationItem.leftBarButtonItem!.tintColor = UIColor.yellowColor()
+        
+
         
         //// navi右邊的相機按鈕
         let cameraButton = UIButton(frame: CGRectMake(0,0,28,28))
@@ -64,8 +60,17 @@ class SecondTVC: UITableViewController , UITextViewDelegate,UINavigationControll
         
         ////searceBar
         searchBar.placeholder = "看你要搜尋什麼"
+        ////改變搜尋霸裡的textField的背景色的做法
+        
+        let textField = searchBar.valueForKey("searchField") as! UITextField
+        textField.backgroundColor = UIColor.yellowColor()
         self.navigationItem.titleView = searchBar
 
+    }
+    
+    func test()
+    {
+        print("ffff")
     }
     
     
