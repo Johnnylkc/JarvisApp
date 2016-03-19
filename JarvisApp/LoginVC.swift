@@ -10,10 +10,11 @@ import UIKit
 
 class LoginVC: UIViewController {
 
-    var manageController = MMDrawerController() ////側邊選單要用的content controller
-
+    let emailTextField = UITextField()
+    let passwordTextField = UITextField()
+    let forgetButton = UIButton()
+    let signUpButton = UIButton()
     let loginButton = UIButton()
-    let customButton = UIButton()
 
     
     override func viewDidLoad()
@@ -22,6 +23,7 @@ class LoginVC: UIViewController {
     
         
         allUI()
+        autoLayout()
         
     }
 
@@ -31,71 +33,37 @@ class LoginVC: UIViewController {
     {
         self.view.backgroundColor = UIColor.whiteColor()
         
-        loginButton.frame = CGRectMake(0, 0, 200, 40)
-        loginButton.center = CGPointMake(self.view.frame.size.width/2, 200)
-        loginButton.backgroundColor = UIColor.redColor()
+       
+        emailTextField.placeholder = "email"
+        emailTextField.borderStyle = .RoundedRect
+        self.view.addSubview(emailTextField)
+        
+        passwordTextField.placeholder = "password"
+        passwordTextField.borderStyle = .RoundedRect
+        self.view.addSubview(passwordTextField)
+        
+        //forgetButton.backgroundColor = UIColor.redColor()
+        forgetButton.setTitle("忘記密碼", forState: .Normal)
+        forgetButton.setTitleColor(UIColor.blueColor(), forState: .Normal)
+        forgetButton.contentHorizontalAlignment = .Left
+        forgetButton.titleLabel?.font = UIFont.systemFontOfSize(15)
+        forgetButton.addTarget(self, action: "forget", forControlEvents: .TouchUpInside)
+        self.view.addSubview(forgetButton)
+        
+        signUpButton.backgroundColor = UIColor.redColor()
+        signUpButton.setTitle("註冊", forState: .Normal)
+        signUpButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        signUpButton.addTarget(self, action: "signUp", forControlEvents: .TouchUpInside)
+        self.view.addSubview(signUpButton)
+        
+        loginButton.backgroundColor = UIColor.blueColor()
         loginButton.setTitle("登入", forState: .Normal)
         loginButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        loginButton.addTarget(self, action: "login", forControlEvents: .TouchDown)
+        loginButton.addTarget(self, action: "login", forControlEvents: .TouchUpInside)
         self.view.addSubview(loginButton)
         
         
         
-//        
-//        let onePage = SecondTVC()
-//        let onePageNav = UINavigationController(rootViewController: onePage)
-//        onePage.tabBarItem =
-//            UITabBarItem(title: "新派對", image: UIImage(named: "001"), selectedImage: UIImage(named: "001"))
-//        
-//        let twoPage = SecondTwoTVC()
-//        let twoPageNav = UINavigationController(rootViewController: twoPage)
-//        twoPage.tabBarItem =
-//            UITabBarItem(title: "知識寶", image:UIImage(named: "002") , selectedImage: UIImage(named: "002"))
-//        
-//        
-//        let threePage = SecondThreeTVC()
-//        let threePageNav = UINavigationController(rootViewController: threePage)
-//        threePage.tabBarItem =
-//            UITabBarItem(title: nil, image: UIImage(), selectedImage: UIImage())
-//        
-//        let fourPage = MainTVC()
-//        let fourPageNav = UINavigationController(rootViewController: fourPage)
-//        fourPage.tabBarItem =
-//            UITabBarItem(title: "星寶寶", image: UIImage(named: "304"), selectedImage: UIImage(named: "304"))
-//        
-//        
-//        let fivePage = ThirdVC()
-//        let fivePageNav = UINavigationController(rootViewController: fivePage)
-//        fivePage.tabBarItem =
-//            UITabBarItem(title: "寶寶酷", image: UIImage(named: "305"), selectedImage: UIImage(named: "305"))
-//        
-//        
-//        let controllers = [onePageNav,twoPageNav,threePageNav,fourPageNav,fivePageNav]
-//        let tabBarController = UITabBarController()
-//        tabBarController.viewControllers = controllers
-//        tabBarController.tabBar.barTintColor = UIColor.blackColor()
-//        UITabBar.appearance().tintColor = UIColor.yellowColor()
-//        
-//        
-//        ////放在tabbar中間的按鈕
-//        customButton.frame = CGRectMake(0, 0, 45, 45)
-//        customButton.center =
-//            CGPointMake(tabBarController.tabBar.frame.size.width/2, tabBarController.tabBar.frame.size.height/2)
-//        customButton.setBackgroundImage(UIImage(named: "buttomImage"), forState: .Normal)
-//        customButton.layer.cornerRadius = 5
-//        customButton.clipsToBounds = true
-//        tabBarController.tabBar.addSubview(customButton)
-//        
-//        
-//        ////側邊選單的設定
-//        let slidePage = SlideMenuTVC()
-//        manageController =
-//            MMDrawerController(centerViewController: tabBarController, leftDrawerViewController: slidePage)
-//        
-//        manageController.maximumLeftDrawerWidth = 280
-//        manageController.openDrawerGestureModeMask = MMOpenDrawerGestureMode.PanningCenterView
-//        manageController.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.TapCenterView
-//        
         
         
         
@@ -106,12 +74,67 @@ class LoginVC: UIViewController {
     func login()
     {
         let appDeltgate : AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        
-
         appDeltgate.manageController.modalTransitionStyle = .CrossDissolve
         self.presentViewController(appDeltgate.manageController, animated: true, completion: nil)
+      
+    }
+    
+    func forget()
+    {
+        print("你按了忘記密碼")
+    }
+    
+    func signUp()
+    {
+        print("註冊 你按了註冊")
+    }
+    
+    func autoLayout()
+    {
+        emailTextField.translatesAutoresizingMaskIntoConstraints = (false)
+        passwordTextField.translatesAutoresizingMaskIntoConstraints = (false)
+        forgetButton.translatesAutoresizingMaskIntoConstraints = (false)
+        signUpButton.translatesAutoresizingMaskIntoConstraints = (false)
+        loginButton.translatesAutoresizingMaskIntoConstraints = (false)
         
+        let dic = ["emailTextField":emailTextField,"passwordTextField":passwordTextField,"forgetButton":forgetButton,"signUpButton":signUpButton,"loginButton":loginButton]
         
+        ////emailTextField
+        let emailTextField_H = NSLayoutConstraint.constraintsWithVisualFormat("H:|-30-[emailTextField]-30-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        self.view.addConstraints(emailTextField_H)
+        
+        let emailTextField_V = NSLayoutConstraint.constraintsWithVisualFormat("V:|-150-[emailTextField(30)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        self.view.addConstraints(emailTextField_V)
+        
+        ////passwordTextField
+        let passwordTextField_H = NSLayoutConstraint.constraintsWithVisualFormat("H:|-30-[passwordTextField]-30-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        self.view.addConstraints(passwordTextField_H)
+        
+        let passwordTextField_V = NSLayoutConstraint.constraintsWithVisualFormat("V:[emailTextField]-20-[passwordTextField(30)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        self.view.addConstraints(passwordTextField_V)
+        
+        ////forgetButton
+        let forgetButton_H = NSLayoutConstraint.constraintsWithVisualFormat("H:|-30-[forgetButton(100)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        self.view.addConstraints(forgetButton_H)
+        
+        let forgetButton_V = NSLayoutConstraint.constraintsWithVisualFormat("V:[passwordTextField]-5-[forgetButton(20)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        self.view.addConstraints(forgetButton_V)
+        
+        ////signUpButton
+        let signUpButton_H = NSLayoutConstraint.constraintsWithVisualFormat("H:|-30-[signUpButton(120)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        self.view.addConstraints(signUpButton_H)
+        
+        let signUpButton_V = NSLayoutConstraint.constraintsWithVisualFormat("V:[passwordTextField]-100-[signUpButton(40)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        self.view.addConstraints(signUpButton_V)
+        
+        ////loginButton
+        let loginButton_H = NSLayoutConstraint.constraintsWithVisualFormat("H:[loginButton(120)]-30-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        self.view.addConstraints(loginButton_H)
+        
+        let loginButton_V = NSLayoutConstraint.constraintsWithVisualFormat("V:[passwordTextField]-100-[loginButton(40)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        self.view.addConstraints(loginButton_V)
+        
+    
     }
     
     

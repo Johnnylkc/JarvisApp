@@ -75,14 +75,11 @@ class SecondTVC: UITableViewController , UITextViewDelegate,UINavigationControll
     }
     
     
-    
+    ////漢堡action
     func showSideMenu(sender:UIBarButtonItem)
     {
         let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.manageController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
-        
-        
-        
     }
     
     
