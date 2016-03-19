@@ -229,7 +229,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
                 }
 
                 //print("uuuu\(self.thirdLevelArray)")
-                //print("ccccc\(self.firstLevelArray.count)")
+                //print("ccccc\(self.firstLevelArray)")
                 //print("kkkkk\(self.secondLevelArray.count)")
                 
             }
@@ -466,6 +466,15 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         let controller = CatchVC()
+        
+        ////catchArray 來自 CatchVC
+        ////先做一個"舊字典" = 舊資料的indexPath.row , 接資料的controller 生一個“新字典” = “舊字典”
+        let oldDic01 : NSDictionary = firstLevelArray[indexPath.row] as! NSDictionary
+        let oldDic02 : NSDictionary = thirdLevelArray[indexPath.row] as! NSDictionary
+        
+        catchDic01 = oldDic01
+        catchDic02 = oldDic02
+        
         self.navigationController?.pushViewController(controller, animated: true)
         
         

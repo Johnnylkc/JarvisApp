@@ -4,7 +4,7 @@
 //
 //  Created by 劉坤昶 on 2016/2/25.
 //  Copyright © 2016年 JohnnyKetchup. All rights reserved.
-////
+
 
 import UIKit
 
@@ -19,6 +19,7 @@ class SecondTVC: UITableViewController , UITextViewDelegate,UINavigationControll
         
         newsData(newsImage: "203", newsText: "基於轉型正義的考慮，民進黨高志鵬提出廢除「國父」遺像的議案。不出所料，被挑動神經的藍派空反撲。曾代表新黨出選的葉毓蘭就以南非為例；表示以白人總統克魯格命名的國家公園亦沒有在黑人執政後易名，園內銅像依然屹立。在有意無意之間，葉教授明顯忽略了一些重要事實。孫文代表的，是一個殖民台灣的犯罪集團；不像南非、美國白人經已在地化。鄭南榕是後二代但沒有台灣人會將他視為他者。正如葉教授所言，克魯格是帶領南非擺脫英殖的民族英雄。種族仇恨亦隨著告別隔離政策而化解。外來政權卻依舊壓迫、搶掠台灣人，在經已民主化的今天。葉教授指責民進黨對孫文、國民黨充滿敵意，在尖閣、中國慰安婦等議題卻盡顯「軟弱」。筆者百思不得其解，就尖閣、中國慰安婦等議題跟日本交惡的是「兩個中國」，台灣在地政黨為何要跟你們操心？再講，國共就尖閣、中國慰安婦等議題處處刁難不過為了將日本不予承認的開羅宣言、波茨坦公告變成事實。簡單來說，就是針對台灣。每當台灣有難，日本總是第一時間伸出援手。台灣人決不能恩將仇報。現任首相安倍待台灣亦向來友善。台灣人一定要珍惜自己和日本人之間的友誼。")]
 
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -36,7 +37,6 @@ class SecondTVC: UITableViewController , UITextViewDelegate,UINavigationControll
         tableBackView.addSubview(backImage)
         
         self.tableView.backgroundView = tableBackView
-    
     
         allUI()
     }
@@ -80,6 +80,9 @@ class SecondTVC: UITableViewController , UITextViewDelegate,UINavigationControll
     {
         let appDelegate:AppDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.manageController.toggleDrawerSide(MMDrawerSide.Left, animated: true, completion: nil)
+        
+        
+        
     }
     
     

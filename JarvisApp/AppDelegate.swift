@@ -4,7 +4,7 @@
 //
 //  Created by 劉坤昶 on 2016/2/24.
 //  Copyright © 2016年 JohnnyKetchup. All rights reserved.
-//////////
+//////
 
 import UIKit
 
@@ -27,7 +27,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let onePage = SecondTVC()
         let onePageNav = UINavigationController(rootViewController: onePage)
-        //onePageNav.navigationBar.barTintColor = UIColor.blackColor()
         onePage.tabBarItem = UITabBarItem(title: "新派對", image: UIImage(named: "001"), selectedImage: UIImage(named: "001"))
         
         let twoPage = SecondTwoTVC()
@@ -42,7 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let fourPage = MainTVC()
         let fourPageNav = UINavigationController(rootViewController: fourPage)
         fourPage.tabBarItem = UITabBarItem(title: "星寶寶", image: UIImage(named: "304"), selectedImage: UIImage(named: "304"))
-        
         
         
         let fivePage = ThirdVC()
@@ -75,11 +73,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         manageController.maximumLeftDrawerWidth = 280
         manageController.openDrawerGestureModeMask = MMOpenDrawerGestureMode.PanningCenterView
-        manageController.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.TapCenterView
+        manageController.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.PanningCenterView
+        
+        
+        
+        let testPage = LoginVC()
+        
         
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = manageController
+        self.window?.rootViewController = testPage
+       // self.window?.rootViewController = onePage
+
         self.window?.makeKeyAndVisible()
         
         
