@@ -144,9 +144,12 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         searchBar = UISearchBar()
         searchBar.placeholder = "看你要搜尋什麼"
         searchBar.barTintColor = UIColor.blackColor()
+       
         ////改變搜尋霸裡的textField的背景色的做法
         let textField = searchBar.valueForKey("searchField") as! UITextField
         textField.backgroundColor = UIColor.yellowColor()
+        
+        
         self.navigationItem.titleView = searchBar
 
         

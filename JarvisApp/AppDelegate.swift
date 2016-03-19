@@ -4,7 +4,7 @@
 //
 //  Created by 劉坤昶 on 2016/2/24.
 //  Copyright © 2016年 JohnnyKetchup. All rights reserved.
-//////
+////////
 
 import UIKit
 
@@ -57,13 +57,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         customButton.clipsToBounds = true
         tabBarController.tabBar.addSubview(customButton)
         
-
-        
         
         let controllers = [onePageNav,twoPageNav,threePageNav,fourPageNav,fivePageNav]
         tabBarController.viewControllers = controllers
-        tabBarController.tabBar.barTintColor = UIColor.blackColor()
         ////tabbar color
+        tabBarController.tabBar.barTintColor = UIColor.blackColor()
         UITabBar.appearance().tintColor = UIColor.yellowColor()
 
         
@@ -75,16 +73,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         manageController.openDrawerGestureModeMask = MMOpenDrawerGestureMode.PanningCenterView
         manageController.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.PanningCenterView
         
+        ////重點重點 後來我知道為什麼了 其實可以在appDelegate把UITabBarController的設定先做好 反正到最後tabBarController都是要接到MMDrawerController的 所以之後的接口就是MMDrawerController！！
         
-        
-        let testPage = LoginVC()
-        
-        
+        let loginPage = LoginVC()
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = testPage
-       // self.window?.rootViewController = onePage
-
+        self.window?.rootViewController = loginPage
         self.window?.makeKeyAndVisible()
         
         
