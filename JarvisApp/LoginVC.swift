@@ -4,7 +4,7 @@
 //
 //  Created by 劉坤昶 on 2016/3/18.
 //  Copyright © 2016年 JohnnyKetchup. All rights reserved.
-//
+////
 
 import UIKit
 
@@ -31,16 +31,31 @@ class LoginVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func allUI()
     {
-        self.view.backgroundColor = UIColor(red: 230/255.0, green: 230/255.0, blue: 230/255.0, alpha: 1)
+        self.view.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1)
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.scrollEnabled = false
-        
         self.view.addSubview(tableView)
         
+        emailTextField.frame = CGRectMake(15, 7,self.view.frame.size.width - 20, 30)
+        emailTextField.placeholder = "Email address"
+        emailTextField.borderStyle = .None
+        //emailTextField.backgroundColor = UIColor.yellowColor()
         
+        passwordTextField.frame = emailTextField.frame
+        passwordTextField.placeholder = "Password"
+        passwordTextField.borderStyle = .None
+        //passwordTextField.backgroundColor = UIColor.yellowColor()
+        
+        loginButton.backgroundColor = UIColor(red: 46/255.0, green: 182/255.0, blue: 76/255.0, alpha: 1)
+        loginButton.layer.cornerRadius = 5
+        loginButton.clipsToBounds = true
+        loginButton.setTitle("登入", forState: .Normal)
+        loginButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        loginButton.addTarget(self, action: "login:", forControlEvents: .TouchUpInside)
+        self.view.addSubview(loginButton)
         
         
     }
@@ -54,6 +69,10 @@ class LoginVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
       
     }
     
+    func login(sender:UIButton)
+    {
+        print("你按了登入喔")
+    }
 
    
     
@@ -72,14 +91,19 @@ class LoginVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     {
         let cell = UITableViewCell(style: .Value1, reuseIdentifier: "cell")
         
-//        switch indexPath.row
-//        {
-//        
-//            
-//        
-//            
-//       
-//        }
+        switch indexPath.row
+        {
+        case 0:
+            cell.addSubview(emailTextField)
+            
+        case 1:
+            cell.addSubview(passwordTextField)
+        
+            
+        default:
+            break
+       
+        }
         
         
         return cell
@@ -90,9 +114,10 @@ class LoginVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func autoLayout()
     {
         tableView.translatesAutoresizingMaskIntoConstraints = (false)
+        loginButton.translatesAutoresizingMaskIntoConstraints = (false)
 
         
-        let dic = ["tableView":tableView]
+        let dic = ["tableView":tableView,"loginButton":loginButton]
         
         
         /////tableView
@@ -101,6 +126,13 @@ class LoginVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         let tableView_V = NSLayoutConstraint.constraintsWithVisualFormat("V:|-130-[tableView(87)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         self.view.addConstraints(tableView_V)////一個static cell 高度是 44
+        
+        ////loginButton
+        let loginButton_H = NSLayoutConstraint.constraintsWithVisualFormat("H:|-30-[loginButton]-30-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        self.view.addConstraints(loginButton_H)
+        
+        let loginButton_V = NSLayoutConstraint.constraintsWithVisualFormat("V:[tableView]-30-[loginButton(40)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        self.view.addConstraints(loginButton_V)
         
         
     }
