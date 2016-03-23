@@ -37,6 +37,7 @@ class LoginVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.scrollEnabled = false
+        automaticallyAdjustsScrollViewInsets = false
         self.view.addSubview(tableView)
         
         emailTextField.frame = CGRectMake(15, 7,self.view.frame.size.width - 20, 30)
@@ -91,6 +92,8 @@ class LoginVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = UITableViewCell(style: .Value1, reuseIdentifier: "cell")
+        cell.selectionStyle = .None
+
         
         switch indexPath.row
         {

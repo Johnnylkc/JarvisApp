@@ -31,11 +31,22 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func allUI()
     {
         self.view.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1)
+        self.title = "註冊"
+        
+        let cancelButton = UIButton(frame: CGRectMake(0,0,27,27))
+        cancelButton.setBackgroundImage(UIImage(named: "cancel"), forState: .Normal)
+        cancelButton.addTarget(self, action: "cancel:", forControlEvents: .TouchUpInside)
+        let left = UIBarButtonItem(customView: cancelButton)
+        self.navigationItem.leftBarButtonItem = left
+            
+        
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
         tableView.dataSource = self
         tableView.scrollEnabled = false
+        
+        automaticallyAdjustsScrollViewInsets = false
         self.view.addSubview(tableView)
         
         userNameTextfield.frame = CGRectMake(15, 7,self.view.frame.size.width - 20, 30)
@@ -78,9 +89,14 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func login(sender:UIButton)
     {
         print("你按了登入按鈕 前往登入頁")
+        let controller = LoginVC()
+        self.navigationController?.pushViewController(controller, animated: true)
         
-        //let controller = LoginVC()
-        
+    }
+    
+    func cancel(sender:UIButton)
+    {
+        self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     
@@ -97,6 +113,7 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = UITableViewCell(style: .Value1, reuseIdentifier: "cell")
+        cell.selectionStyle = .None
         
         switch indexPath.row
         {

@@ -16,7 +16,7 @@ class MainCell: UITableViewCell {
     let cancelButton = UIButton() //// 右上角的按鈕
     let bigImage = UIImageView()
     let textView = UITextView()
-    let loveButton = UIButton()
+    let likeButton = UIButton()
     let messageButton = UIButton()
     let shareButton = UIButton()
     
@@ -44,9 +44,9 @@ class MainCell: UITableViewCell {
         titleLabel.textColor = UIColor.whiteColor()
         basicView.addSubview(titleLabel)
         
-
+        //cancelButton.backgroundColor = UIColor.redColor()
         cancelButton.setBackgroundImage(UIImage(named: "other"), forState: .Normal)
-        cancelButton.addTarget(self, action: "other:", forControlEvents: .TouchUpInside)
+        cancelButton.addTarget(self, action: "upAndDown:", forControlEvents: .TouchUpInside)
         basicView.addSubview(cancelButton)
         
         //textView.backgroundColor = UIColor.brownColor()
@@ -61,22 +61,19 @@ class MainCell: UITableViewCell {
         bigImage.backgroundColor = UIColor.redColor()
         basicView.addSubview(bigImage)
         
-        //loveButton.backgroundColor = UIColor.lightGrayColor()
-        loveButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
-        loveButton.setTitle("喜歡", forState: .Normal)
-        loveButton.addTarget(self, action: "likeIt:", forControlEvents: .TouchUpInside)
-        basicView.addSubview(loveButton)
+        //likeButton.backgroundColor = UIColor.lightGrayColor()
+        likeButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
+        likeButton.setTitle("喜歡", forState: .Normal)
+        basicView.addSubview(likeButton)
         
        // messageButton.backgroundColor = UIColor.lightGrayColor()
         messageButton.setTitle("留言", forState: .Normal)
         messageButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
-        messageButton.addTarget(self, action: "saySome:", forControlEvents: .TouchUpInside)
         basicView.addSubview(messageButton)
         
         //shareButton.backgroundColor = UIColor.lightGrayColor()
         shareButton.setTitle("分享", forState: .Normal)
         shareButton.setTitleColor(UIColor.grayColor(), forState: .Normal)
-        shareButton.addTarget(self, action: "share:", forControlEvents: .TouchUpInside)
         basicView.addSubview(shareButton)
         
         separateView01.backgroundColor = UIColor.lightGrayColor()
@@ -90,37 +87,20 @@ class MainCell: UITableViewCell {
     }
     
     
-    func cancel(sender:UIButton)
-    {
-        print("按了")
-    }
-    
-    func likeIt(sender:UIButton)
-    {
-        print("你按了喜歡")
-    }
- 
-    func saySome(sender:UIButton)
-    {
-        print("你按了留言")
-    }
-    
-    func share(sender:UIButton)
-    {
-        print("你按了分享")
-    }
-    
-    func other(sender:UIButton)
+    func upAndDown(sender:UIButton)
     {
         print("你按了這個三角形")
+        
+        
         
         if clicked == false
         {
             clicked = true
-        UIView.animateWithDuration(0.3) { () -> Void in
-            
-           self.cancelButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
-        }
+            UIView.animateWithDuration(0.3) { () -> Void in
+                
+                self.cancelButton.transform = CGAffineTransformMakeRotation(CGFloat(M_PI))
+               
+            }
             
         }
         else if clicked == true
@@ -133,6 +113,9 @@ class MainCell: UITableViewCell {
             
         }
     }
+
+    
+
     
     func autoLayout()
     {
@@ -142,7 +125,7 @@ class MainCell: UITableViewCell {
         cancelButton.translatesAutoresizingMaskIntoConstraints = (false)
         bigImage.translatesAutoresizingMaskIntoConstraints = (false)
         textView.translatesAutoresizingMaskIntoConstraints = (false)
-        loveButton.translatesAutoresizingMaskIntoConstraints = (false)
+        likeButton.translatesAutoresizingMaskIntoConstraints = (false)
         messageButton.translatesAutoresizingMaskIntoConstraints = (false)
         shareButton.translatesAutoresizingMaskIntoConstraints = (false)
         separateView01.translatesAutoresizingMaskIntoConstraints = (false)
@@ -155,7 +138,7 @@ class MainCell: UITableViewCell {
                 "cancelButton":cancelButton ,
                     "bigImage":bigImage ,
                     "textView":textView ,
-                  "loveButton":loveButton ,
+                  "likeButton":likeButton ,
                "messageButton":messageButton ,
                  "shareButton":shareButton ,
               "separateView01":separateView01 ,
@@ -207,12 +190,12 @@ class MainCell: UITableViewCell {
       
         
         
-        ////loveButton - separateView01 - messageButton - separateView02 - shareButton
-        let threeButtonsH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[loveButton(==messageButton)]-[separateView01(2)]-[messageButton(==loveButton)]-[separateView02(2)]-[shareButton(==messageButton)]-10-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        ////likeButton - separateView01 - messageButton - separateView02 - shareButton
+        let threeButtonsH = NSLayoutConstraint.constraintsWithVisualFormat("H:|-10-[likeButton(==messageButton)]-[separateView01(2)]-[messageButton(==likeButton)]-[separateView02(2)]-[shareButton(==messageButton)]-10-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(threeButtonsH)
         
         ////loveButton的上下距離和高度
-        let loveButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:[textView]-5-[loveButton]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let loveButtonV = NSLayoutConstraint.constraintsWithVisualFormat("V:[textView]-5-[likeButton]-5-|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         basicView.addConstraints(loveButtonV)
         
        ////messageButton的上下距離和高度

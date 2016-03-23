@@ -13,6 +13,9 @@ class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePick
     var shootImage = UIImage()
     var searchBar = UISearchBar()
     
+    var clicked : Bool = false
+
+    
     
     var shopInfoArray : [shopData] =
     [shopData(userImage: "004", bigImage: "007", titleLabel: "Royal Oak", contentText: "儘管奧克拉荷馬雷霆在第4節剩下不到5分鐘時還握有11分領先，但最終他們不敵Stephen Curry驚人的三分球演出，在延長1節後於主場以3分之差飲恨。賽後雷霆總教練Billy Donovan表示，球員們都已經盡力了。雷霆雖然落敗，但勇士也是在經過1節延長後，才靠著Curry讓人目瞪口呆的超大號三分球險勝，Donovan說：「我覺得所有球員們都已經盡了全力，有很多很好的表現。像這樣差點贏球當然讓人失望，但我認為在我們已經盡了全力，在防守上能花這麼多精力，如此專注的情況下，我們還是能從中獲得許多經驗。」第4節末勇士步步逼近，但Kevin Durant在剩下14秒時飆進三分球，讓領先的雷霆大有機會勝出。但勇士Klay Thompson快速切入攻下2分後，勇士沒有選擇犯規戰術，而是全力防守，結果被包夾的Durant不僅出現傳球失誤，還對Andre Iguodala犯規，讓勇士罰進2球逼出延長賽。儘管奧克拉荷馬雷霆在第4節剩下不到5分鐘時還握有11分領先，但最終他們不敵Stephen Curry驚人的三分球演出，在延長1節後於主場以3分之差飲恨。賽後雷霆總教練Billy Donovan表示，球員們都已經盡力了。雷霆雖然落敗，但勇士也是在經過1節延長後，才靠著Curry讓人目瞪口呆的超大號三分球險勝"),
@@ -100,15 +103,15 @@ class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePick
         tableView.reloadData()
     }
     
+
     
     
     
-    
-    override func didReceiveMemoryWarning()
-    {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
+//    override func didReceiveMemoryWarning()
+//    {
+//        super.didReceiveMemoryWarning()
+//        // Dispose of any resources that can be recreated.
+//    }
 
     // MARK: - Table view data source
 
@@ -151,11 +154,43 @@ class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePick
             cell.textView.text = cell.textView.text.substringToIndex(cell.textView.text.startIndex.advancedBy(120)) + "..."
         }
         
+                
+        cell.likeButton.addTarget(self, action: "likeIt:", forControlEvents: .TouchUpInside)
+        cell.messageButton.addTarget(self, action: "saySome:", forControlEvents: .TouchUpInside)
+        cell.shareButton.addTarget(self, action: "share:", forControlEvents: .TouchUpInside)
+        cell.cancelButton.addTarget(self, action: "other:", forControlEvents: .TouchUpInside)
+     
         
         return cell
     }
     
+    /////細胞裡按鈕的action們
+    func likeIt(sender:UIButton)
+    {
+        print("你按了喜歡")
+        let controller = SignUpVC()
+        let nav = UINavigationController(rootViewController: controller)
+        self.presentViewController(nav, animated: true, completion: nil)
+        
+    }
 
+    func saySome(sender:UIButton)
+    {
+        print("你按了留言")
+    }
+    
+    func share(sender:UIButton)
+    {
+        print("你按了分享")
+    }
+
+    func other(sender:UIButton)
+    {
+        print("這個print 是在controller裡的")
+        
+    }
+
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
