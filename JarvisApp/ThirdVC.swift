@@ -149,7 +149,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         let textField = searchBar.valueForKey("searchField") as! UITextField
         textField.backgroundColor = UIColor.yellowColor()
         
-        
         self.navigationItem.titleView = searchBar
 
         
@@ -183,9 +182,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
     }
 
     
-    
-    
-
     func alamofireGET()
     {
         tableIndicator.startAnimating()
