@@ -70,15 +70,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         manageController = MMDrawerController(centerViewController: tabBarController, leftDrawerViewController: slidePage)
 
         manageController.maximumLeftDrawerWidth = 280
-        manageController.openDrawerGestureModeMask = MMOpenDrawerGestureMode.PanningCenterView
-        manageController.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.PanningCenterView
+        manageController.openDrawerGestureModeMask = MMOpenDrawerGestureMode.None
+        manageController.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.TapCenterView
         
         ////重點重點 後來我知道為什麼了 其實可以在appDelegate把UITabBarController的設定先做好 反正到最後tabBarController都是要接到MMDrawerController的 所以之後的接口就是MMDrawerController！！
         
-        let loginPage = LoginVC()
+        let startPage = manageController
         
         self.window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        self.window?.rootViewController = loginPage
+        self.window?.rootViewController = startPage
         self.window?.makeKeyAndVisible()
         
         
