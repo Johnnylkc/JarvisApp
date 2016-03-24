@@ -4,7 +4,7 @@
 //
 //  Created by 劉坤昶 on 2016/3/23.
 //  Copyright © 2016年 JohnnyKetchup. All rights reserved.
-//
+////
 
 import UIKit
 
@@ -52,6 +52,9 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         userNameTextfield.frame = CGRectMake(15, 7,self.view.frame.size.width - 20, 30)
         userNameTextfield.placeholder = "使用者名稱"
         userNameTextfield.borderStyle = .None
+
+   
+        
         
         emailTextField.frame = userNameTextfield.frame
         emailTextField.placeholder = "電子郵件"
@@ -96,6 +99,7 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func cancel(sender:UIButton)
     {
+        self.view.endEditing(true)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
