@@ -4,7 +4,7 @@
 //
 //  Created by 劉坤昶 on 2016/3/18.
 //  Copyright © 2016年 JohnnyKetchup. All rights reserved.
-////
+//////
 
 import UIKit
 
@@ -32,6 +32,7 @@ class LoginVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func allUI()
     {
         self.view.backgroundColor = UIColor(red: 240/255.0, green: 240/255.0, blue: 240/255.0, alpha: 1)
+        self.title = "登入"
         
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
         tableView.delegate = self
