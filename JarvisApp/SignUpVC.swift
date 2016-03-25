@@ -59,6 +59,7 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         emailTextField.frame = userNameTextfield.frame
         emailTextField.placeholder = "電子郵件"
         emailTextField.borderStyle = .None
+        emailTextField.keyboardType = .EmailAddress
         
         passwordTextField.frame = userNameTextfield.frame
         passwordTextField.placeholder = "密碼"

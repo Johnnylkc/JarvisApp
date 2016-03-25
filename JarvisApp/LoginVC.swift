@@ -4,7 +4,7 @@
 //
 //  Created by 劉坤昶 on 2016/3/18.
 //  Copyright © 2016年 JohnnyKetchup. All rights reserved.
-//////
+////////
 
 import UIKit
 
@@ -44,6 +44,7 @@ class LoginVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         emailTextField.frame = CGRectMake(15, 7,self.view.frame.size.width - 20, 30)
         emailTextField.placeholder = "電子郵件"
         emailTextField.borderStyle = .None
+        emailTextField.keyboardType = .EmailAddress
         //emailTextField.backgroundColor = UIColor.yellowColor()
         
         passwordTextField.frame = emailTextField.frame
