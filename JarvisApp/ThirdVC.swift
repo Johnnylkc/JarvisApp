@@ -94,7 +94,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         scrollButton1.layer.cornerRadius = 5
         scrollButton1.clipsToBounds = true
         scrollButton1.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        scrollButton1.addTarget(self, action: "scrollButton1_click:", forControlEvents: .TouchUpInside)
+        scrollButton1.addTarget(self, action: #selector(ThirdVC.scrollButton1_click(_:)), forControlEvents: .TouchUpInside)
         scrollBar.addSubview(scrollButton1)
         
         scrollButton2.frame = CGRectMake(scrollButton1.frame.size.width+20, 5, self.view.frame.size.width/2, 35)
@@ -102,7 +102,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         scrollButton2.layer.cornerRadius = 5
         scrollButton2.clipsToBounds = true
         scrollButton2.setTitleColor(UIColor.yellowColor(), forState: .Normal)
-        scrollButton2.addTarget(self, action: "scrollButton2_click:", forControlEvents: .TouchUpInside)
+        scrollButton2.addTarget(self, action: #selector(ThirdVC.scrollButton2_click(_:)), forControlEvents: .TouchUpInside)
         scrollBar.addSubview(scrollButton2)
         
         scrollButton3.frame = CGRectMake(scrollButton1.frame.size.width*2 + 30, 5, self.view.frame.size.width/2, 35)
@@ -110,7 +110,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         scrollButton3.layer.cornerRadius = 5
         scrollButton3.clipsToBounds = true
         scrollButton3.setTitleColor(UIColor.yellowColor(), forState: .Normal)
-        scrollButton3.addTarget(self, action: "scrollButton3_click:", forControlEvents: .TouchUpInside)
+        scrollButton3.addTarget(self, action: #selector(ThirdVC.scrollButton3_click(_:)), forControlEvents: .TouchUpInside)
         scrollBar.addSubview(scrollButton3)
         
         ////這個scrollView的設定 擺在裡面的按鈕設定之後 是因為這樣才取得到 所有按鈕的寬 才知道contentSize要給多少
@@ -127,7 +127,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         ////navi 左邊的hamburger button
         let hamburgerButton = UIButton(frame: CGRectMake(0,0,25,25))
         hamburgerButton.setBackgroundImage(UIImage(named: "hamburger"), forState: .Normal)
-        hamburgerButton.addTarget(self, action: "showSideMenu:", forControlEvents: .TouchUpInside)
+        hamburgerButton.addTarget(self, action: #selector(ThirdVC.showSideMenu(_:)), forControlEvents: .TouchUpInside)
         
         let leftBarButton = UIBarButtonItem(customView: hamburgerButton)
         self.navigationItem.leftBarButtonItem = leftBarButton
@@ -135,7 +135,7 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         //// navi右邊的相機按鈕
         let cameraButton = UIButton(frame: CGRectMake(0,0,28,28))
         cameraButton.setBackgroundImage(UIImage(named: "camera"), forState: .Normal)
-        cameraButton.addTarget(self, action: "showCamera:", forControlEvents: .TouchUpInside)
+        cameraButton.addTarget(self, action: #selector(ThirdVC.showCamera(_:)), forControlEvents: .TouchUpInside)
         
         let rightBarButton = UIBarButtonItem(customView: cameraButton)
         self.navigationItem.rightBarButtonItem = rightBarButton

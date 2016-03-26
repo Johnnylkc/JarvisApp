@@ -35,7 +35,7 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         let cancelButton = UIButton(frame: CGRectMake(0,0,27,27))
         cancelButton.setBackgroundImage(UIImage(named: "cancel"), forState: .Normal)
-        cancelButton.addTarget(self, action: "cancel:", forControlEvents: .TouchUpInside)
+        cancelButton.addTarget(self, action: #selector(SignUpVC.cancel(_:)), forControlEvents: .TouchUpInside)
         let left = UIBarButtonItem(customView: cancelButton)
         self.navigationItem.leftBarButtonItem = left
             
@@ -71,7 +71,7 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         signUpButton.clipsToBounds = true
         signUpButton.setTitle("註冊", forState: .Normal)
         signUpButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        signUpButton.addTarget(self, action: "signUp:", forControlEvents: .TouchUpInside)
+        signUpButton.addTarget(self, action: #selector(SignUpVC.signUp(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(signUpButton)
 
         loginButton.backgroundColor = UIColor(red: 46/255.0, green: 182/255.0, blue: 76/255.0, alpha: 1)
@@ -79,7 +79,7 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         loginButton.clipsToBounds = true
         loginButton.setTitle("登入", forState: .Normal)
         loginButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        loginButton.addTarget(self, action: "login:", forControlEvents: .TouchUpInside)
+        loginButton.addTarget(self, action: #selector(SignUpVC.login(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(loginButton)
         
         

@@ -52,7 +52,7 @@ class SecondThreeTVC: UITableViewController,UINavigationControllerDelegate,UIIma
         ////navi 左邊的hamburger button
         let hamburgerButton = UIButton(frame: CGRectMake(0,0,25,25))
         hamburgerButton.setBackgroundImage(UIImage(named: "hamburger"), forState: .Normal)
-        hamburgerButton.addTarget(self, action: "showSideMenu:", forControlEvents: .TouchUpInside)
+        hamburgerButton.addTarget(self, action: #selector(SecondThreeTVC.showSideMenu(_:)), forControlEvents: .TouchUpInside)
         
         let leftBarButton = UIBarButtonItem(customView: hamburgerButton)
         self.navigationItem.leftBarButtonItem = leftBarButton
@@ -61,7 +61,7 @@ class SecondThreeTVC: UITableViewController,UINavigationControllerDelegate,UIIma
         //// navi右邊的相機按鈕
         let cameraButton = UIButton(frame: CGRectMake(0,0,28,28))
         cameraButton.setBackgroundImage(UIImage(named: "camera"), forState: .Normal)
-        cameraButton.addTarget(self, action: "showCamera:", forControlEvents: .TouchUpInside)
+        cameraButton.addTarget(self, action: #selector(SecondThreeTVC.showCamera(_:)), forControlEvents: .TouchUpInside)
         
         let rightBarButton = UIBarButtonItem(customView: cameraButton)
         self.navigationItem.rightBarButtonItem = rightBarButton

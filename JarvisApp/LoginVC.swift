@@ -58,7 +58,7 @@ class LoginVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         loginButton.clipsToBounds = true
         loginButton.setTitle("登入", forState: .Normal)
         loginButton.setTitleColor(UIColor.whiteColor(), forState: .Normal)
-        loginButton.addTarget(self, action: "login:", forControlEvents: .TouchUpInside)
+        loginButton.addTarget(self, action: #selector(LoginVC.login(_:)), forControlEvents: .TouchUpInside)
         self.view.addSubview(loginButton)
         
         

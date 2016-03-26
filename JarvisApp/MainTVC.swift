@@ -55,7 +55,7 @@ class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePick
         ////navi 左邊的hamburger button
         let hamburgerButton = UIButton(frame: CGRectMake(0,0,25,25))
         hamburgerButton.setBackgroundImage(UIImage(named: "hamburger"), forState: .Normal)
-        hamburgerButton.addTarget(self, action: "showSideMenu:", forControlEvents: .TouchUpInside)
+        hamburgerButton.addTarget(self, action:#selector(MainTVC.showSideMenu(_:)),forControlEvents: .TouchUpInside)
         
         let leftBarButton = UIBarButtonItem(customView: hamburgerButton)
         self.navigationItem.leftBarButtonItem = leftBarButton
@@ -63,8 +63,9 @@ class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePick
         //// navi右邊的相機按鈕
         let cameraButton = UIButton(frame: CGRectMake(0,0,28,28))
         cameraButton.setBackgroundImage(UIImage(named: "camera"), forState: .Normal)
-        cameraButton.addTarget(self, action: "showCamera:", forControlEvents: .TouchUpInside)
-       
+        cameraButton.addTarget(self, action: #selector(MainTVC.showCamera(_:)), forControlEvents: .TouchUpInside)
+        
+        
         let rightBarButton = UIBarButtonItem(customView: cameraButton)
         self.navigationItem.rightBarButtonItem = rightBarButton
         
@@ -155,10 +156,10 @@ class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePick
         }
         
                 
-        cell.likeButton.addTarget(self, action: "likeIt:", forControlEvents: .TouchUpInside)
-        cell.messageButton.addTarget(self, action: "saySome:", forControlEvents: .TouchUpInside)
-        cell.shareButton.addTarget(self, action: "share:", forControlEvents: .TouchUpInside)
-        cell.cancelButton.addTarget(self, action: "other:", forControlEvents: .TouchUpInside)
+        cell.likeButton.addTarget(self, action: #selector(MainTVC.likeIt(_:)), forControlEvents: .TouchUpInside)
+        cell.messageButton.addTarget(self, action: #selector(MainTVC.saySome(_:)), forControlEvents: .TouchUpInside)
+        cell.shareButton.addTarget(self, action: #selector(MainTVC.share(_:)), forControlEvents: .TouchUpInside)
+        cell.cancelButton.addTarget(self, action: #selector(MainTVC.other(_:)), forControlEvents: .TouchUpInside)
      
         
         return cell

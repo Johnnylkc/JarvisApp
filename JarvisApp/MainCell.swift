@@ -46,7 +46,7 @@ class MainCell: UITableViewCell {
         
         //cancelButton.backgroundColor = UIColor.redColor()
         cancelButton.setBackgroundImage(UIImage(named: "other"), forState: .Normal)
-        cancelButton.addTarget(self, action: "upAndDown:", forControlEvents: .TouchUpInside)
+        cancelButton.addTarget(self, action: #selector(MainCell.upAndDown(_:)), forControlEvents: .TouchUpInside)
         basicView.addSubview(cancelButton)
         
         //textView.backgroundColor = UIColor.brownColor()
