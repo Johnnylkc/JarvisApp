@@ -4,16 +4,18 @@
 //
 //  Created by 劉坤昶 on 2016/3/23.
 //  Copyright © 2016年 JohnnyKetchup. All rights reserved.
-////
+//////
 
 import UIKit
 
 class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     let tableView  = UITableView()
-    let userNameTextfield = UITextField()
-    let emailTextField = UITextField()
-    let passwordTextField = UITextField()
+    let userNameTF = UITextField()
+    let emailTF = UITextField()
+    let passwordTF = UITextField()
+    let passwordCheckTF = UITextField()
+    
     let signUpButton = UIButton()
     let loginButton = UIButton()
     
@@ -49,22 +51,25 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         automaticallyAdjustsScrollViewInsets = false
         self.view.addSubview(tableView)
         
-        userNameTextfield.frame = CGRectMake(15, 7,self.view.frame.size.width - 20, 30)
-        userNameTextfield.placeholder = "使用者名稱"
-        userNameTextfield.borderStyle = .None
-
-   
+        userNameTF.frame = CGRectMake(15, 7,self.view.frame.size.width - 20, 30)
+        userNameTF.placeholder = "使用者名稱"
+        userNameTF.borderStyle = .None
         
+        emailTF.frame = userNameTF.frame
+        emailTF.placeholder = "電子郵件"
+        emailTF.borderStyle = .None
+        emailTF.keyboardType = .EmailAddress
         
-        emailTextField.frame = userNameTextfield.frame
-        emailTextField.placeholder = "電子郵件"
-        emailTextField.borderStyle = .None
-        emailTextField.keyboardType = .EmailAddress
+        passwordTF.frame = userNameTF.frame
+        passwordTF.placeholder = "密碼"
+        passwordTF.secureTextEntry = true
+        passwordTF.borderStyle = .None
         
-        passwordTextField.frame = userNameTextfield.frame
-        passwordTextField.placeholder = "密碼"
-        passwordTextField.secureTextEntry = true
-        passwordTextField.borderStyle = .None
+        passwordCheckTF.frame = CGRectMake(15, 7,self.view.frame.size.width - 20, 30)
+        passwordCheckTF.placeholder = "密碼確認"
+        passwordCheckTF.secureTextEntry = true
+        passwordCheckTF.borderStyle = .None
+        
         
         signUpButton.backgroundColor = UIColor.redColor()
         signUpButton.layer.cornerRadius = 5
@@ -88,6 +93,7 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func signUp(sender:UIButton)
     {
         print("你按了註冊按鈕")
+        
     }
     
     func login(sender:UIButton)
@@ -112,7 +118,7 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 3
+        return 4
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
@@ -123,14 +129,16 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         switch indexPath.row
         {
         case 0:
-            cell.addSubview(userNameTextfield)
+            cell.addSubview(userNameTF)
             
         case 1:
-            cell.addSubview(emailTextField)
+            cell.addSubview(emailTF)
             
         case 2:
-            cell.addSubview(passwordTextField)
+            cell.addSubview(passwordTF)
             
+        case 3:
+            cell.addSubview(passwordCheckTF)
             
         default:
             break
@@ -158,7 +166,7 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let tableView_H = NSLayoutConstraint.constraintsWithVisualFormat("H:|[tableView]|", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         self.view.addConstraints(tableView_H)
         
-        let tableView_V = NSLayoutConstraint.constraintsWithVisualFormat("V:|-130-[tableView(131)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
+        let tableView_V = NSLayoutConstraint.constraintsWithVisualFormat("V:|-130-[tableView(175)]", options: NSLayoutFormatOptions(rawValue: 0), metrics: nil, views: dic)
         self.view.addConstraints(tableView_V)////一個static cell 高度是 44
         
         ////signUpButton & loginButton 水平位置與寬度

@@ -64,8 +64,6 @@ class MainTVC: UITableViewController ,UINavigationControllerDelegate,UIImagePick
         let cameraButton = UIButton(frame: CGRectMake(0,0,28,28))
         cameraButton.setBackgroundImage(UIImage(named: "camera"), forState: .Normal)
         cameraButton.addTarget(self, action: #selector(MainTVC.showCamera(_:)), forControlEvents: .TouchUpInside)
-        
-        
         let rightBarButton = UIBarButtonItem(customView: cameraButton)
         self.navigationItem.rightBarButtonItem = rightBarButton
         

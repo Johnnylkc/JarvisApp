@@ -190,7 +190,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         
         Alamofire.request(.GET, url).responseJSON { response in
             
-            
             if let JSON = response.result.value
             {
                 self.allJsonArray = JSON as! NSMutableArray
