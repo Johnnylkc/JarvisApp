@@ -7,6 +7,7 @@
 //////
 
 import UIKit
+import Alamofire
 
 class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
@@ -57,6 +58,7 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         emailTF.frame = userNameTF.frame
         emailTF.placeholder = "電子郵件"
+        emailTF.autocapitalizationType = .None
         emailTF.borderStyle = .None
         emailTF.keyboardType = .EmailAddress
         
@@ -93,6 +95,43 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func signUp(sender:UIButton)
     {
         print("你按了註冊按鈕")
+        
+        if(userNameTF.text!.isEmpty || emailTF.text!.isEmpty || passwordTF.text!.isEmpty || passwordCheckTF.text!.isEmpty)
+        {
+            let alert = UIAlertController(title: "oops", message:  "你有資料還沒填寫完喔", preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "我知道了", style: .Cancel, handler: nil)
+            alert.addAction(ok)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        else if (passwordTF.text! != passwordCheckTF.text!)
+        {
+            let alert = UIAlertController(title: "密碼問題", message: "你的密碼兩次填寫不一樣", preferredStyle: .Alert)
+            let ok = UIAlertAction(title: "我知道了", style: .Cancel, handler: nil)
+            alert.addAction(ok)
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
+        else
+        {
+            let userInfo : [String:AnyObject]
+            userInfo = ["userName":userNameTF.text!,"email":emailTF.text!,"password":passwordTF.text!]
+            
+            let url  = "http://magipea.com/api.php"
+        
+            Alamofire.request(.POST, url, parameters: userInfo).responseJSON { response in
+                
+                
+                    if let JSON = response.result.value
+                    {
+                        print("讓我看看JSON: \(JSON)")
+                        print("應該是有成功上傳註冊喔\(userInfo)")
+                    
+                        let controller = ThirdVC()
+                        let nav = UINavigationController(rootViewController: controller)
+                        self.presentViewController(nav, animated: true, completion: nil)
+                    }
+                }
+            
+        }
         
     }
     

@@ -4,7 +4,7 @@
 //
 //  Created by 劉坤昶 on 2016/3/10.
 //  Copyright © 2016年 JohnnyKetchup. All rights reserved.
-//////
+////////
 
 import UIKit
 import Alamofire
@@ -153,7 +153,6 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
 
         
         
-        
     }
     
     
@@ -198,10 +197,11 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
                 for item in self.allJsonArray
                 {
                     self.typeName = item["type_name"] as! String
+                   
                     if self.typeName == self.changeType
                     {
                         self.firstLevelArray.addObject(item)
-                        print("阿拉摸裡面的type_name\(self.changeType)")
+                        //print("阿拉摸裡面的type_name\(self.changeType)")
                     }
                 }
                 
