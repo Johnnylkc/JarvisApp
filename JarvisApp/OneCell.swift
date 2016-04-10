@@ -21,6 +21,8 @@ class OneCell: UITableViewCell {
     let articleTextView = UITextView()
     let likeButton = UIButton()
     let shareButton = UIButton()
+    let likeNumLabel = UILabel()
+    let shareNumLabel = UILabel()
     
     
     
@@ -38,7 +40,7 @@ class OneCell: UITableViewCell {
         whiteView.backgroundColor = UIColor.whiteColor()
         basicView.addSubview(whiteView)
         
-        titleLabel.backgroundColor = UIColor.greenColor()
+        //titleLabel.backgroundColor = UIColor.greenColor()
         titleLabel.text = "親子餐廳懶人包 36間超人氣親子餐廳"
         whiteView.addSubview(titleLabel)
         
@@ -51,7 +53,7 @@ class OneCell: UITableViewCell {
         //locationImage.backgroundColor = UIColor.blackColor()
         whiteView.addSubview(locationImage)
         
-        addressLabel.backgroundColor = UIColor.blueColor()
+        //addressLabel.backgroundColor = UIColor.blueColor()
         addressLabel.font = UIFont.systemFontOfSize(13)
         addressLabel.text = "地點:中正區 自由廣場"
         whiteView.addSubview(addressLabel)
@@ -69,13 +71,25 @@ class OneCell: UITableViewCell {
         articleTextView.text = "國外媒體網站MacRumors報導，甫從大陸拜訪供應鏈的華爾街分析師懷特（Brian White）在其研究筆記中透露，iPhone 7預計7月開始生產，可望帶動蘋果和相關供應鏈今年下半年出貨成長。目前市場預期iPhone 7可能依往例在9月發表。"
         whiteView.addSubview(articleTextView)
         
-        likeButton.backgroundColor = UIColor.redColor()
+        //likeButton.backgroundColor = UIColor.redColor()
         likeButton.setBackgroundImage(UIImage(named: "like"), forState: .Normal)
         whiteView.addSubview(likeButton)
         
-        shareButton.backgroundColor = UIColor.redColor()
+        //shareButton.backgroundColor = UIColor.redColor()
         shareButton.setBackgroundImage(UIImage(named: "share"), forState: .Normal)
         whiteView.addSubview(shareButton)
+        
+        likeNumLabel.font = UIFont.systemFontOfSize(10)
+        //likeNumLabel.backgroundColor = UIColor.grayColor()
+        likeNumLabel.textAlignment = .Center
+        likeNumLabel.text = "12"
+        whiteView.addSubview(likeNumLabel)
+        
+        shareNumLabel.font = UIFont.systemFontOfSize(10)
+        shareNumLabel.textAlignment = .Center
+        //shareNumLabel.backgroundColor = UIColor.grayColor()
+        shareNumLabel.text = "368"
+        whiteView.addSubview(shareNumLabel)
         
         
         autoLayout()
@@ -94,6 +108,8 @@ class OneCell: UITableViewCell {
         articleTextView.translatesAutoresizingMaskIntoConstraints = (false)
         likeButton.translatesAutoresizingMaskIntoConstraints = (false)
         shareButton.translatesAutoresizingMaskIntoConstraints = (false)
+        likeNumLabel.translatesAutoresizingMaskIntoConstraints = (false)
+        shareNumLabel.translatesAutoresizingMaskIntoConstraints = (false)
         
         let dic =
             ["basicView":basicView
@@ -106,7 +122,7 @@ class OneCell: UITableViewCell {
             ,"lineView":lineView
             ,"articleTextView":articleTextView
             ,"likeButton":likeButton
-            ,"shareButton":shareButton]
+            ,"shareButton":shareButton,"likeNumLabel":likeNumLabel,"shareNumLabel":shareNumLabel]
         
         ////basicView
         let basicView_H = NSLayoutConstraint.constraintsWithVisualFormat("H:|-5-[basicView]-5-|", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
@@ -151,7 +167,7 @@ class OneCell: UITableViewCell {
         whiteView.addConstraints(locationImage_V)
         
         ////addressLabel
-        let addressLabel_H = NSLayoutConstraint.constraintsWithVisualFormat("H:[locationImage][addressLabel(130)]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        let addressLabel_H = NSLayoutConstraint.constraintsWithVisualFormat("H:[locationImage][addressLabel(134)]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
         whiteView.addConstraints(addressLabel_H)
         
         let addressLabel_V = NSLayoutConstraint.constraintsWithVisualFormat("V:[titleLabel]-5-[addressLabel(15)]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
@@ -172,18 +188,32 @@ class OneCell: UITableViewCell {
         whiteView.addConstraints(articleTextView_V)
         
         ////likeButton
-        let likeButton_H = NSLayoutConstraint.constraintsWithVisualFormat("H:[titleLabel]-5-[likeButton(25)]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        let likeButton_H = NSLayoutConstraint.constraintsWithVisualFormat("H:[titleLabel]-5-[likeButton(30)]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
         whiteView.addConstraints(likeButton_H)
         
-        let likeButton_V = NSLayoutConstraint.constraintsWithVisualFormat("V:|-5-[likeButton(25)]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        let likeButton_V = NSLayoutConstraint.constraintsWithVisualFormat("V:|[likeButton(30)]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
         whiteView.addConstraints(likeButton_V)
         
         ////shareButton
-        let shareButton_H = NSLayoutConstraint.constraintsWithVisualFormat("H:[likeButton]-5-[shareButton(25)]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        let shareButton_H = NSLayoutConstraint.constraintsWithVisualFormat("H:[likeButton]-5-[shareButton(30)]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
         whiteView.addConstraints(shareButton_H)
         
-        let shareButton_V = NSLayoutConstraint.constraintsWithVisualFormat("V:|-5-[shareButton(25)]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        let shareButton_V = NSLayoutConstraint.constraintsWithVisualFormat("V:|[shareButton(30)]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
         whiteView.addConstraints(shareButton_V)
+        
+        ////likeNumLabel
+        let likeNumLabel_H = NSLayoutConstraint.constraintsWithVisualFormat("H:[addressLabel]-5-[likeNumLabel(30)]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        whiteView.addConstraints(likeNumLabel_H)
+        
+        let likeNumLabel_V = NSLayoutConstraint.constraintsWithVisualFormat("V:[likeButton][likeNumLabel(10)]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        whiteView.addConstraints(likeNumLabel_V)
+        
+        ////shareNumLabel
+        let shareNumLabel_H = NSLayoutConstraint.constraintsWithVisualFormat("H:[likeNumLabel]-5-[shareNumLabel(30)]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        whiteView.addConstraints(shareNumLabel_H)
+        
+        let shareNumLabel_V = NSLayoutConstraint.constraintsWithVisualFormat("V:[shareButton][shareNumLabel(10)]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        whiteView.addConstraints(shareNumLabel_V)
         
     }
     

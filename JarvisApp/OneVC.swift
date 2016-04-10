@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import AlamofireImage
 
 
 class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
@@ -39,6 +41,11 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
     }
     
+    func alamofireGET()
+    {
+        
+    }
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
         return 1
@@ -60,7 +67,6 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         cell.selectionStyle = .None
         cell.backgroundColor = UIColor.clearColor()
         
-        cell.textLabel?.text = "這裡是OneVC"
         
         
         return cell

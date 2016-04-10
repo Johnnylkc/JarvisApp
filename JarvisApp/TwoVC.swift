@@ -30,7 +30,7 @@ class TwoVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerClass(OneCell.self, forCellReuseIdentifier: "cell")
-        tableView.backgroundColor = UIColor.whiteColor()
+        tableView.backgroundColor = UIColor.grayColor()
         self.view.addSubview(tableView)
         
     }
@@ -54,8 +54,8 @@ class TwoVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell
     {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! OneCell
-        
-        cell.textLabel?.text = "這裡是TwoVC"
+        cell.selectionStyle = .None
+        cell.backgroundColor = UIColor.clearColor()
         
         return cell
     }
