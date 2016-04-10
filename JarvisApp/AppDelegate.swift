@@ -25,11 +25,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool
     {
         
-        let onePage = SecondTVC()
+        let onePage = OneVC()
         let onePageNav = UINavigationController(rootViewController: onePage)
         onePage.tabBarItem = UITabBarItem(title: "新派對", image: UIImage(named: "001"), selectedImage: UIImage(named: "001"))
         
-        let twoPage = SecondTwoTVC()
+        let twoPage = TwoVC()
         let twoPageNav = UINavigationController(rootViewController: twoPage)
         twoPage.tabBarItem = UITabBarItem(title: "知識寶", image:UIImage(named: "002") , selectedImage: UIImage(named: "002"))
     

@@ -20,7 +20,7 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     let signUpButton = UIButton()
     let loginButton = UIButton()
     
-    
+     
 
     override func viewDidLoad()
     {
@@ -137,7 +137,7 @@ class SignUpVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func login(sender:UIButton)
     {
-        print("你按了登入按鈕 前往登入頁")
+        print("你按了登入按鈕 前往登入頁...")
         let controller = LoginVC()
         self.navigationController?.pushViewController(controller, animated: true)
         

@@ -12,7 +12,7 @@ import AlamofireImage
 
 
 
-class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate{
+class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate, UISearchResultsUpdating ,UISearchBarDelegate{
     
     ////tablebleView 和 tableView上面的按鈕scrollView
     let tableView = UITableView()
@@ -26,8 +26,8 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
     ////loading轉圈
     let tableIndicator = UIActivityIndicatorView()
     
-    ////搜尋霸
-    var searchBar = UISearchBar()
+    ////搜尋
+    var searchController : UISearchController!
 
 
     ////這兩個是桌子上方那個scrollView的constrait 寫成global 這樣我才能在scrollView的delagate中使用它
@@ -43,6 +43,9 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
     ////這是裝另一個api  scroll bar 按鈕的title
     var scrollButtonTextArray = NSMutableArray()
     
+    ////搜尋要用的兩個array
+    var nameArray = NSMutableArray()
+    var filterArray = [String]()
     
     var typeName = String()
     var changeType:String = "主要商品"
@@ -140,16 +143,24 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         let rightBarButton = UIBarButtonItem(customView: cameraButton)
         self.navigationItem.rightBarButtonItem = rightBarButton
         
-        ////searceBar
-        searchBar = UISearchBar()
-        searchBar.placeholder = "看你要搜尋什麼"
-        searchBar.barTintColor = UIColor.blackColor()
-       
-        ////改變搜尋霸裡的textField的背景色的做法
-        let textField = searchBar.valueForKey("searchField") as! UITextField
-        textField.backgroundColor = UIColor.yellowColor()
+
+        ////搜尋爸的相關設定
+        searchController = UISearchController(searchResultsController: nil)
+        searchController.searchResultsUpdater = self
+        searchController.dimsBackgroundDuringPresentation = false
+        searchController.searchBar.sizeToFit()
+        definesPresentationContext = true
+        searchController.searchBar.placeholder = "搜尋"
+        searchController.searchBar.delegate = self
+        searchController.searchBar.tintColor = UIColor.yellowColor()
         
-        self.navigationItem.titleView = searchBar
+        self.searchController.hidesNavigationBarDuringPresentation = false
+        //self.searchController.searchBar.searchBarStyle = .Default
+        searchController.searchBar.setValue("取消", forKey:"_cancelButtonText")
+        // searchController.searchBar.setShowjsCancelButton(false, animated: false)
+        let textField = searchController.searchBar.valueForKey("searchField") as! UITextField
+        textField.backgroundColor = UIColor.yellowColor()
+        self.navigationItem.titleView = searchController.searchBar
 
         
         
@@ -229,6 +240,13 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
                 //print("uuuu\(self.thirdLevelArray)")
                 //print("ccccc\(self.firstLevelArray)")
                 //print("kkkkk\(self.secondLevelArray.count)")
+                
+                
+                for things in self.allJsonArray
+                {
+                    self.nameArray.addObject(things["name"] as! String)
+                }
+                //print("我來看看\(self.nameArray)")
                 
             }
             self.tableView.reloadData()
@@ -350,7 +368,14 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return self.secondLevelArray.count
+        if searchController.active && searchController.searchBar.text != ""
+        {
+            return filterArray.count
+        }
+        else
+        {
+            return secondLevelArray.count
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
@@ -369,93 +394,99 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
 //        let dic2 = self.secondLevelArray[indexPath.row]
         let dic3 = self.thirdLevelArray[indexPath.row]
 
-    
-        ////商品圖片
-        cell.bigImage.image = nil
-        
-        if dic3["image"] != nil
+        if searchController.active && searchController.searchBar.text != ""
         {
-            cell.indicator.startAnimating()
-            
-            let imageURL = "http://magipea.com/admin/uploads/" + "\(dic3["image"] as! String)"
-            
-            Alamofire.request(.GET, imageURL).responseImage { response in
-                
-                    if let jsonImage = response.result.value
-                    {
-                        dispatch_async(dispatch_get_main_queue())
-                        {
-                            cell.indicator.stopAnimating()
-                            cell.bigImage.image = jsonImage
-                        }
-                    }
-            }
-        
-        }
-
-        
-        
-        ////商品名稱
-        if dic1["name"] != nil
-        {
-            dispatch_async(dispatch_get_main_queue())
-            {
-                cell.titleTextView.text = dic1["name"] as! String
-            }
+            cell.titleTextView.text = filterArray[indexPath.row]
         }
         else
         {
-            cell.titleTextView.text = " "
-        }
+            ////商品圖片
+            cell.bigImage.image = nil
+        
+            if dic3["image"] != nil
+            {
+                cell.indicator.startAnimating()
+            
+                let imageURL = "http://magipea.com/admin/uploads/" + "\(dic3["image"] as! String)"
+            
+                Alamofire.request(.GET, imageURL).responseImage { response in
+                
+                        if let jsonImage = response.result.value
+                        {
+                            dispatch_async(dispatch_get_main_queue())
+                            {
+                                cell.indicator.stopAnimating()
+                                cell.bigImage.image = jsonImage
+                            }
+                        }
+                }
+        
+            }
+
+        
+        
+            ////商品名稱
+            if dic1["name"] != nil
+            {
+                dispatch_async(dispatch_get_main_queue())
+                {
+                    cell.titleTextView.text = dic1["name"] as! String
+                }
+            }
+            else
+            {
+                cell.titleTextView.text = " "
+            }
 
        
-        ////折扣label
-        if dic1["product_discount"] != nil
-        {
-            dispatch_async(dispatch_get_main_queue())
+            ////折扣label
+            if dic1["product_discount"] != nil
             {
-                cell.discountLabel.text = " Discount 折扣 : " + "\(dic1["product_discount"] as! String) %"
-            }
+                dispatch_async(dispatch_get_main_queue())
+                {
+                    cell.discountLabel.text = " Discount 折扣 : " + "\(dic1["product_discount"] as! String) %"
+                }
             
-        }
-        else
-        {
-            cell.discountLabel.text = " "
-        }
-
-        ////真實售價label
-        if dic1["sale_price_ntd"] != nil
-        {
-            dispatch_async(dispatch_get_main_queue())
+            }
+            else
             {
-                cell.salePriceLabel.text = " NT$ " + "\(dic1["sale_price_ntd"] as! String)"
-
+                cell.discountLabel.text = " "
             }
+
+            ////真實售價label
+            if dic1["sale_price_ntd"] != nil
+            {
+                dispatch_async(dispatch_get_main_queue())
+                {
+                    cell.salePriceLabel.text = " NT$ " + "\(dic1["sale_price_ntd"] as! String)"
+
+                }
             
-        }
-        else
-        {
-            cell.salePriceLabel.text = " "
-        }
+            }
+            else
+            {
+                cell.salePriceLabel.text = " "
+            }
 
         
-        ////劃掉的價格label
-        if dic1["price_ntd"] != nil
-        {
-            let attributedText = NSAttributedString(string: "NT$" + "\(dic1["price_ntd"] as! String)", attributes: [NSStrikethroughStyleAttributeName: 1])
+            ////劃掉的價格label
+            if dic1["price_ntd"] != nil
+            {
+                let attributedText = NSAttributedString(string: "NT$" + "\(dic1["price_ntd"] as! String)", attributes: [NSStrikethroughStyleAttributeName: 1])
            
-            dispatch_async(dispatch_get_main_queue())
-            {
-                cell.oldPriceLabel.attributedText = attributedText
-            }
+                dispatch_async(dispatch_get_main_queue())
+                {
+                    cell.oldPriceLabel.attributedText = attributedText
+                }
 
-        }
-        else
-        {
-            cell.oldPriceLabel.text = " "
-        }
+            }
+            else
+            {
+                cell.oldPriceLabel.text = " "
+            }
         
-        
+        }
+            
         return cell
     }
     
@@ -478,7 +509,41 @@ class ThirdVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavi
         
     }
     
+    
+    /////屬於搜尋霸的代理方法 當搜尋霸開始編輯時
+    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool
+    {
+        print("你按了搜尋霸")
+        
+        return true
+    }
+    
+    ////這是搜尋霸的代理方法 當搜尋霸結束編輯時
+    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool
+    {
+        print("你結束搜尋了")
+        
+        return true
+    }
+    
+    ////搜尋霸的代理方法
+    func updateSearchResultsForSearchController(searchController: UISearchController)
+    {
+        
+        self.filterArray.removeAll(keepCapacity: false)
+        
+        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+        
+        let array = (self.nameArray as NSArray ).filteredArrayUsingPredicate(searchPredicate)
+        
+        self.filterArray = array as! [String]
+        
+        self.tableView.reloadData()
+        
+        
+    }
 
+    
     
     
     func autoLayout()

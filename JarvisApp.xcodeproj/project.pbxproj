@@ -27,9 +27,12 @@
 		B2DA064B1C7D950700507C3C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B2DA064A1C7D950700507C3C /* Assets.xcassets */; };
 		B2DA064E1C7D950700507C3C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B2DA064C1C7D950700507C3C /* LaunchScreen.storyboard */; };
 		B2DA06561C7D95FC00507C3C /* MainTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA06551C7D95FC00507C3C /* MainTVC.swift */; };
-		B2DA065A1C7D963100507C3C /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA06591C7D963100507C3C /* MainCell.swift */; };
 		B2DA065C1C7E241C00507C3C /* SecondTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA065B1C7E241C00507C3C /* SecondTVC.swift */; };
 		B2DA065E1C7E242E00507C3C /* SecondCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2DA065D1C7E242E00507C3C /* SecondCell.swift */; };
+		B2F52D8B1CB9FD6200D787C4 /* MainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F52D8A1CB9FD6200D787C4 /* MainCell.swift */; };
+		B2F52D8D1CB9FEAC00D787C4 /* OneVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F52D8C1CB9FEAC00D787C4 /* OneVC.swift */; };
+		B2F52D8F1CB9FEC500D787C4 /* OneCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F52D8E1CB9FEC500D787C4 /* OneCell.swift */; };
+		B2F52D911CB9FEDA00D787C4 /* TwoVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2F52D901CB9FEDA00D787C4 /* TwoVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -61,9 +64,12 @@
 		B2DA064D1C7D950700507C3C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B2DA064F1C7D950700507C3C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B2DA06551C7D95FC00507C3C /* MainTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTVC.swift; sourceTree = "<group>"; };
-		B2DA06591C7D963100507C3C /* MainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
 		B2DA065B1C7E241C00507C3C /* SecondTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondTVC.swift; sourceTree = "<group>"; };
 		B2DA065D1C7E242E00507C3C /* SecondCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecondCell.swift; sourceTree = "<group>"; };
+		B2F52D8A1CB9FD6200D787C4 /* MainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCell.swift; sourceTree = "<group>"; };
+		B2F52D8C1CB9FEAC00D787C4 /* OneVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneVC.swift; sourceTree = "<group>"; };
+		B2F52D8E1CB9FEC500D787C4 /* OneCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneCell.swift; sourceTree = "<group>"; };
+		B2F52D901CB9FEDA00D787C4 /* TwoVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoVC.swift; sourceTree = "<group>"; };
 		D004C050E33D023121A84659 /* Pods-JarvisApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JarvisApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-JarvisApp/Pods-JarvisApp.release.xcconfig"; sourceTree = "<group>"; };
 		D7E9A69C3705016F4A40639A /* Pods-JarvisApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-JarvisApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-JarvisApp/Pods-JarvisApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -155,6 +161,8 @@
 				B2AD3A581CA2BFAA004506D5 /* SignUpVC.swift */,
 				B2A580501C9C455B000A58A9 /* LoginVC.swift */,
 				B2DA06551C7D95FC00507C3C /* MainTVC.swift */,
+				B2F52D8C1CB9FEAC00D787C4 /* OneVC.swift */,
+				B2F52D901CB9FEDA00D787C4 /* TwoVC.swift */,
 				B2DA065B1C7E241C00507C3C /* SecondTVC.swift */,
 				B28266631C99C6B900E40622 /* SecondTwoTVC.swift */,
 				B28266651C99C6D800E40622 /* SecondThreeTVC.swift */,
@@ -168,7 +176,8 @@
 			isa = PBXGroup;
 			children = (
 				B2A3294C1C9B2B0E00970F9B /* SlideMenuCell.swift */,
-				B2DA06591C7D963100507C3C /* MainCell.swift */,
+				B2F52D8A1CB9FD6200D787C4 /* MainCell.swift */,
+				B2F52D8E1CB9FEC500D787C4 /* OneCell.swift */,
 				B2DA065D1C7E242E00507C3C /* SecondCell.swift */,
 				B2C9C6CB1C83F936005A4132 /* ThirdCell.swift */,
 			);
@@ -304,6 +313,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B2F52D911CB9FEDA00D787C4 /* TwoVC.swift in Sources */,
+				B2F52D8F1CB9FEC500D787C4 /* OneCell.swift in Sources */,
 				B282666A1C9AC20300E40622 /* CatchVC.swift in Sources */,
 				B28266641C99C6B900E40622 /* SecondTwoTVC.swift in Sources */,
 				B2DA06561C7D95FC00507C3C /* MainTVC.swift in Sources */,
@@ -312,12 +323,13 @@
 				B22F74B31C836D800090A704 /* TestData.swift in Sources */,
 				B22F74871C8281B50090A704 /* MMDrawerBarButtonItem.m in Sources */,
 				B22F74881C8281B50090A704 /* MMDrawerController.m in Sources */,
+				B2F52D8B1CB9FD6200D787C4 /* MainCell.swift in Sources */,
 				B2AD3A591CA2BFAA004506D5 /* SignUpVC.swift in Sources */,
 				B2DA06441C7D950700507C3C /* AppDelegate.swift in Sources */,
 				B22F74891C8281B50090A704 /* MMDrawerVisualState.m in Sources */,
-				B2DA065A1C7D963100507C3C /* MainCell.swift in Sources */,
 				B298FDCE1C85425D00D61D38 /* TestData02.swift in Sources */,
 				B22F748A1C8281B50090A704 /* UIViewController+MMDrawerController.m in Sources */,
+				B2F52D8D1CB9FEAC00D787C4 /* OneVC.swift in Sources */,
 				B2DA065E1C7E242E00507C3C /* SecondCell.swift in Sources */,
 				B2C9C6CC1C83F936005A4132 /* ThirdCell.swift in Sources */,
 				B2A3294D1C9B2B0E00970F9B /* SlideMenuCell.swift in Sources */,
