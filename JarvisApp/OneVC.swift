@@ -11,7 +11,7 @@ import Alamofire
 import AlamofireImage
 
 
-class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
+class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
 
     let tableView = UITableView()
     
@@ -36,11 +36,42 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let width = self.view.frame.size.width
         let height = self.view.frame.size.height
         
+        ////navi的所有設定
+        navigationController?.navigationBar.barTintColor = UIColor.yellowColor()
+        
+        ////navi左邊搜尋鈕
+        let searchButton = UIButton(frame: CGRectMake(0,0,25,25))
+        searchButton.setBackgroundImage(UIImage(named: "search"), forState: .Normal)
+        searchButton.addTarget(self, action: #selector(OneVC.search(_:)), forControlEvents: .TouchUpInside)
+        let leftSearch = UIBarButtonItem(customView: searchButton)
+        navigationItem.leftBarButtonItem = leftSearch
+        
+        //// navi右邊的相機按鈕
+        let cameraButton = UIButton(frame: CGRectMake(0,0,30,30))
+        cameraButton.setBackgroundImage(UIImage(named: "camera01"), forState: .Normal)
+        cameraButton.addTarget(self, action: #selector(ThirdVC.showCamera(_:)), forControlEvents: .TouchUpInside)
+        
+        let rightBarButton = UIBarButtonItem(customView: cameraButton)
+
+        
+        ////navi右邊會員資料按鈕
+        let memberButton = UIButton(frame: CGRectMake(0,0,28,28))
+        memberButton.setBackgroundImage(UIImage(named:"member"), forState: .Normal)
+        memberButton.addTarget(self, action: #selector(OneVC.memberData(_:)), forControlEvents: .TouchUpInside)
+        
+        let rightBarButton01 = UIBarButtonItem(customView: memberButton)
+        
+        self.navigationItem.setRightBarButtonItems([rightBarButton01,rightBarButton], animated: true)
+
+        
+            
+        
+        
         tableView.frame = CGRectMake(0, 0, width, height)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerClass(OneCell.self, forCellReuseIdentifier: "cell")
-        tableView.backgroundColor = UIColor.grayColor()
+        tableView.backgroundColor = UIColor.groupTableViewBackgroundColor()
         tableView.separatorStyle = .None
         self.view.addSubview(tableView)
         
@@ -55,7 +86,6 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
             if let JSON = response.result.value
             {
                 self.jsonArray = JSON as! NSMutableArray
-                print(self.jsonArray)
             }
             
             
@@ -65,6 +95,38 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         
     }
+    
+    
+    func search(sender:UIButton)
+    {
+        print("你按了搜尋")
+    }
+    
+    func memberData(sender:UIButton)
+    {
+        print("你按了會員")
+    }
+    
+    ////cameraButton action  開啟相機
+    func showCamera(sender:UIBarButtonItem)
+    {
+//        let picker = UIImagePickerController()
+//        picker.delegate = self
+//        picker.sourceType = .Camera
+//        self.presentViewController(picker, animated: true, completion: nil)
+        
+        print("你按了相機")
+    }
+    
+    ////拍照後 使用拍到的照片
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject])
+    {
+        //        shootImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+        //        self.dismissViewControllerAnimated(true, completion: nil)
+        //        tableView.reloadData()
+    }
+
+    
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int
     {
@@ -92,7 +154,6 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         if dic01["article_image"] != nil
         {
-            print(dic01["article_image"])
             
             let url = "http://lorempixel.com/470/246/"
                 

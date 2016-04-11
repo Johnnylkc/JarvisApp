@@ -30,6 +30,10 @@ class TwoVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     {
         self.view.backgroundColor = UIColor.groupTableViewBackgroundColor()
         
+        
+        
+        
+        
         let width = self.view.frame.size.width
         let height = self.view.frame.size.height
         
@@ -37,7 +41,7 @@ class TwoVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerClass(OneCell.self, forCellReuseIdentifier: "cell")
-        tableView.backgroundColor = UIColor.grayColor()
+        tableView.backgroundColor = UIColor.groupTableViewBackgroundColor()
         self.view.addSubview(tableView)
         
     }
