@@ -4,7 +4,7 @@
 //
 //  Created by 劉坤昶 on 2016/4/10.
 //  Copyright © 2016年 JohnnyKetchup. All rights reserved.
-//
+////
 
 import UIKit
 import Alamofire
@@ -90,10 +90,29 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         let dic01 = jsonArray[indexPath.row]
         
         
-        
-        
-        
-        
+        if dic01["article_image"] != nil
+        {
+            print(dic01["article_image"])
+            
+            let url = "http://lorempixel.com/470/246/"
+                
+            Alamofire.request(.GET, url).responseImage { response in
+                
+                if let jsonImage = response.result.value
+                {
+                    dispatch_async(dispatch_get_main_queue())
+                    {
+                        cell.bigImage.image = jsonImage
+                    }
+                }
+
+            }
+         
+        }
+        else
+        {
+            cell.bigImage.image = UIImage(named: "202")
+        }
         
         
         cell.titleLabel.text = dic01["article_title"] as? String
@@ -108,7 +127,6 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         
         cell.shareNumLabel.text = "\(dic01["article_share_counter"] as! Int)"
         
-        print(dic01["article_share_counter"])
         
         return cell
     }
