@@ -15,11 +15,16 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     let tableView = UITableView()
     
+    
+    var jsonArray = NSMutableArray()
+    var oneArray = NSMutableArray()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
 
         allUI()
+        alamofireGET()
         
     }
 
@@ -43,6 +48,21 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func alamofireGET()
     {
+        let url = "http://magipea.com/article.php?cate=1"
+        
+        Alamofire.request(.GET, url).responseJSON { response in
+            
+            if let JSON = response.result.value
+            {
+                self.jsonArray = JSON as! NSMutableArray
+                print(self.jsonArray)
+            }
+            
+            
+            self.tableView.reloadData()
+
+        }
+        
         
     }
     
@@ -53,7 +73,7 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
-        return 20
+        return jsonArray.count
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat
@@ -67,7 +87,28 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource {
         cell.selectionStyle = .None
         cell.backgroundColor = UIColor.clearColor()
         
+        let dic01 = jsonArray[indexPath.row]
         
+        
+        
+        
+        
+        
+        
+        
+        cell.titleLabel.text = dic01["article_title"] as? String
+        
+        cell.articleTextView.text = dic01["article_digest"] as? String
+        
+        cell.addressLabel.text = dic01["location_name"] as? String
+        
+        cell.timeLabel.text = dic01["article_create_time"] as? String
+        
+        cell.likeNumLabel.text = "\(dic01["article_like_counter"] as! Int)"
+        
+        cell.shareNumLabel.text = "\(dic01["article_share_counter"] as! Int)"
+        
+        print(dic01["article_share_counter"])
         
         return cell
     }

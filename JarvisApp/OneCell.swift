@@ -41,12 +41,10 @@ class OneCell: UITableViewCell {
         basicView.addSubview(whiteView)
         
         //titleLabel.backgroundColor = UIColor.greenColor()
-        titleLabel.text = "親子餐廳懶人包 36間超人氣親子餐廳"
         whiteView.addSubview(titleLabel)
         
         //timeLabel.backgroundColor = UIColor.redColor()
         timeLabel.font = UIFont.systemFontOfSize(13)
-        timeLabel.text = "2016/12/10 AM 10:00"
         whiteView.addSubview(timeLabel)
         
         locationImage.image = UIImage(named: "location")
@@ -55,7 +53,6 @@ class OneCell: UITableViewCell {
         
         //addressLabel.backgroundColor = UIColor.blueColor()
         addressLabel.font = UIFont.systemFontOfSize(13)
-        addressLabel.text = "地點:中正區 自由廣場"
         whiteView.addSubview(addressLabel)
         
         lineView.backgroundColor = UIColor.blackColor()
@@ -68,7 +65,6 @@ class OneCell: UITableViewCell {
         articleTextView.editable = false
         articleTextView.font = UIFont.systemFontOfSize(13)
         articleTextView.textContainerInset = UIEdgeInsetsMake(5, 3, 0, 3)
-        articleTextView.text = "國外媒體網站MacRumors報導，甫從大陸拜訪供應鏈的華爾街分析師懷特（Brian White）在其研究筆記中透露，iPhone 7預計7月開始生產，可望帶動蘋果和相關供應鏈今年下半年出貨成長。目前市場預期iPhone 7可能依往例在9月發表。"
         whiteView.addSubview(articleTextView)
         
         //likeButton.backgroundColor = UIColor.redColor()
@@ -82,13 +78,11 @@ class OneCell: UITableViewCell {
         likeNumLabel.font = UIFont.systemFontOfSize(10)
         //likeNumLabel.backgroundColor = UIColor.grayColor()
         likeNumLabel.textAlignment = .Center
-        likeNumLabel.text = "12"
         whiteView.addSubview(likeNumLabel)
         
         shareNumLabel.font = UIFont.systemFontOfSize(10)
         shareNumLabel.textAlignment = .Center
         //shareNumLabel.backgroundColor = UIColor.grayColor()
-        shareNumLabel.text = "368"
         whiteView.addSubview(shareNumLabel)
         
         
