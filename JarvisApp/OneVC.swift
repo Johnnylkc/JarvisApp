@@ -16,6 +16,14 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINaviga
     let tableView = UITableView()
     let scrollView = UIScrollView()
     
+    let scrollLeftButton = UIButton()
+    let scrllRightButton = UIButton()
+    let oneButton = UIButton()
+    let twoButton = UIButton()
+    let threeButton = UIButton()
+    let fourButton = UIButton()
+    
+    
     
     var jsonArray = NSMutableArray()
     var oneArray = NSMutableArray()
@@ -25,6 +33,7 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINaviga
         super.viewDidLoad()
 
         allUI()
+        autoLayout()
         alamofireGET()
         
     }
@@ -65,7 +74,6 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINaviga
         self.navigationItem.setRightBarButtonItems([rightBarButton01,rightBarButton], animated: true)
         
         ////tableView
-        tableView.frame = CGRectMake(0, 110, width, height-40)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerClass(OneCell.self, forCellReuseIdentifier: "cell")
@@ -74,11 +82,33 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINaviga
         tableView.separatorStyle = .None
         self.view.addSubview(tableView)
         
+        
+        
+        
         ////scrollView
-        scrollView.frame = CGRectMake(0, 64, width, 46)
         scrollView.backgroundColor = UIColor.redColor()
+        scrollView.contentSize = CGSizeMake(width*2, 0)
         
         self.view.addSubview(scrollView)
+        
+        ////scrollView最左和最右的三角形按鈕
+        scrollLeftButton.setBackgroundImage(UIImage(named: "scrollLeft"), forState: .Normal)
+        scrollLeftButton.backgroundColor = UIColor.greenColor()
+        
+        self.view.addSubview(scrollLeftButton)
+        
+        
+        scrllRightButton.setBackgroundImage(UIImage(named: "scrollRight"), forState: .Normal)
+        scrllRightButton.backgroundColor = UIColor.greenColor()
+        
+        self.view.addSubview(scrllRightButton)
+        
+        
+        
+        ////scrollView裡的按鈕們
+
+        
+        
         
     }
     
@@ -196,6 +226,61 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINaviga
         
         return cell
     }
+    
+    
+    func autoLayout()
+    {
+        tableView.translatesAutoresizingMaskIntoConstraints = (false)
+        scrollView.translatesAutoresizingMaskIntoConstraints = (false)
+        scrollLeftButton.translatesAutoresizingMaskIntoConstraints = (false)
+        scrllRightButton.translatesAutoresizingMaskIntoConstraints = (false)
+        
+        let dic = ["tableView":tableView,"scrollView":scrollView,"scrollLeftButton":scrollLeftButton,"scrllRightButton":scrllRightButton]
+        
+    
+        ////tableView
+        let tableView_H = NSLayoutConstraint.constraintsWithVisualFormat("H:|[tableView]|", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        self.view.addConstraints(tableView_H)
+        
+        let tableView_V = NSLayoutConstraint.constraintsWithVisualFormat("V:[scrollView][tableView]|", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        self.view.addConstraints(tableView_V)
+        
+        ////scrollView
+        let scrollView_H = NSLayoutConstraint.constraintsWithVisualFormat("H:|-40-[scrollView]-40-|", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        self.view.addConstraints(scrollView_H)
+        
+        let scrollView_V = NSLayoutConstraint.constraintsWithVisualFormat("V:|-64-[scrollView(46)]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        self.view.addConstraints(scrollView_V)
+        
+        ////scrollLeftButton
+        let scrollLeftButton_H = NSLayoutConstraint.constraintsWithVisualFormat("H:|[scrollLeftButton][scrollView]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        self.view.addConstraints(scrollLeftButton_H)
+        
+        let scrollLeftButton_V = NSLayoutConstraint.constraintsWithVisualFormat("V:|-64-[scrollLeftButton][tableView]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        self.view.addConstraints(scrollLeftButton_V)
+        
+        ////scrllRightButton
+        let scrllRightButton_H = NSLayoutConstraint.constraintsWithVisualFormat("H:[scrollView][scrllRightButton]|", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        self.view.addConstraints(scrllRightButton_H)
+        
+        let scrllRightButton_V = NSLayoutConstraint.constraintsWithVisualFormat("V:|-64-[scrllRightButton][tableView]", options: NSLayoutFormatOptions(rawValue:0), metrics: nil, views: dic)
+        self.view.addConstraints(scrllRightButton_V)
+        
+        
+        
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     
     
