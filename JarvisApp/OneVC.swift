@@ -14,6 +14,7 @@ import AlamofireImage
 class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINavigationControllerDelegate,UIImagePickerControllerDelegate {
 
     let tableView = UITableView()
+    let scrollView = UIScrollView()
     
     
     var jsonArray = NSMutableArray()
@@ -31,7 +32,7 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINaviga
   
     func allUI()
     {
-        self.view.backgroundColor = UIColor.groupTableViewBackgroundColor()
+        self.view.backgroundColor = UIColor.whiteColor()
         
         let width = self.view.frame.size.width
         let height = self.view.frame.size.height
@@ -62,18 +63,22 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINaviga
         let rightBarButton01 = UIBarButtonItem(customView: memberButton)
         
         self.navigationItem.setRightBarButtonItems([rightBarButton01,rightBarButton], animated: true)
-
         
-            
-        
-        
-        tableView.frame = CGRectMake(0, 0, width, height)
+        ////tableView
+        tableView.frame = CGRectMake(0, 110, width, height-40)
         tableView.delegate = self
         tableView.dataSource = self
         tableView.registerClass(OneCell.self, forCellReuseIdentifier: "cell")
         tableView.backgroundColor = UIColor.groupTableViewBackgroundColor()
+        automaticallyAdjustsScrollViewInsets = false
         tableView.separatorStyle = .None
         self.view.addSubview(tableView)
+        
+        ////scrollView
+        scrollView.frame = CGRectMake(0, 64, width, 46)
+        scrollView.backgroundColor = UIColor.redColor()
+        
+        self.view.addSubview(scrollView)
         
     }
     
