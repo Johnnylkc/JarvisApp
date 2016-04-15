@@ -88,8 +88,7 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINaviga
         
         ////scrollView
         scrollView.backgroundColor = UIColor.redColor()
-        scrollView.contentSize = CGSizeMake(self.view.frame.size.width*3, 0)
-        
+        scrollView.showsHorizontalScrollIndicator = false
         self.view.addSubview(scrollView)
         
         ////scrollView最左和最右的三角形按鈕
@@ -109,25 +108,31 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINaviga
         oneButton.backgroundColor = UIColor.whiteColor()
         oneButton.setTitle("最新派對", forState: .Normal)
         oneButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        oneButton.addTarget(self, action: "oneButtonClicked:", forControlEvents: .TouchUpInside)
         scrollView.addSubview(oneButton)
         
         twoButton.frame = CGRectMake(oneButton.frame.size.width+20, 5, width/4, 35)
         twoButton.backgroundColor = UIColor.whiteColor()
         twoButton.setTitle("最受歡迎", forState: .Normal)
         twoButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        twoButton.addTarget(self, action: "twoButtonClicked:", forControlEvents: .TouchUpInside)
         scrollView.addSubview(twoButton)
         
         threeButton.frame = CGRectMake(oneButton.frame.size.width*2 + 40, 5, width/4, 35)
         threeButton.backgroundColor = UIColor.whiteColor()
         threeButton.setTitle("為您推薦", forState: .Normal)
         threeButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        threeButton.addTarget(self, action: "threeButtonClicked:", forControlEvents: .TouchUpInside)
         scrollView.addSubview(threeButton)
         
         fourButton.frame = CGRectMake(oneButton.frame.size.width*3 + 60, 5, width/4, 35)
         fourButton.backgroundColor = UIColor.whiteColor()
         fourButton.setTitle("附近熱門", forState: .Normal)
         fourButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
+        fourButton.addTarget(self, action: "fourButtonClicked:", forControlEvents: .TouchUpInside)
         scrollView.addSubview(fourButton)
+
+        scrollView.contentSize = CGSizeMake(oneButton.frame.size.width*5, 0)
 
         
         
@@ -145,25 +150,45 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINaviga
                 self.jsonArray = JSON as! NSMutableArray
             }
             
-            
             self.tableView.reloadData()
-
         }
-        
         
     }
     
-    
+    ////按了放大鏡要執行的
     func search(sender:UIButton)
     {
         print("你按了搜尋")
     }
     
+    ////按了會員要執行的
     func memberData(sender:UIButton)
     {
         print("你按了會員")
     }
     
+    ////scrollView裡的按鈕 按了要執行的
+    func oneButtonClicked (sender:UIButton)
+    {
+        print("你按了\(oneButton.titleLabel?.text)")
+    }
+    
+    func twoButtonClicked(sender:UIButton)
+    {
+        print("你按了\(twoButton.titleLabel?.text)")
+    }
+    
+    func threeButtonClicked(sender:UIButton)
+    {
+        print("你按了\(threeButton.titleLabel?.text)")
+    }
+    
+    func fourButtonClicked(sender:UIButton)
+    {
+        print("你按了\(fourButton.titleLabel?.text)")
+    }
+    
+    ////
     func scrollLeft(sender:UIButton)
     {
         print("你按了向左滑動")
