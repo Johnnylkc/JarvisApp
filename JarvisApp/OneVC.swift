@@ -88,7 +88,7 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINaviga
         
         ////scrollView
         scrollView.backgroundColor = UIColor.redColor()
-        scrollView.showsHorizontalScrollIndicator = false
+        //scrollView.showsHorizontalScrollIndicator = false
         self.view.addSubview(scrollView)
         
         ////scrollView最左和最右的三角形按鈕
@@ -105,34 +105,34 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINaviga
         
         ////scrollView裡的按鈕們
         oneButton.frame = CGRectMake(0, 5, width/4, 35)
-        oneButton.backgroundColor = UIColor.whiteColor()
+        oneButton.backgroundColor = UIColor.yellowColor()
         oneButton.setTitle("最新派對", forState: .Normal)
         oneButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        oneButton.addTarget(self, action: "oneButtonClicked:", forControlEvents: .TouchUpInside)
+        oneButton.addTarget(self, action: #selector(OneVC.oneButtonClicked(_:)), forControlEvents: .TouchUpInside)
         scrollView.addSubview(oneButton)
         
         twoButton.frame = CGRectMake(oneButton.frame.size.width+20, 5, width/4, 35)
         twoButton.backgroundColor = UIColor.whiteColor()
         twoButton.setTitle("最受歡迎", forState: .Normal)
         twoButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        twoButton.addTarget(self, action: "twoButtonClicked:", forControlEvents: .TouchUpInside)
+        twoButton.addTarget(self, action: #selector(OneVC.twoButtonClicked(_:)), forControlEvents: .TouchUpInside)
         scrollView.addSubview(twoButton)
         
         threeButton.frame = CGRectMake(oneButton.frame.size.width*2 + 40, 5, width/4, 35)
         threeButton.backgroundColor = UIColor.whiteColor()
         threeButton.setTitle("為您推薦", forState: .Normal)
         threeButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        threeButton.addTarget(self, action: "threeButtonClicked:", forControlEvents: .TouchUpInside)
+        threeButton.addTarget(self, action: #selector(OneVC.threeButtonClicked(_:)), forControlEvents: .TouchUpInside)
         scrollView.addSubview(threeButton)
         
         fourButton.frame = CGRectMake(oneButton.frame.size.width*3 + 60, 5, width/4, 35)
         fourButton.backgroundColor = UIColor.whiteColor()
         fourButton.setTitle("附近熱門", forState: .Normal)
         fourButton.setTitleColor(UIColor.blackColor(), forState: .Normal)
-        fourButton.addTarget(self, action: "fourButtonClicked:", forControlEvents: .TouchUpInside)
+        fourButton.addTarget(self, action: #selector(OneVC.fourButtonClicked(_:)), forControlEvents: .TouchUpInside)
         scrollView.addSubview(fourButton)
 
-        scrollView.contentSize = CGSizeMake(oneButton.frame.size.width*5, 0)
+        scrollView.contentSize = CGSizeMake(oneButton.frame.size.width*4 + 20*4, 0)
 
         
         
@@ -170,27 +170,61 @@ class OneVC: UIViewController,UITableViewDelegate,UITableViewDataSource,UINaviga
     ////scrollView裡的按鈕 按了要執行的
     func oneButtonClicked (sender:UIButton)
     {
+        oneButton.backgroundColor = UIColor.yellowColor()
+        twoButton.backgroundColor = UIColor.whiteColor()
+        threeButton.backgroundColor = UIColor.whiteColor()
+        fourButton.backgroundColor = UIColor.whiteColor()
+        
         print("你按了\(oneButton.titleLabel?.text)")
     }
     
     func twoButtonClicked(sender:UIButton)
     {
+        
+        oneButton.backgroundColor = UIColor.whiteColor()
+        twoButton.backgroundColor = UIColor.yellowColor()
+        threeButton.backgroundColor = UIColor.whiteColor()
+        fourButton.backgroundColor = UIColor.whiteColor()
+        
         print("你按了\(twoButton.titleLabel?.text)")
     }
     
     func threeButtonClicked(sender:UIButton)
     {
+        oneButton.backgroundColor = UIColor.whiteColor()
+        twoButton.backgroundColor = UIColor.whiteColor()
+        threeButton.backgroundColor = UIColor.yellowColor()
+        fourButton.backgroundColor = UIColor.whiteColor()
+
         print("你按了\(threeButton.titleLabel?.text)")
     }
     
     func fourButtonClicked(sender:UIButton)
     {
+        oneButton.backgroundColor = UIColor.whiteColor()
+        twoButton.backgroundColor = UIColor.whiteColor()
+        threeButton.backgroundColor = UIColor.whiteColor()
+        fourButton.backgroundColor = UIColor.yellowColor()
+
         print("你按了\(fourButton.titleLabel?.text)")
     }
     
-    ////
+    ////scrollView外面左邊和右邊兩個三角形按鈕 按了要執行的
     func scrollLeft(sender:UIButton)
     {
+       
+        let horizonMove = oneButton.frame.size.width
+        
+        if scrollView.contentOffset.x < 200
+        {
+            UIView.animateWithDuration(0.3) {
+                
+                self.scrollView.contentOffset.x += horizonMove + 20
+
+            }
+            
+        }
+                
         print("你按了向左滑動")
     }
     
